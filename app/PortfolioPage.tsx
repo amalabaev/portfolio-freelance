@@ -1,3 +1,5 @@
+import { CopyEmailButton } from "./CopyEmailButton";
+
 type Locale = "fr" | "en";
 
 const email = "amalabaev@gmail.com";
@@ -10,6 +12,9 @@ const content = {
     nav: ["Expertise", "Concepts", "Méthode"],
     language: "Choisir la langue",
     contactSubject: "Mon projet de site vitrine",
+    contactBody: "Bonjour Aliaskar,\n\nJe souhaite vous parler de mon projet :\n\n",
+    copyEmail: "Copier l’adresse",
+    copiedEmail: "Adresse copiée",
     headerCta: "Parler du projet",
     eyebrow: "Développeur web full-stack freelance",
     heroTitle: "Votre activité mérite mieux qu’un site",
@@ -82,6 +87,9 @@ const content = {
     nav: ["Expertise", "Concepts", "Process"],
     language: "Choose language",
     contactSubject: "My website project",
+    contactBody: "Hello Aliaskar,\n\nI would like to tell you about my project:\n\n",
+    copyEmail: "Copy email address",
+    copiedEmail: "Email copied",
     headerCta: "Discuss your project",
     eyebrow: "Freelance full-stack web developer",
     heroTitle: "Your business deserves more than an",
@@ -153,7 +161,7 @@ export function PortfolioPage({ locale }: { locale: Locale }) {
   const copy = content[locale];
   const home = locale === "fr" ? "/" : "/en";
   const methodId = "method";
-  const mailto = `mailto:${email}?subject=${encodeURIComponent(copy.contactSubject)}`;
+  const gmailCompose = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}&su=${encodeURIComponent(copy.contactSubject)}&body=${encodeURIComponent(copy.contactBody)}`;
 
   return (
     <main>
@@ -173,7 +181,7 @@ export function PortfolioPage({ locale }: { locale: Locale }) {
             <span>/</span>
             <a className={locale === "en" ? "active" : ""} href="/en" hrefLang="en" aria-current={locale === "en" ? "page" : undefined}>EN</a>
           </div>
-          <a className="header-cta" href={mailto}>{copy.headerCta} <span aria-hidden="true">↗</span></a>
+          <a className="header-cta" href="#contact">{copy.headerCta} <span aria-hidden="true">↓</span></a>
         </div>
       </header>
 
@@ -183,7 +191,7 @@ export function PortfolioPage({ locale }: { locale: Locale }) {
           <h1>{copy.heroTitle} <em>{copy.heroEmphasis}</em></h1>
           <p className="hero-lede">{copy.heroText}</p>
           <div className="hero-actions">
-            <a className="button button-dark" href={mailto}>{copy.startProject} <span>↗</span></a>
+            <a className="button button-dark" href="#contact">{copy.startProject} <span>↓</span></a>
             <a className="text-link" href="#concepts">{copy.seeApproach} <span>↓</span></a>
           </div>
           <div className="availability">
@@ -298,14 +306,16 @@ export function PortfolioPage({ locale }: { locale: Locale }) {
         <p className="section-index">{copy.contactLabel}</p>
         <h2>{copy.contactTitle}<br /><em>{copy.contactEmphasis}</em></h2>
         <p>{copy.contactText}</p>
-        <a className="button button-acid" href={mailto}>{copy.write} <span>↗</span></a>
-        <a className="contact-email" href={`mailto:${email}`}>{email}</a>
+        <div className="contact-actions">
+          <a className="button button-acid" href={gmailCompose} target="_blank" rel="noreferrer">{copy.write} <span>↗</span></a>
+          <CopyEmailButton email={email} idleLabel={copy.copyEmail} copiedLabel={copy.copiedEmail} />
+        </div>
       </section>
 
       <footer>
         <a className="brand footer-brand" href={`${home}#top`}><span className="brand-mark">AM</span><span>{copy.footerBrand}<br />React · Node.js</span></a>
         <p>© 2026 Aliaskar Malabaev<br />{copy.footerRole}</p>
-        <div><a href="https://github.com/amalabaev" target="_blank" rel="noreferrer">GitHub ↗</a><a href={`mailto:${email}`}>Email ↗</a></div>
+        <div><a href="https://github.com/amalabaev" target="_blank" rel="noreferrer">GitHub ↗</a><a href={gmailCompose} target="_blank" rel="noreferrer">Email ↗</a></div>
       </footer>
     </main>
   );

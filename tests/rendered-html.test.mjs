@@ -54,7 +54,9 @@ test("keeps the finished site free from starter preview assets", async () => {
 
   assert.match(portfolio, /CONCEPT/);
   assert.match(portfolio, /EXPLORATORY/);
-  assert.match(portfolio, /mailto:/);
+  assert.match(portfolio, /mail\.google\.com\/mail/);
+  assert.match(portfolio, /href="#contact"/);
+  assert.doesNotMatch(portfolio, /mailto:/);
   assert.match(layout, /generateMetadata/);
   assert.match(layout, /summary_large_image/);
   assert.match(css, /prefers-reduced-motion:\s*reduce/);

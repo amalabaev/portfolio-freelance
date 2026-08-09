@@ -200,7 +200,22 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .contact > p:not(.section-index) { position: relative; z-index: 2; margin: 0 auto 35px; color: #b5b8af; font-size: 14px; }
 .button-acid { position: relative; z-index: 2; background: var(--acid); color: var(--ink); }
 .button-acid:hover { box-shadow: 5px 5px 0 var(--white); }
-.contact-email { position: relative; z-index: 2; display: block; width: fit-content; margin: 26px auto 0; color: #9b9e96; font-size: 11px; border-bottom: 1px solid currentColor; padding-bottom: 3px; }
+.contact-actions { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.contact-copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 7px 0;
+  border: 0;
+  border-bottom: 1px solid #777b72;
+  background: transparent;
+  color: #b5b8af;
+  cursor: pointer;
+  font: inherit;
+}
+.contact-copy span { font-size: 11px; }
+.contact-copy strong { color: var(--acid); font-size: 8px; text-transform: uppercase; letter-spacing: .1em; }
+.contact-copy:hover, .contact-copy:focus-visible { color: var(--white); border-bottom-color: var(--acid); outline: none; }
 .contact-orb { position: absolute; width: 620px; height: 620px; border: 1px solid rgba(255,255,255,.15); border-radius: 50%; left: 50%; top: 50%; transform: translate(-50%,-50%); }
 .contact-orb::before, .contact-orb::after { content: ""; position: absolute; inset: 12%; border: 1px dashed rgba(217,255,67,.2); border-radius: 50%; }
 .contact-orb::after { inset: 26%; border-style: solid; }
@@ -266,6 +281,7 @@ footer > div { justify-self: end; display: flex; gap: 20px; font-size: 10px; fon
   .contact { padding-block: 110px; }
   .contact h2 { font-size: clamp(48px, 14vw, 70px); }
   .contact-orb { width: 450px; height: 450px; }
+  .contact-copy { flex-direction: column; gap: 7px; }
   footer { grid-template-columns: 1fr auto; min-height: 160px; }
   footer > p { display: none; }
 }
