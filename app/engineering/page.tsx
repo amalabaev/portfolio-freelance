@@ -9,10 +9,10 @@ export const metadata: Metadata = {
   description,
   alternates: {
     canonical: "/engineering",
-    languages: { "fr-FR": "/engineering", "en-US": "/en/engineering" },
+    languages: { "fr-FR": "/engineering", "en-US": "/en/engineering", "x-default": "/engineering" },
   },
-  openGraph: { title, description, locale: "fr_FR", images: ["/og.png"] },
-  twitter: { title, description, images: ["/og.png"] },
+  openGraph: { title, description, locale: "fr_FR", url: "/engineering", images: ["/og-v2.png"] },
+  twitter: { title, description, images: ["/og-v2.png"] },
 };
 
 export default function Engineering() {

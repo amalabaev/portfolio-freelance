@@ -86,6 +86,7 @@ const content = {
       { number: "02", title: "Application web sur mesure", text: "Pour digitaliser un processus métier qu’un thème ou un CMS générique ne peut pas correctement résoudre.", tags: ["React", "Back-end", "Données"] },
       { number: "03", title: "Automatisation & intégrations", text: "Pour connecter vos outils, supprimer les tâches répétitives et intégrer des API ou de l’IA avec discernement.", tags: ["API", "IA", "Workflows"] },
     ],
+    seoProfile: "Découvrir mon offre de développeur full-stack freelance",
     whyLabel: "03 — POURQUOI MOI",
     whyTitle: "Le regard produit.",
     whyEmphasis: "La profondeur technique.",
@@ -96,6 +97,7 @@ const content = {
       ["03", "Prévoir la suite", "Je construis une base maintenable, documentée et capable d’évoluer avec votre activité."],
     ],
     engineeringCta: "Voir mon profil technique",
+    linkedIn: "Voir mon LinkedIn",
     labLabel: "04 — CREATIVE LAB",
     labTitle: "Explorer une identité.",
     labEmphasis: "Servir un objectif.",
@@ -213,6 +215,7 @@ const content = {
       { number: "02", title: "Bespoke web application", text: "Digitise a business process that a generic theme or CMS cannot properly support.", tags: ["React", "Back-end", "Data"] },
       { number: "03", title: "Automation & integrations", text: "Connect tools, remove repetitive work and integrate APIs or AI where they genuinely help.", tags: ["APIs", "AI", "Workflows"] },
     ],
+    seoProfile: "Explore my freelance full-stack services",
     whyLabel: "03 — WHY ME",
     whyTitle: "Product judgement.",
     whyEmphasis: "Technical depth.",
@@ -223,6 +226,7 @@ const content = {
       ["03", "Plan for what comes next", "I build a maintainable, documented foundation that can evolve with your business."],
     ],
     engineeringCta: "View my engineering profile",
+    linkedIn: "View my LinkedIn",
     labLabel: "04 — CREATIVE LAB",
     labTitle: "Explore an identity.",
     labEmphasis: "Serve an objective.",
@@ -288,6 +292,7 @@ export function PortfolioPage({ locale }: { locale: Locale }) {
   const copy = content[locale];
   const home = locale === "fr" ? "/" : "/en";
   const engineering = locale === "fr" ? "/engineering" : "/en/engineering";
+  const freelanceProfile = locale === "fr" ? "/developpeur-full-stack-freelance" : "/en/freelance-full-stack-developer";
   const directEmail = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}`;
 
   const navLinks = [
@@ -353,6 +358,7 @@ export function PortfolioPage({ locale }: { locale: Locale }) {
       <section className="services section" id="services">
         <div className="section-heading"><p className="section-index">{copy.servicesLabel}</p><h2>{copy.servicesTitle}<br /><em>{copy.servicesEmphasis}</em></h2><p>{copy.servicesText}</p></div>
         <div className="service-grid">{copy.services.map((service) => <article className="service-card" key={service.number}><div className="service-number">{service.number}</div><h3>{service.title}</h3><p>{service.text}</p><ul>{service.tags.map((tag) => <li key={tag}>{tag}</li>)}</ul></article>)}</div>
+        <a className="text-link services-profile-link" href={freelanceProfile}>{copy.seoProfile} <span aria-hidden="true">→</span></a>
       </section>
 
       <section className="why section">
@@ -375,7 +381,7 @@ export function PortfolioPage({ locale }: { locale: Locale }) {
 
       <section className="about section">
         <div className="about-label"><p className="section-index">{copy.aboutLabel}</p><div className="portrait-type" aria-hidden="true"><span>A</span><i>+</i><span>M</span></div></div>
-        <div className="about-copy"><p className="about-intro">{copy.aboutIntro}</p><p className="about-large">{copy.aboutText} <em>{copy.aboutEmphasis}</em></p><p className="about-small">{copy.aboutSmall}</p><div className="about-proof">{copy.aboutProof.map((item) => <span key={item}>{item}</span>)}</div><a className="text-link" href={engineering}>{copy.engineeringCta} <span aria-hidden="true">→</span></a></div>
+        <div className="about-copy"><p className="about-intro">{copy.aboutIntro}</p><p className="about-large">{copy.aboutText} <em>{copy.aboutEmphasis}</em></p><p className="about-small">{copy.aboutSmall}</p><div className="about-proof">{copy.aboutProof.map((item) => <span key={item}>{item}</span>)}</div><div className="about-links"><a className="text-link" href={engineering}>{copy.engineeringCta} <span aria-hidden="true">→</span></a><a className="text-link" href="https://fr.linkedin.com/in/aliaskar-malabaev-6850a0130" target="_blank" rel="noreferrer">{copy.linkedIn} <span aria-hidden="true">↗</span></a></div></div>
       </section>
 
       <section className="contact section" id="contact">
@@ -384,7 +390,7 @@ export function PortfolioPage({ locale }: { locale: Locale }) {
         <div className="contact-alternative"><span>{copy.emailAlternative}</span><a href={directEmail} target="_blank" rel="noreferrer">{email}</a><CopyEmailButton email={email} idleLabel={copy.copyEmail} copiedLabel={copy.copiedEmail} /></div>
       </section>
 
-      <footer><a className="brand footer-brand" href={`${home}#top`}><span className="brand-mark">AM</span><span>{copy.footerBrand}<br />React · Node.js</span></a><p>© 2026 Aliaskar Malabaev<br />{copy.footerRole}</p><div><a href={engineering}>{copy.engineeringCta} →</a><a href="https://github.com/amalabaev" target="_blank" rel="noreferrer">GitHub ↗</a></div></footer>
+      <footer><a className="brand footer-brand" href={`${home}#top`}><span className="brand-mark">AM</span><span>{copy.footerBrand}<br />React · Node.js</span></a><p>© 2026 Aliaskar Malabaev<br />{copy.footerRole}</p><div><a href={freelanceProfile}>Services →</a><a href={engineering}>Engineering →</a><a href="https://fr.linkedin.com/in/aliaskar-malabaev-6850a0130" target="_blank" rel="noreferrer">LinkedIn ↗</a></div></footer>
     </main>
   );
 }

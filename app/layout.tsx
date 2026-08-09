@@ -3,7 +3,8 @@ import "./globals.css";
 
 const origin = "https://amalabaev.com";
 const title = "Aliaskar Malabaev — Développeur web full-stack freelance";
-const description = "Refonte de sites vieillissants, applications web sur mesure, automatisations et intégrations par un développeur full-stack orienté produit.";
+const description = "Aliaskar Malabaev, développeur full-stack freelance : refonte de sites, applications web sur mesure, React, Laravel, Node.js, API et automatisation.";
+const linkedIn = "https://fr.linkedin.com/in/aliaskar-malabaev-6850a0130";
 
 const structuredData = {
   "@context": "https://schema.org",
@@ -16,7 +17,8 @@ const structuredData = {
       email: "mailto:amalabaev@gmail.com",
       jobTitle: "Développeur web full-stack freelance",
       knowsLanguage: ["fr", "en"],
-      sameAs: ["https://github.com/amalabaev"],
+      sameAs: ["https://github.com/amalabaev", linkedIn],
+      knowsAbout: ["Full-stack web development", "React", "TypeScript", "Laravel", "Node.js", "Business applications", "Web design", "Automation"],
     },
     {
       "@type": "ProfessionalService",
@@ -26,8 +28,18 @@ const structuredData = {
       email: "amalabaev@gmail.com",
       founder: { "@id": `${origin}/#aliaskar-malabaev` },
       description,
+      areaServed: "France",
       availableLanguage: ["French", "English"],
       serviceType: ["Website redesign", "Bespoke web application development", "Automation and API integrations"],
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${origin}/#website`,
+      url: origin,
+      name: "Aliaskar Malabaev — Développeur full-stack freelance",
+      description,
+      inLanguage: ["fr-FR", "en-US"],
+      author: { "@id": `${origin}/#aliaskar-malabaev` },
     },
   ],
 };
@@ -36,18 +48,36 @@ export const metadata: Metadata = {
   metadataBase: new URL(origin),
   title,
   description,
+  applicationName: "Aliaskar Malabaev — Portfolio freelance",
+  authors: [{ name: "Aliaskar Malabaev", url: origin }],
+  creator: "Aliaskar Malabaev",
+  publisher: "Aliaskar Malabaev",
+  category: "technology",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
   openGraph: {
     title,
     description,
     type: "website",
     locale: "fr_FR",
-    images: [{ url: `${origin}/og.png`, width: 1735, height: 907, alt: "Aliaskar Malabaev — Développeur web full-stack freelance" }],
+    url: origin,
+    siteName: "Aliaskar Malabaev",
+    images: [{ url: `${origin}/og-v2.png`, width: 1536, height: 1024, alt: "Aliaskar Malabaev — Full-stack, product et design" }],
   },
   twitter: {
     card: "summary_large_image",
     title,
     description,
-    images: [`${origin}/og.png`],
+    images: [`${origin}/og-v2.png`],
   },
 };
 

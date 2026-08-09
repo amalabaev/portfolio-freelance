@@ -30,7 +30,9 @@ test("server-renders Aliaskar's freelance portfolio", async () => {
   assert.match(html, /ProfessionalService/);
   assert.match(html, /amalabaev@gmail\.com/);
   assert.match(html, /property="og:image"/i);
-  assert.match(html, /https:\/\/amalabaev\.com\/og\.png/);
+  assert.match(html, /https:\/\/amalabaev\.com\/og-v2\.png/);
+  assert.match(html, /max-image-preview:large/i);
+  assert.match(html, /linkedin\.com\/in\/aliaskar-malabaev/i);
   assert.doesNotMatch(html, /localhost:3000/);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton|Starter Project/i);
 });
@@ -47,8 +49,30 @@ test("server-renders the English portfolio at /en", async () => {
   assert.match(html, /Choose language/);
   assert.match(html, /document\.documentElement\.lang/);
   assert.match(html, /hrefLang="en"|hreflang="en"/i);
-  assert.match(html, /\/og-en\.png/);
+  assert.match(html, /\/og-v2\.png/);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton|Starter Project/i);
+});
+
+test("server-renders the French freelance SEO landing page", async () => {
+  const response = await render("/developpeur-full-stack-freelance");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /Développeur full-stack freelance pour vos projets web ambitieux/);
+  assert.match(html, /FAQPage/);
+  assert.match(html, /BreadcrumbList/);
+  assert.match(html, /Service/);
+  assert.match(html, /canonical/i);
+  assert.match(html, /freelance-full-stack-developer/);
+});
+
+test("server-renders the English freelance SEO landing page", async () => {
+  const response = await render("/en/freelance-full-stack-developer");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /A freelance full-stack developer for ambitious web projects/);
+  assert.match(html, /What projects can a freelance full-stack developer handle/);
+  assert.match(html, /document\.documentElement\.lang/);
+  assert.match(html, /\/developpeur-full-stack-freelance/);
 });
 
 test("server-renders the French engineering profile", async () => {
@@ -71,10 +95,11 @@ test("server-renders the English engineering profile", async () => {
 });
 
 test("keeps the finished site free from starter preview assets", async () => {
-  const [portfolio, layout, css, packageJson] = await Promise.all([
+  const [portfolio, layout, css, exporter, packageJson] = await Promise.all([
     readFile(new URL("../app/PortfolioPage.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/globals.css", import.meta.url), "utf8"),
+    readFile(new URL("../scripts/export-github-pages.mjs", import.meta.url), "utf8"),
     readFile(new URL("../package.json", import.meta.url), "utf8"),
   ]);
 
@@ -92,6 +117,9 @@ test("keeps the finished site free from starter preview assets", async () => {
   assert.match(css, /prefers-reduced-motion:\s*reduce/);
   assert.match(css, /focus-visible/);
   assert.match(css, /mobile-menu/);
+  assert.match(exporter, /developpeur-full-stack-freelance/);
+  assert.match(exporter, /xmlns:xhtml/);
+  assert.match(exporter, /lastmod/);
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
   assert.doesNotMatch(portfolio + layout, /SkeletonPreview|codex-preview|Starter Project/);
   await assert.rejects(access(new URL("../app/_sites-preview", import.meta.url)));

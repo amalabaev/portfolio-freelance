@@ -9,15 +9,17 @@ export const metadata: Metadata = {
   description,
   alternates: {
     canonical: "/en",
-    languages: { "fr-FR": "/", "en-US": "/en" },
+    languages: { "fr-FR": "/", "en-US": "/en", "x-default": "/" },
   },
   openGraph: {
     title,
     description,
     locale: "en_US",
-    images: [{ url: "/og-en.png", width: 1735, height: 907, alt: "Aliaskar Malabaev — Freelance full-stack web developer" }],
+    url: "/en",
+    siteName: "Aliaskar Malabaev",
+    images: [{ url: "/og-v2.png", width: 1536, height: 1024, alt: "Aliaskar Malabaev — Full-stack, product and design" }],
   },
-  twitter: { title, description, images: ["/og-en.png"] },
+  twitter: { title, description, images: ["/og-v2.png"] },
 };
 
 export default function EnglishHome() {
