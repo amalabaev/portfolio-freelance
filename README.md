@@ -1,6 +1,6 @@
 # Portfolio freelance — Aliaskar Malabaev
 
-Site vitrine personnel d’Aliaskar Malabaev, développeur web full-stack freelance. La page présente son positionnement, ses services, sa méthode de travail et plusieurs directions créatives clairement identifiées comme des concepts.
+Site vitrine bilingue français/anglais d’Aliaskar Malabaev, développeur web full-stack freelance. Les deux versions présentent son positionnement, ses services, sa méthode de travail et plusieurs directions créatives clairement identifiées comme des concepts.
 
 ## Technologies
 
@@ -19,7 +19,7 @@ npm install
 npm run dev
 ```
 
-Le site est ensuite disponible sur `http://localhost:3000`.
+La version française est disponible sur `http://localhost:3000` et la version anglaise sur `http://localhost:3000/en`.
 
 ## Vérifier la version de production
 

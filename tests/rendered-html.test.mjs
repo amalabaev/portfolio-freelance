@@ -2,13 +2,13 @@ import assert from "node:assert/strict";
 import { access, readFile } from "node:fs/promises";
 import test from "node:test";
 
-async function render() {
+async function render(path = "/") {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}`);
   const { default: worker } = await import(workerUrl.href);
 
   return worker.fetch(
-    new Request("http://localhost/", { headers: { accept: "text/html" } }),
+    new Request(`http://localhost${path}`, { headers: { accept: "text/html" } }),
     { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
     { waitUntil() {}, passThroughOnException() {} },
   );
@@ -30,20 +30,35 @@ test("server-renders Aliaskar's freelance portfolio", async () => {
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton|Starter Project/i);
 });
 
+test("server-renders the English portfolio at /en", async () => {
+  const response = await render("/en");
+  assert.equal(response.status, 200);
+
+  const html = await response.text();
+  assert.match(html, /Your business deserves more than an/);
+  assert.match(html, /Freelance full-stack web developer/);
+  assert.match(html, /Choose language/);
+  assert.match(html, /document\.documentElement\.lang/);
+  assert.match(html, /hrefLang="en"|hreflang="en"/i);
+  assert.match(html, /\/og-en\.png/);
+  assert.doesNotMatch(html, /codex-preview|react-loading-skeleton|Starter Project/i);
+});
+
 test("keeps the finished site free from starter preview assets", async () => {
-  const [page, layout, css, packageJson] = await Promise.all([
-    readFile(new URL("../app/page.tsx", import.meta.url), "utf8"),
+  const [portfolio, layout, css, packageJson] = await Promise.all([
+    readFile(new URL("../app/PortfolioPage.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/globals.css", import.meta.url), "utf8"),
     readFile(new URL("../package.json", import.meta.url), "utf8"),
   ]);
 
-  assert.match(page, /CONCEPT\s*<br \/>\s*EXPLORATOIRE/);
-  assert.match(page, /mailto:/);
+  assert.match(portfolio, /CONCEPT/);
+  assert.match(portfolio, /EXPLORATORY/);
+  assert.match(portfolio, /mailto:/);
   assert.match(layout, /generateMetadata/);
   assert.match(layout, /summary_large_image/);
   assert.match(css, /prefers-reduced-motion:\s*reduce/);
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
-  assert.doesNotMatch(page + layout, /SkeletonPreview|codex-preview|Starter Project/);
+  assert.doesNotMatch(portfolio + layout, /SkeletonPreview|codex-preview|Starter Project/);
   await assert.rejects(access(new URL("../app/_sites-preview", import.meta.url)));
 });
