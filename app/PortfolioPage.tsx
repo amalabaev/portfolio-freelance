@@ -177,6 +177,8 @@ export function PortfolioPage({ locale }: { locale: Locale }) {
         </nav>
         <div className="header-actions">
           <div className="language-switch" aria-label={copy.language}>
+            {/* A document reload keeps both statically exported locales independent. */}
+            {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
             <a className={locale === "fr" ? "active" : ""} href="/" hrefLang="fr" aria-current={locale === "fr" ? "page" : undefined}>FR</a>
             <span>/</span>
             <a className={locale === "en" ? "active" : ""} href="/en" hrefLang="en" aria-current={locale === "en" ? "page" : undefined}>EN</a>

@@ -24,8 +24,12 @@ La version française est disponible sur `http://localhost:3000` et la version a
 ## Vérifier la version de production
 
 ```bash
-npm run build
+npm run export:pages
 ```
+
+Cette commande construit le site, exécute les tests et génère la version statique
+dans `pages-dist`. Le workflow GitHub Actions `.github/workflows/deploy-pages.yml`
+publie automatiquement cette version sur GitHub Pages à chaque push sur `main`.
 
 ## Personnalisation
 
