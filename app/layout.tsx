@@ -3,7 +3,34 @@ import "./globals.css";
 
 const origin = "https://amalabaev.com";
 const title = "Aliaskar Malabaev — Développeur web full-stack freelance";
-const description = "Sites vitrines rapides, modernes et sur mesure en React et Node.js pour indépendants, cabinets et petites entreprises.";
+const description = "Refonte de sites vieillissants, applications web sur mesure, automatisations et intégrations par un développeur full-stack orienté produit.";
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": `${origin}/#aliaskar-malabaev`,
+      name: "Aliaskar Malabaev",
+      url: origin,
+      email: "mailto:amalabaev@gmail.com",
+      jobTitle: "Développeur web full-stack freelance",
+      knowsLanguage: ["fr", "en"],
+      sameAs: ["https://github.com/amalabaev"],
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": `${origin}/#service`,
+      name: "Aliaskar Malabaev — Full-stack web development",
+      url: origin,
+      email: "amalabaev@gmail.com",
+      founder: { "@id": `${origin}/#aliaskar-malabaev` },
+      description,
+      availableLanguage: ["French", "English"],
+      serviceType: ["Website redesign", "Bespoke web application development", "Automation and API integrations"],
+    },
+  ],
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(origin),
@@ -27,7 +54,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="fr">
-      <body>{children}</body>
+      <body>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
+        {children}
+      </body>
     </html>
   );
 }

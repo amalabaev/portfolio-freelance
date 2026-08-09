@@ -22,8 +22,12 @@ test("server-renders Aliaskar's freelance portfolio", async () => {
   const html = await response.text();
   assert.match(html, /<html lang="fr">/i);
   assert.match(html, /Aliaskar Malabaev/);
-  assert.match(html, /Votre activité mérite mieux/);
+  assert.match(html, /Votre entreprise a évolué/);
   assert.match(html, /Développeur web full-stack freelance/);
+  assert.match(html, /Plateforme de planification opérationnelle/);
+  assert.match(html, /Automatisation &amp; intégrations|Automatisation & intégrations/);
+  assert.match(html, /application\/ld\+json/i);
+  assert.match(html, /ProfessionalService/);
   assert.match(html, /amalabaev@gmail\.com/);
   assert.match(html, /property="og:image"/i);
   assert.match(html, /https:\/\/amalabaev\.com\/og\.png/);
@@ -36,13 +40,34 @@ test("server-renders the English portfolio at /en", async () => {
   assert.equal(response.status, 200);
 
   const html = await response.text();
-  assert.match(html, /Your business deserves more than an/);
+  assert.match(html, /Your business has evolved/);
   assert.match(html, /Freelance full-stack web developer/);
+  assert.match(html, /Operational workforce planning platform/);
+  assert.match(html, /View my engineering profile/);
   assert.match(html, /Choose language/);
   assert.match(html, /document\.documentElement\.lang/);
   assert.match(html, /hrefLang="en"|hreflang="en"/i);
   assert.match(html, /\/og-en\.png/);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton|Starter Project/i);
+});
+
+test("server-renders the French engineering profile", async () => {
+  const response = await render("/engineering");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /Le niveau technique derrière l/);
+  assert.match(html, /Full-stack, au sens complet/);
+  assert.match(html, /GitHub Actions/);
+  assert.match(html, /href="\/en\/engineering"/);
+});
+
+test("server-renders the English engineering profile", async () => {
+  const response = await render("/en/engineering");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /The engineering behind the interface/);
+  assert.match(html, /Pragmatic by default/);
+  assert.match(html, /document\.documentElement\.lang/);
 });
 
 test("keeps the finished site free from starter preview assets", async () => {
@@ -53,8 +78,8 @@ test("keeps the finished site free from starter preview assets", async () => {
     readFile(new URL("../package.json", import.meta.url), "utf8"),
   ]);
 
-  assert.match(portfolio, /CONCEPT/);
-  assert.match(portfolio, /EXPLORATORY/);
+  assert.match(portfolio, /CREATIVE LAB/);
+  assert.match(portfolio, /RÉALISATIONS/);
   assert.match(portfolio, /mail\.google\.com\/mail/);
   assert.match(portfolio, /href="#contact"/);
   assert.match(portfolio, /architecture-blueprint/);
@@ -63,7 +88,10 @@ test("keeps the finished site free from starter preview assets", async () => {
   assert.doesNotMatch(portfolio, /mailto:/);
   assert.match(layout, /export const metadata/);
   assert.match(layout, /summary_large_image/);
+  assert.match(layout, /ProfessionalService/);
   assert.match(css, /prefers-reduced-motion:\s*reduce/);
+  assert.match(css, /focus-visible/);
+  assert.match(css, /mobile-menu/);
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
   assert.doesNotMatch(portfolio + layout, /SkeletonPreview|codex-preview|Starter Project/);
   await assert.rejects(access(new URL("../app/_sites-preview", import.meta.url)));

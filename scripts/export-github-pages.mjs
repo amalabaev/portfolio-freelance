@@ -17,8 +17,10 @@ workerUrl.searchParams.set("pages-export", `${Date.now()}`);
 const { default: worker } = await import(workerUrl.href);
 
 const routes = [
-  { pathname: "/", destination: path.join(outputDir, "index.html") },
-  { pathname: "/en", destination: path.join(outputDir, "en", "index.html") },
+  { pathname: "/", destination: path.join(outputDir, "index.html"), locale: "fr" },
+  { pathname: "/en", destination: path.join(outputDir, "en", "index.html"), locale: "en" },
+  { pathname: "/engineering", destination: path.join(outputDir, "engineering", "index.html"), locale: "fr" },
+  { pathname: "/en/engineering", destination: path.join(outputDir, "en", "engineering", "index.html"), locale: "en" },
 ];
 
 for (const route of routes) {
@@ -34,8 +36,14 @@ for (const route of routes) {
     throw new Error(`Static export failed for ${route.pathname}: ${response.status}`);
   }
 
+  let html = await response.text();
+  html = html.replace(/<html lang="[^"]+"/i, `<html lang="${route.locale}"`);
+  if (!new RegExp(`<html lang="${route.locale}"`, "i").test(html)) {
+    throw new Error(`Static export has the wrong language for ${route.pathname}`);
+  }
+
   await mkdir(path.dirname(route.destination), { recursive: true });
-  await writeFile(route.destination, await response.text(), "utf8");
+  await writeFile(route.destination, html, "utf8");
 }
 
 await Promise.all([
@@ -50,6 +58,8 @@ await Promise.all([
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://amalabaev.com/</loc></url>
   <url><loc>https://amalabaev.com/en/</loc></url>
+  <url><loc>https://amalabaev.com/engineering/</loc></url>
+  <url><loc>https://amalabaev.com/en/engineering/</loc></url>
 </urlset>
 `,
     "utf8",

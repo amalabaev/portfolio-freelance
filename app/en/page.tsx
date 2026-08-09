@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { PortfolioPage } from "../PortfolioPage";
 
 const title = "Aliaskar Malabaev — Freelance full-stack web developer";
-const description = "Fast, modern and bespoke React and Node.js websites for independent professionals, practices and small businesses.";
+const description = "Website redesigns, bespoke web applications, automation and integrations by a product-minded full-stack developer.";
 
 export const metadata: Metadata = {
   title,
