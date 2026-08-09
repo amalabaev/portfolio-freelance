@@ -39,8 +39,6 @@ for (const route of routes) {
 }
 
 await Promise.all([
-  writeFile(path.join(outputDir, ".nojekyll"), "", "utf8"),
-  writeFile(path.join(outputDir, "CNAME"), "amalabaev.com\n", "utf8"),
   writeFile(
     path.join(outputDir, "robots.txt"),
     "User-agent: *\nAllow: /\nSitemap: https://amalabaev.com/sitemap.xml\n",

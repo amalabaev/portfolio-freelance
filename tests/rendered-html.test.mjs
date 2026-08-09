@@ -26,7 +26,8 @@ test("server-renders Aliaskar's freelance portfolio", async () => {
   assert.match(html, /Développeur web full-stack freelance/);
   assert.match(html, /amalabaev@gmail\.com/);
   assert.match(html, /property="og:image"/i);
-  assert.match(html, /\/og\.png/);
+  assert.match(html, /https:\/\/amalabaev\.com\/og\.png/);
+  assert.doesNotMatch(html, /localhost:3000/);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton|Starter Project/i);
 });
 
@@ -60,7 +61,7 @@ test("keeps the finished site free from starter preview assets", async () => {
   assert.match(portfolio, /health-appointment/);
   assert.match(portfolio, /consulting-dashboard/);
   assert.doesNotMatch(portfolio, /mailto:/);
-  assert.match(layout, /generateMetadata/);
+  assert.match(layout, /export const metadata/);
   assert.match(layout, /summary_large_image/);
   assert.match(css, /prefers-reduced-motion:\s*reduce/);
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
