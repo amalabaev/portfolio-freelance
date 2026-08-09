@@ -48,9 +48,9 @@ const content = {
     conceptsText: "Quelques pistes exploratoires pour montrer comment une identité peut servir un objectif concret.",
     conceptStamp: ["CONCEPT", "EXPLORATOIRE"],
     concepts: [
-      { type: "Architecture", index: "A—01", title: "Faire ressentir les espaces avant la première visite.", note: "Portfolio éditorial · Projets administrables", visual: "architecture" },
-      { type: "Santé", index: "S—02", title: "Rassurer, orienter et faciliter la prise de rendez-vous.", note: "Clarté mobile · Informations pratiques", visual: "health" },
-      { type: "Conseil B2B", index: "C—03", title: "Rendre une expertise complexe immédiatement lisible.", note: "Offre structurée · Demandes qualifiées", visual: "consulting" },
+      { type: "Architecture", index: "A—01", title: "Faire ressentir les espaces avant la première visite.", note: "Portfolio éditorial · Projets administrables", visual: "architecture", visualLabels: ["MAISON 08", "FAÇADE SUD", "PLAN / 2026", "ÉCHELLE 1:100"] },
+      { type: "Santé", index: "S—02", title: "Rassurer, orienter et faciliter la prise de rendez-vous.", note: "Clarté mobile · Informations pratiques", visual: "health", visualLabels: ["BONJOUR", "VOTRE PROCHAIN RENDEZ-VOUS", "09:30", "TÉLÉCONSULTATION"] },
+      { type: "Conseil B2B", index: "C—03", title: "Rendre une expertise complexe immédiatement lisible.", note: "Offre structurée · Demandes qualifiées", visual: "consulting", visualLabels: ["TABLEAU DE BORD", "CROISSANCE", "LEADS QUALIFIÉS", "TRIMESTRE ACTUEL"] },
     ],
     conceptDisclaimer: "Ces directions sont des démonstrations créatives, pas des réalisations attribuées à des clients.",
     methodLabel: "03 — MÉTHODE",
@@ -123,9 +123,9 @@ const content = {
     conceptsText: "A few exploratory directions showing how a distinctive identity can serve a practical goal.",
     conceptStamp: ["EXPLORATORY", "CONCEPT"],
     concepts: [
-      { type: "Architecture", index: "A—01", title: "Make people feel the space before their first visit.", note: "Editorial portfolio · Editable projects", visual: "architecture" },
-      { type: "Healthcare", index: "H—02", title: "Reassure, guide and make booking an appointment effortless.", note: "Mobile clarity · Practical information", visual: "health" },
-      { type: "B2B Consulting", index: "C—03", title: "Make complex expertise immediately understandable.", note: "Structured services · Qualified enquiries", visual: "consulting" },
+      { type: "Architecture", index: "A—01", title: "Make people feel the space before their first visit.", note: "Editorial portfolio · Editable projects", visual: "architecture", visualLabels: ["HOUSE 08", "SOUTH FACADE", "PLAN / 2026", "SCALE 1:100"] },
+      { type: "Healthcare", index: "H—02", title: "Reassure, guide and make booking an appointment effortless.", note: "Mobile clarity · Practical information", visual: "health", visualLabels: ["HELLO", "YOUR NEXT APPOINTMENT", "09:30", "VIDEO CONSULTATION"] },
+      { type: "B2B Consulting", index: "C—03", title: "Make complex expertise immediately understandable.", note: "Structured services · Qualified enquiries", visual: "consulting", visualLabels: ["DASHBOARD", "GROWTH", "QUALIFIED LEADS", "CURRENT QUARTER"] },
     ],
     conceptDisclaimer: "These directions are creative demonstrations, not work attributed to real clients.",
     methodLabel: "03 — PROCESS",
@@ -255,8 +255,55 @@ export function PortfolioPage({ locale }: { locale: Locale }) {
             <article className="concept-card" key={concept.index}>
               <div className={`concept-visual visual-${concept.visual}`} aria-hidden="true">
                 <span className="concept-stamp">{copy.conceptStamp[0]}<br />{copy.conceptStamp[1]}</span>
-                <div className="visual-frame"><i /><i /><i /></div>
-                <span className="visual-word">{concept.type}</span>
+                {concept.visual === "architecture" && (
+                  <>
+                    <div className="architecture-key">
+                      <strong>{concept.visualLabels[0]}</strong>
+                      <span>{concept.visualLabels[1]}</span>
+                      <span>{concept.visualLabels[2]}</span>
+                    </div>
+                    <div className="architecture-blueprint">
+                      <span className="arch-sun" />
+                      <div className="arch-volume arch-volume-main"><i /><i /><i /></div>
+                      <div className="arch-volume arch-volume-side"><i /><i /></div>
+                      <span className="arch-scale">{concept.visualLabels[3]}</span>
+                    </div>
+                    <span className="concept-signature">{concept.type}</span>
+                  </>
+                )}
+                {concept.visual === "health" && (
+                  <>
+                    <div className="health-ambient"><i /><i /><i /></div>
+                    <div className="health-appointment">
+                      <div className="health-header"><span>+</span><strong>{concept.visualLabels[0]}</strong><i>•••</i></div>
+                      <p>{concept.visualLabels[1]}</p>
+                      <div className="health-slot">
+                        <strong>{concept.visualLabels[2]}</strong>
+                        <span>{concept.visualLabels[3]}</span>
+                        <i>✓</i>
+                      </div>
+                      <div className="health-pulse"><i /><i /><i /><i /><i /></div>
+                    </div>
+                    <span className="concept-signature">{concept.type}</span>
+                  </>
+                )}
+                {concept.visual === "consulting" && (
+                  <>
+                    <div className="consulting-dashboard">
+                      <div className="consulting-header"><strong>{concept.visualLabels[0]}</strong><span>Q3 / 26</span></div>
+                      <div className="consulting-kpis">
+                        <div><span>{concept.visualLabels[1]}</span><strong>+38%</strong></div>
+                        <div><span>{concept.visualLabels[2]}</span><strong>24</strong></div>
+                      </div>
+                      <div className="consulting-chart">
+                        <div className="chart-bars"><i /><i /><i /><i /><i /><i /></div>
+                        <div className="chart-line"><i /><i /><i /><i /><i /></div>
+                        <span>{concept.visualLabels[3]}</span>
+                      </div>
+                    </div>
+                    <span className="concept-signature">{concept.type}</span>
+                  </>
+                )}
               </div>
               <div className="concept-meta">
                 <div><span>{concept.index}</span><span>{concept.type}</span></div>
