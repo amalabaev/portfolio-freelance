@@ -2,6 +2,8 @@
 
 import { FormEvent } from "react";
 
+import { Icon } from "./Icon";
+
 type Locale = "fr" | "en";
 
 const email = "amalabaev@gmail.com";
@@ -85,7 +87,7 @@ export function ProjectBriefForm({ locale }: { locale: Locale }) {
         </label>
       </div>
       <div className="brief-submit">
-        <button className="button button-acid" type="submit">{text.submit} <span aria-hidden="true">↗</span></button>
+        <button className="button button-acid" type="submit">{text.submit} <Icon name="upRight" /></button>
         <p>{text.note}</p>
       </div>
     </form>

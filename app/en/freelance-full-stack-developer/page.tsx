@@ -11,8 +11,8 @@ export const metadata: Metadata = {
     canonical: "/en/freelance-full-stack-developer",
     languages: { "fr-FR": "/developpeur-full-stack-freelance", "en-US": "/en/freelance-full-stack-developer", "x-default": "/developpeur-full-stack-freelance" },
   },
-  openGraph: { title, description, type: "website", locale: "en_US", url: "/en/freelance-full-stack-developer", images: [{ url: "/og-v2.png", width: 1536, height: 1024, alt: "Aliaskar Malabaev — Freelance full-stack developer" }] },
-  twitter: { card: "summary_large_image", title, description, images: ["/og-v2.png"] },
+  openGraph: { title, description, type: "website", locale: "en_US", url: "/en/freelance-full-stack-developer", images: [{ url: "/og-en-v3.png", width: 1200, height: 630, alt: "Aliaskar Malabaev — Freelance full-stack developer" }] },
+  twitter: { card: "summary_large_image", title, description, images: ["/og-en-v3.png"] },
 };
 
 export default function EnglishFreelanceFullStackDeveloper() {

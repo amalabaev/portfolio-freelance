@@ -1,3 +1,6 @@
+import { Icon } from "./Icon";
+import { EngineeringDiagram } from "./Visuals";
+
 type Locale = "fr" | "en";
 
 const content = {
@@ -94,11 +97,11 @@ export function EngineeringPage({ locale }: { locale: Locale }) {
   return (
     <main className="engineering-page">
       <header className="engineering-header">
-        <a className="brand" href={home}><span className="brand-mark">AM</span><span className="brand-copy">Aliaskar Malabaev<br />Full-stack engineering</span></a>
+        <a className="brand" href={home}><span className="brand-mark">AM</span><span className="brand-copy"><strong>Aliaskar Malabaev</strong>Full-stack engineering</span></a>
         <div className="engineering-nav">
-          <a href={home}>← {copy.home}</a>
+          <a href={home}><Icon name="left" size={14} /> {copy.home}</a>
           <div className="language-switch" aria-label={copy.language}><a className={locale === "fr" ? "active" : ""} href="/engineering" hrefLang="fr" aria-current={locale === "fr" ? "page" : undefined}>FR</a><span>/</span><a className={locale === "en" ? "active" : ""} href="/en/engineering" hrefLang="en" aria-current={locale === "en" ? "page" : undefined}>EN</a></div>
-          <a className="header-cta" href="#engineering-contact">{copy.contact} ↓</a>
+          <a className="header-cta" href="#engineering-contact">{copy.contact} <Icon name="down" /></a>
         </div>
       </header>
 
@@ -106,7 +109,7 @@ export function EngineeringPage({ locale }: { locale: Locale }) {
         <p className="eyebrow"><span /> {copy.eyebrow}</p>
         <h1>{copy.title}</h1>
         <p>{copy.intro}</p>
-        <div className="engineering-diagram" aria-hidden="true"><span>PRODUCT</span><i>+</i><span>DESIGN</span><i>+</i><span>CODE</span><strong>AM / FULL-STACK</strong></div>
+        <div className="engineering-diagram"><EngineeringDiagram locale={locale} /></div>
       </section>
 
       <section className="engineering-section capability-section">
@@ -126,9 +129,9 @@ export function EngineeringPage({ locale }: { locale: Locale }) {
 
       <section className="stack-strip"><span>{copy.stackLabel}</span><div>{copy.stack.map((item) => <strong key={item}>{item}</strong>)}</div></section>
 
-      <section className="engineering-cta" id="engineering-contact"><p className="section-index">{copy.ctaLabel}</p><h2>{copy.ctaTitle}</h2><p>{copy.ctaText}</p><div><a className="button button-acid" href={gmail} target="_blank" rel="noreferrer">{copy.email} ↗</a><a className="text-link engineering-github" href="https://github.com/amalabaev" target="_blank" rel="noreferrer">{copy.github} ↗</a></div></section>
+      <section className="engineering-cta" id="engineering-contact"><p className="section-index">{copy.ctaLabel}</p><h2>{copy.ctaTitle}</h2><p>{copy.ctaText}</p><div><a className="button button-acid" href={gmail} target="_blank" rel="noreferrer">{copy.email} <Icon name="upRight" /></a><a className="text-link engineering-github" href="https://github.com/amalabaev" target="_blank" rel="noreferrer">{copy.github} <Icon name="upRight" /></a></div></section>
 
-      <footer className="engineering-footer"><a href={home}>← {copy.home}</a><span>© 2026 Aliaskar Malabaev</span><a href="#top">↑ TOP</a></footer>
+      <footer className="engineering-footer"><a href={home}><Icon name="left" size={14} /> {copy.home}</a><span>© 2026 Aliaskar Malabaev</span><a href="#top"><Icon name="up" size={14} /> TOP</a></footer>
     </main>
   );
 }

@@ -11,8 +11,8 @@ export const metadata: Metadata = {
     canonical: "/en/engineering",
     languages: { "fr-FR": "/engineering", "en-US": "/en/engineering", "x-default": "/engineering" },
   },
-  openGraph: { title, description, locale: "en_US", url: "/en/engineering", images: ["/og-v2.png"] },
-  twitter: { title, description, images: ["/og-v2.png"] },
+  openGraph: { title, description, locale: "en_US", url: "/en/engineering", images: ["/og-en-v3.png"] },
+  twitter: { title, description, images: ["/og-en-v3.png"] },
 };
 
 export default function EnglishEngineering() {

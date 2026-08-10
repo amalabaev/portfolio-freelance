@@ -30,7 +30,7 @@ test("server-renders Aliaskar's freelance portfolio", async () => {
   assert.match(html, /ProfessionalService/);
   assert.match(html, /amalabaev@gmail\.com/);
   assert.match(html, /property="og:image"/i);
-  assert.match(html, /https:\/\/amalabaev\.com\/og-v2\.png/);
+  assert.match(html, /https:\/\/amalabaev\.com\/og-v3\.png/);
   assert.match(html, /max-image-preview:large/i);
   assert.match(html, /linkedin\.com\/in\/aliaskar-malabaev/i);
   assert.doesNotMatch(html, /localhost:3000/);
@@ -49,7 +49,7 @@ test("server-renders the English portfolio at /en", async () => {
   assert.match(html, /Choose language/);
   assert.match(html, /document\.documentElement\.lang/);
   assert.match(html, /hrefLang="en"|hreflang="en"/i);
-  assert.match(html, /\/og-v2\.png/);
+  assert.match(html, /\/og-en-v3\.png/);
   assert.doesNotMatch(html, /codex-preview|react-loading-skeleton|Starter Project/i);
 });
 
@@ -95,8 +95,9 @@ test("server-renders the English engineering profile", async () => {
 });
 
 test("keeps the finished site free from starter preview assets", async () => {
-  const [portfolio, layout, css, exporter, packageJson] = await Promise.all([
+  const [portfolio, visuals, layout, css, exporter, packageJson] = await Promise.all([
     readFile(new URL("../app/PortfolioPage.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/Visuals.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/globals.css", import.meta.url), "utf8"),
     readFile(new URL("../scripts/export-github-pages.mjs", import.meta.url), "utf8"),
@@ -107,9 +108,9 @@ test("keeps the finished site free from starter preview assets", async () => {
   assert.match(portfolio, /RÉALISATIONS/);
   assert.match(portfolio, /mail\.google\.com\/mail/);
   assert.match(portfolio, /href="#contact"/);
-  assert.match(portfolio, /architecture-blueprint/);
-  assert.match(portfolio, /health-appointment/);
-  assert.match(portfolio, /consulting-dashboard/);
+  assert.match(visuals, /architecture-blueprint/);
+  assert.match(visuals, /health-appointment/);
+  assert.match(visuals, /consulting-dashboard/);
   assert.doesNotMatch(portfolio, /mailto:/);
   assert.match(layout, /export const metadata/);
   assert.match(layout, /summary_large_image/);
@@ -117,6 +118,15 @@ test("keeps the finished site free from starter preview assets", async () => {
   assert.match(css, /prefers-reduced-motion:\s*reduce/);
   assert.match(css, /focus-visible/);
   assert.match(css, /mobile-menu/);
+  // Self-hosted fonts: no third-party request, no GDPR exposure.
+  assert.match(css, /@font-face/);
+  assert.match(css, /\/fonts\/instrument-serif-normal-latin\.woff2/);
+  assert.match(css, /\/fonts\/inter-normal-latin\.woff2/);
+  assert.doesNotMatch(css, /fonts\.googleapis\.com|fonts\.gstatic\.com/);
+  // Charts keep their validated plotting palette and a legend for multi-series frames.
+  assert.match(visuals, /#2f47c9/);
+  assert.match(visuals, /#d4482c/);
+  assert.match(visuals, /#0f8a73/);
   assert.match(exporter, /developpeur-full-stack-freelance/);
   assert.match(exporter, /xmlns:xhtml/);
   assert.match(exporter, /lastmod/);

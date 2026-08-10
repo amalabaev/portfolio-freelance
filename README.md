@@ -9,6 +9,7 @@ Site vitrine bilingue français/anglais d’Aliaskar Malabaev, développeur web 
 - TypeScript
 - vinext / Vite
 - CSS responsive sur mesure
+- Polices auto-hébergées (Instrument Serif, Inter) — aucun appel à un CDN tiers
 
 ## Lancer le projet
 
@@ -33,7 +34,17 @@ publie automatiquement cette version sur GitHub Pages à chaque push sur `main`.
 
 ## Personnalisation
 
-Les textes, services, concepts et étapes sont regroupés dans `app/page.tsx`. L’identité visuelle et le responsive se trouvent dans `app/globals.css`.
+| Fichier | Contenu |
+| --- | --- |
+| `app/PortfolioPage.tsx` | Textes, services, réalisations, concepts et étapes (FR + EN) |
+| `app/Visuals.tsx` | Les maquettes d’interface en SVG : tableau de bord, planning, pipeline, plan d’architecte |
+| `app/Icon.tsx` | Flèches et puces en SVG (les flèches Unicode tombaient sur la police emoji) |
+| `app/globals.css` | Tokens de design, typographie, composants et responsive |
+| `public/fonts/` | Les polices auto-hébergées |
+
+Les couleurs de graphique (`#2f47c9` indigo, `#d4482c` terre cuite, `#0f8a73` sarcelle)
+ont été validées pour rester distinguables en cas de daltonisme ; toute modification
+doit conserver cette séparation.
 
 ## Contact
 

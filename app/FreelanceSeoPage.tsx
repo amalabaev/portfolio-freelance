@@ -1,3 +1,5 @@
+import { Icon } from "./Icon";
+
 type Locale = "fr" | "en";
 
 const content = {
@@ -154,20 +156,20 @@ export function FreelanceSeoPage({ locale }: { locale: Locale }) {
     <main className="seo-page" id="top">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <header className="engineering-header seo-header">
-        <a className="brand" href={home}><span className="brand-mark">AM</span><span className="brand-copy">Aliaskar Malabaev<br />Full-stack freelance</span></a>
+        <a className="brand" href={home}><span className="brand-mark">AM</span><span className="brand-copy"><strong>Aliaskar Malabaev</strong>Full-stack freelance</span></a>
         <div className="engineering-nav">
-          <a href={home}>← {copy.home}</a>
+          <a href={home}><Icon name="left" size={14} /> {copy.home}</a>
           <div className="language-switch" aria-label={copy.language}>
             <a className={locale === "fr" ? "active" : ""} href="/developpeur-full-stack-freelance" hrefLang="fr" aria-current={locale === "fr" ? "page" : undefined}>FR</a><span>/</span>
             <a className={locale === "en" ? "active" : ""} href="/en/freelance-full-stack-developer" hrefLang="en" aria-current={locale === "en" ? "page" : undefined}>EN</a>
           </div>
-          <a className="header-cta" href="#seo-contact">{copy.contact} ↓</a>
+          <a className="header-cta" href="#seo-contact">{copy.contact} <Icon name="down" /></a>
         </div>
       </header>
 
       <section className="seo-hero">
         <div><p className="eyebrow"><span /> {copy.eyebrow}</p><h1>{copy.title}</h1></div>
-        <div className="seo-hero-copy"><p>{copy.intro}</p><p>{copy.introSecond}</p><a className="button button-dark" href="#seo-contact">{copy.contact} <span aria-hidden="true">↓</span></a></div>
+        <div className="seo-hero-copy"><p>{copy.intro}</p><p>{copy.introSecond}</p><a className="button button-dark" href="#seo-contact">{copy.contact} <Icon name="down" /></a></div>
       </section>
 
       <section className="seo-proof" aria-label="Technologies">{copy.proof.map((item) => <strong key={item}>{item}</strong>)}</section>
@@ -188,7 +190,7 @@ export function FreelanceSeoPage({ locale }: { locale: Locale }) {
       </section>
 
       <section className="seo-work-band">
-        <p className="section-index">{copy.workLabel}</p><h2>{copy.workTitle}</h2><p>{copy.workText}</p><a className="text-link" href={`${home}#work`}>{copy.workCta} <span aria-hidden="true">→</span></a>
+        <p className="section-index">{copy.workLabel}</p><h2>{copy.workTitle}</h2><p>{copy.workText}</p><a className="text-link" href={`${home}#work`}>{copy.workCta} <Icon name="right" /></a>
       </section>
 
       <section className="seo-section seo-method">
@@ -201,9 +203,9 @@ export function FreelanceSeoPage({ locale }: { locale: Locale }) {
         <div className="faq-list">{copy.faqs.map(([question, answer]) => <details key={question}><summary>{question}<span aria-hidden="true">+</span></summary><p>{answer}</p></details>)}</div>
       </section>
 
-      <section className="engineering-cta" id="seo-contact"><p className="section-index">{copy.ctaLabel}</p><h2>{copy.ctaTitle}</h2><p>{copy.ctaText}</p><div><a className="button button-acid" href={gmail} target="_blank" rel="noreferrer">{copy.ctaButton} ↗</a><a className="text-link engineering-github" href={home}>← {copy.home}</a></div></section>
+      <section className="engineering-cta" id="seo-contact"><p className="section-index">{copy.ctaLabel}</p><h2>{copy.ctaTitle}</h2><p>{copy.ctaText}</p><div><a className="button button-acid" href={gmail} target="_blank" rel="noreferrer">{copy.ctaButton} <Icon name="upRight" /></a><a className="text-link engineering-github" href={home}><Icon name="left" size={14} /> {copy.home}</a></div></section>
 
-      <footer className="engineering-footer"><a href={home}>← {copy.home}</a><span>{copy.footer}</span><a href="#top">↑ TOP</a></footer>
+      <footer className="engineering-footer"><a href={home}><Icon name="left" size={14} /> {copy.home}</a><span>{copy.footer}</span><a href="#top"><Icon name="up" size={14} /> TOP</a></footer>
     </main>
   );
 }

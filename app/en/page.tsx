@@ -17,9 +17,9 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "/en",
     siteName: "Aliaskar Malabaev",
-    images: [{ url: "/og-v2.png", width: 1536, height: 1024, alt: "Aliaskar Malabaev — Full-stack, product and design" }],
+    images: [{ url: "/og-en-v3.png", width: 1200, height: 630, alt: "Aliaskar Malabaev — Full-stack, product and design" }],
   },
-  twitter: { title, description, images: ["/og-v2.png"] },
+  twitter: { title, description, images: ["/og-en-v3.png"] },
 };
 
 export default function EnglishHome() {

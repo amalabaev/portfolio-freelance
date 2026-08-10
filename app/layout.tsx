@@ -71,19 +71,24 @@ export const metadata: Metadata = {
     locale: "fr_FR",
     url: origin,
     siteName: "Aliaskar Malabaev",
-    images: [{ url: `${origin}/og-v2.png`, width: 1536, height: 1024, alt: "Aliaskar Malabaev — Full-stack, product et design" }],
+    images: [{ url: `${origin}/og-v3.png`, width: 1200, height: 630, alt: "Aliaskar Malabaev — Full-stack, product et design" }],
   },
   twitter: {
     card: "summary_large_image",
     title,
     description,
-    images: [`${origin}/og-v2.png`],
+    images: [`${origin}/og-v3.png`],
   },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="fr">
+      <head>
+        <link rel="preload" href="/fonts/instrument-serif-normal-latin.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/inter-normal-latin.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        <meta name="theme-color" content="#161814" />
+      </head>
       <body>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
         {children}

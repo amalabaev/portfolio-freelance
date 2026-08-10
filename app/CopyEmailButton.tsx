@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 
+import { CopyIcon } from "./Icon";
+
 export function CopyEmailButton({
   email,
   idleLabel,
@@ -39,7 +41,7 @@ export function CopyEmailButton({
       onClick={copyEmail}
       aria-label={`${idleLabel}: ${email}`}
     >
-      <span>{email}</span>
+      <CopyIcon />
       <strong aria-live="polite">{copied ? `${copiedLabel} ✓` : idleLabel}</strong>
     </button>
   );
