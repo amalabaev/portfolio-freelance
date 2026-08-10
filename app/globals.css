@@ -506,6 +506,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
 }
 .brief-fields textarea { resize: vertical; min-height: 128px; }
 .brief-fields select { appearance: auto; color-scheme: dark; }
+.brief-fields select option { background: var(--white); color: var(--ink); }
+.brief-fields select option:disabled { color: #666b62; }
 .brief-fields input::placeholder, .brief-fields textarea::placeholder { color: #7e8279; }
 .brief-fields input:hover, .brief-fields textarea:hover, .brief-fields select:hover { border-color: #6d7168; }
 .brief-fields input:focus, .brief-fields textarea:focus, .brief-fields select:focus {
