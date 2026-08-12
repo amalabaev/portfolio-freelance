@@ -1,17 +1,18 @@
 import { Icon } from "./Icon";
+import { CAREER_START_YEAR, experienceYears } from "./profile";
 
 type Locale = "fr" | "en";
 
 const content = {
   fr: {
-    eyebrow: "DÉVELOPPEUR FULL-STACK FREELANCE · FRANCE & REMOTE",
+    eyebrow: `DÉVELOPPEUR FULL-STACK FREELANCE · ${experienceYears} ANS D’EXPÉRIENCE · FRANCE & REMOTE`,
     title: "Développeur full-stack freelance pour vos projets web ambitieux.",
-    intro: "Je suis Aliaskar Malabaev. J’accompagne les PME, startups et équipes produit dans la refonte de sites web, la création d’applications métier et l’intégration d’automatisations utiles.",
-    introSecond: "Un seul interlocuteur pour comprendre le besoin, concevoir l’expérience, développer le front-end et le back-end, puis mettre le produit en ligne.",
+    intro: `Je suis Aliaskar Malabaev, développeur full-stack avec ${experienceYears} ans d’expérience. J’accompagne les PME, startups et équipes produit dans la refonte de sites web, la création d’applications métier et l’intégration d’automatisations utiles.`,
+    introSecond: "Développeur, puis chef de projet, puis responsable d’équipe front-end : un seul interlocuteur pour comprendre le besoin, concevoir l’expérience, développer le front-end et le back-end, puis mettre le produit en ligne.",
     home: "Retour au portfolio",
     contact: "Parler de votre projet",
     language: "Choisir la langue",
-    proof: ["React & TypeScript", "PHP & Laravel", "Node.js & API", "MySQL & Redis", "Docker & CI/CD"],
+    proof: [`${experienceYears} ans d’expérience`, "Front-end + back-end", "Ex-Team Lead front", "France & remote", "FR · EN · RU"],
     servicesLabel: "01 — EXPERTISE FULL-STACK",
     servicesTitle: "De l’interface à la logique métier.",
     servicesText: "J’interviens là où le design, le produit et la technique doivent rester cohérents. La stack est choisie selon le problème, pas l’inverse.",
@@ -33,9 +34,10 @@ const content = {
     stackLead: "Je travaille notamment avec React, TypeScript, JavaScript et CSS pour les interfaces ; PHP, Laravel et Node.js pour la logique serveur ; MySQL et Redis pour les données et les traitements ; Docker, GitHub Actions et les tests pour fiabiliser la livraison.",
     stackNote: "Je peux construire un projet neuf ou reprendre une base existante. L’objectif reste une solution compréhensible, maintenable et proportionnée à votre activité.",
     workLabel: "04 — EXPÉRIENCE",
-    workTitle: "Des landing pages aux applications métier complexes.",
-    workText: "Mon expérience couvre notamment une plateforme de planification opérationnelle, un produit d’analyse documentaire assisté par IA et la conception complète de ce portfolio bilingue.",
-    workCta: "Voir les réalisations détaillées",
+    workTitle: "Une expérience construite entre développement, produit et leadership.",
+    workText: `Depuis ${CAREER_START_YEAR}, j’ai travaillé sur des projets web dans plusieurs contextes : agence, société technologique internationale et produits SaaS. Développeur front-end, chef de projet, puis responsable d’une équipe front-end, avant de me concentrer sur les applications métier et les produits web complexes.`,
+    workSecond: "Les projets qui suivent en sont la preuve : une plateforme de planification opérationnelle, un produit d’analyse documentaire assisté par IA et la conception complète de ce portfolio bilingue.",
+    workCta: "Voir les projets détaillés",
     methodLabel: "05 — COLLABORATION",
     methodTitle: "Une mission lisible du premier échange à la production.",
     steps: [
@@ -55,19 +57,19 @@ const content = {
     ],
     ctaLabel: "VOTRE PROJET",
     ctaTitle: "Besoin d’un développeur full-stack freelance ?",
-    ctaText: "Présentez-moi votre site, votre produit ou le processus que vous voulez améliorer. Je vous répondrai avec un premier avis concret.",
+    ctaText: "Présentez-moi votre site, votre produit ou le processus que vous voulez améliorer. Je vous répondrai avec un premier avis concret — et vous parlerez directement au développeur, pas à un intermédiaire.",
     ctaButton: "Faire analyser mon besoin",
-    footer: "Aliaskar Malabaev · Développeur full-stack freelance",
+    footer: "Aliaskar Malabaev · Développeur full-stack orienté produit",
   },
   en: {
-    eyebrow: "FREELANCE FULL-STACK DEVELOPER · FRANCE & REMOTE",
+    eyebrow: `FREELANCE FULL-STACK DEVELOPER · ${experienceYears} YEARS' EXPERIENCE · FRANCE & REMOTE`,
     title: "A freelance full-stack developer for ambitious web projects.",
-    intro: "I’m Aliaskar Malabaev. I help SMEs, startups and product teams redesign websites, build business applications and integrate useful automation.",
-    introSecond: "One point of contact to understand the need, design the experience, develop the front end and back end, then ship the product.",
+    intro: `I’m Aliaskar Malabaev, a full-stack developer with ${experienceYears} years of experience. I help SMEs, startups and product teams redesign websites, build business applications and integrate useful automation.`,
+    introSecond: "Developer, then project manager, then front-end team lead: one point of contact to understand the need, design the experience, develop the front end and back end, then ship the product.",
     home: "Back to portfolio",
     contact: "Discuss your project",
     language: "Choose language",
-    proof: ["React & TypeScript", "PHP & Laravel", "Node.js & APIs", "MySQL & Redis", "Docker & CI/CD"],
+    proof: [`${experienceYears} years' experience`, "Front-end + back-end", "Former front-end lead", "France & remote", "FR · EN · RU"],
     servicesLabel: "01 — FULL-STACK EXPERTISE",
     servicesTitle: "From interface to business logic.",
     servicesText: "I work where design, product and engineering need to remain coherent. The stack is selected for the problem, not the other way around.",
@@ -89,9 +91,10 @@ const content = {
     stackLead: "I work with React, TypeScript, JavaScript and CSS for interfaces; PHP, Laravel and Node.js for server-side logic; MySQL and Redis for data and processing; Docker, GitHub Actions and tests for dependable delivery.",
     stackNote: "I can build a new product or take over an existing codebase. The goal remains a solution that is understandable, maintainable and proportionate to the business.",
     workLabel: "04 — EXPERIENCE",
-    workTitle: "From landing pages to complex business applications.",
-    workText: "My experience includes an operational planning platform, an AI-assisted document analysis product and the complete creation of this bilingual portfolio.",
-    workCta: "See detailed selected work",
+    workTitle: "Experience built across development, product and leadership.",
+    workText: `Since ${CAREER_START_YEAR} I have worked on web projects in several contexts: agency, an international technology company and SaaS products. Front-end developer, project manager, then front-end team lead, before focusing on business applications and complex web products.`,
+    workSecond: "The projects that follow are the evidence: an operational planning platform, an AI-assisted document analysis product and the complete creation of this bilingual portfolio.",
+    workCta: "See the detailed projects",
     methodLabel: "05 — COLLABORATION",
     methodTitle: "A clear engagement from first conversation to production.",
     steps: [
@@ -111,9 +114,9 @@ const content = {
     ],
     ctaLabel: "YOUR PROJECT",
     ctaTitle: "Looking for a freelance full-stack developer?",
-    ctaText: "Tell me about your website, product or the process you want to improve. I’ll reply with a useful initial assessment.",
+    ctaText: "Tell me about your website, product or the process you want to improve. I’ll reply with a useful initial assessment — and you will be talking to the developer directly, not to an intermediary.",
     ctaButton: "Get an initial review",
-    footer: "Aliaskar Malabaev · Freelance full-stack developer",
+    footer: "Aliaskar Malabaev · Product-minded full-stack developer",
   },
 } as const;
 
@@ -190,7 +193,7 @@ export function FreelanceSeoPage({ locale }: { locale: Locale }) {
       </section>
 
       <section className="seo-work-band">
-        <p className="section-index">{copy.workLabel}</p><h2>{copy.workTitle}</h2><p>{copy.workText}</p><a className="text-link" href={`${home}#work`}>{copy.workCta} <Icon name="right" /></a>
+        <p className="section-index">{copy.workLabel}</p><h2>{copy.workTitle}</h2><div className="seo-work-copy"><p>{copy.workText}</p><p>{copy.workSecond}</p></div><a className="text-link" href={`${home}#work`}>{copy.workCta} <Icon name="right" /></a>
       </section>
 
       <section className="seo-section seo-method">

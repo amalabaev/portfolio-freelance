@@ -434,42 +434,68 @@ export function CardzapVisual({ locale }: { locale: "fr" | "en" }) {
 /** Portfolio — the site itself, with its measured delivery scores. */
 export function PortfolioVisual({ locale, headline }: { locale: "fr" | "en"; headline: string }) {
   const scores = [["100", "PERF."], ["100", "SEO"], ["100", "A11Y"]];
+  const words = headline.split(" ");
 
   return (
-    <svg className="work-svg" viewBox="0 0 640 500" role="img" aria-hidden="true">
+    /* viewBox trimmed to the artwork so the card is not adrift in empty lime */
+    <svg className="work-svg" viewBox="0 18 640 484" role="img" aria-hidden="true">
       <defs>
         <filter id="pf-shadow" x="-20%" y="-20%" width="150%" height="150%">
-          <feDropShadow dx="0" dy="20" stdDeviation="16" floodColor="#161814" floodOpacity=".3" />
+          <feDropShadow dx="0" dy="18" stdDeviation="16" floodColor="#3d4a12" floodOpacity=".26" />
+        </filter>
+        <filter id="pf-shadow-sm" x="-30%" y="-20%" width="170%" height="150%">
+          <feDropShadow dx="-6" dy="14" stdDeviation="12" floodColor="#3d4a12" floodOpacity=".28" />
         </filter>
       </defs>
 
-      <g transform="rotate(-2 320 250)" filter="url(#pf-shadow)">
-        <rect x="56" y="72" width="528" height="330" rx="12" fill="#f7f4ea" stroke={S.ink} strokeWidth="1.5" />
-        <line x1="56" y1="112" x2="584" y2="112" stroke={S.ink} strokeOpacity=".18" />
-        <circle cx="80" cy="92" r="4" fill="rgba(22,24,20,.3)" /><circle cx="94" cy="92" r="4" fill="rgba(22,24,20,.3)" /><circle cx="108" cy="92" r="4" fill="rgba(22,24,20,.3)" />
-        <rect x="238" y="82" width="164" height="20" rx="10" fill="rgba(22,24,20,.06)" />
-        <text x="320" y="96" {...mono} fontSize="9.5" fill={S.soft} textAnchor="middle">amalabaev.com</text>
+      {/* decorative medallion, clear of the mock-ups */}
+      <circle cx="566" cy="78" r="46" fill="#f0a08c" />
+      <text x="566" y="90" fontFamily="var(--serif)" fontStyle="italic" fontSize="30" fill={S.ink} textAnchor="middle">AM</text>
+      <circle cx="70" cy="446" r="34" fill="none" stroke={S.ink} strokeOpacity=".18" strokeDasharray="4 6" />
 
-        <text x="88" y="140" {...mono} fontSize="9" fill={S.muted}>{locale === "fr" ? "FULL-STACK · PRODUIT · DESIGN" : "FULL-STACK · PRODUCT · DESIGN"}</text>
-        <text x="88" y="204" fontFamily="var(--serif)" fontSize="46" letterSpacing="-.03em" fill={S.ink}>{headline.split(" ").slice(0, 3).join(" ")}</text>
-        <text x="88" y="250" fontFamily="var(--serif)" fontStyle="italic" fontSize="46" letterSpacing="-.03em" fill={S.ink} opacity=".55">{headline.split(" ").slice(3).join(" ")}</text>
+      {/* desktop */}
+      <g transform="rotate(-1.6 250 240)">
+        <g filter="url(#pf-shadow)">
+          <rect x="30" y="100" width="440" height="320" rx="14" fill="#faf7ec" />
+        </g>
+        <line x1="30" y1="142" x2="470" y2="142" stroke={S.ink} strokeOpacity=".14" />
+        <circle cx="54" cy="121" r="4" fill="rgba(22,24,20,.24)" /><circle cx="68" cy="121" r="4" fill="rgba(22,24,20,.24)" /><circle cx="82" cy="121" r="4" fill="rgba(22,24,20,.24)" />
+        <rect x="190" y="111" width="140" height="20" rx="10" fill="rgba(22,24,20,.05)" />
+        <text x="260" y="125" {...mono} fontSize="9" fill={S.muted} textAnchor="middle">amalabaev.com</text>
 
-        <line x1="88" y1="286" x2="552" y2="286" stroke={S.ink} strokeOpacity=".18" />
+        <text x="58" y="172" {...mono} fontSize="9" fill={S.muted}>{locale === "fr" ? "FULL-STACK · PRODUIT · DESIGN" : "FULL-STACK · PRODUCT · DESIGN"}</text>
+        <text x="58" y="216" fontFamily="var(--serif)" fontSize="36" letterSpacing="-.03em" fill={S.ink}>{words.slice(0, 3).join(" ")}</text>
+        <text x="58" y="254" fontFamily="var(--serif)" fontStyle="italic" fontSize="36" letterSpacing="-.03em" fill={S.ink} opacity=".45">{words.slice(3).join(" ")}</text>
+        <line x1="58" y1="284" x2="330" y2="284" stroke={S.ink} strokeOpacity=".14" />
+
         {scores.map(([value, label], i) => (
-          <g key={label} transform={`translate(${88 + i * 96} 0)`}>
-            <circle cx="20" cy="336" r="19" fill="none" stroke="rgba(22,24,20,.12)" strokeWidth="3" />
-            <circle cx="20" cy="336" r="19" fill="none" stroke={S.teal} strokeWidth="3" strokeLinecap="round" strokeDasharray="119.4" strokeDashoffset="0" transform="rotate(-90 20 336)" />
-            <text x="20" y="341" fontFamily="var(--sans)" fontWeight="700" fontSize="13" fill={S.ink} textAnchor="middle">{value}</text>
-            <text x="52" y="341" {...mono} fontSize="9" fill={S.soft}>{label}</text>
+          <g key={label} transform={`translate(${58 + i * 88} 0)`}>
+            <circle cx="19" cy="330" r="19" fill="none" stroke="rgba(22,24,20,.1)" strokeWidth="2.5" />
+            <circle cx="19" cy="330" r="19" fill="none" stroke={S.teal} strokeWidth="2.5" strokeLinecap="round" transform="rotate(-90 19 330)" />
+            <text x="19" y="335" fontFamily="var(--sans)" fontWeight="700" fontSize="13" fill={S.ink} textAnchor="middle">{value}</text>
+            <text x="46" y="335" {...mono} fontSize="8.5" fill={S.soft}>{label}</text>
           </g>
         ))}
-        <rect x="452" y="316" width="100" height="40" rx="8" fill={S.ink} />
-        <text x="502" y="341" {...mono} fontSize="9.5" fill={S.lime} textAnchor="middle">LIVE / 2026</text>
+        <rect x="58" y="368" width="118" height="32" rx="16" fill={S.ink} />
+        <text x="117" y="388" {...mono} fontSize="9" fill={S.lime} textAnchor="middle">LIVE / 2026</text>
       </g>
 
-      <g transform="translate(496 60)">
-        <circle cx="42" cy="42" r="42" fill="#f0a08c" stroke={S.ink} strokeWidth="1.5" />
-        <text x="42" y="55" fontFamily="var(--serif)" fontSize="30" fill={S.ink} textAnchor="middle">AM</text>
+      {/* mobile — the responsive promise, shown rather than claimed */}
+      <g transform="rotate(3 500 340)">
+        <g filter="url(#pf-shadow-sm)">
+          <rect x="424" y="196" width="158" height="272" rx="24" fill="#fffdf6" />
+        </g>
+        <rect x="424" y="196" width="158" height="272" rx="24" fill="none" stroke={S.ink} strokeOpacity=".14" />
+        <rect x="482" y="210" width="42" height="6" rx="3" fill="rgba(22,24,20,.18)" />
+        <text x="446" y="252" {...mono} fontSize="7.5" fill={S.muted}>{locale === "fr" ? "VERSION MOBILE" : "MOBILE VIEW"}</text>
+        <text x="446" y="286" fontFamily="var(--serif)" fontSize="24" letterSpacing="-.03em" fill={S.ink}>{words.slice(0, 2).join(" ")}</text>
+        <text x="446" y="312" fontFamily="var(--serif)" fontStyle="italic" fontSize="24" letterSpacing="-.03em" fill={S.ink} opacity=".45">{words.slice(2).join(" ")}</text>
+        <line x1="446" y1="336" x2="560" y2="336" stroke={S.ink} strokeOpacity=".14" />
+        {[0, 1, 2].map((i) => (
+          <rect key={i} x="446" y={352 + i * 14} width={i === 2 ? 68 : 114} height="5" rx="2.5" fill="rgba(22,24,20,.13)" />
+        ))}
+        <rect x="446" y="408" width="114" height="30" rx="15" fill={S.lime} />
+        <text x="503" y="427" {...mono} fontSize="8.5" fill={S.ink} textAnchor="middle">{locale === "fr" ? "ME CONTACTER" : "GET IN TOUCH"}</text>
       </g>
     </svg>
   );
@@ -532,6 +558,24 @@ export function HeroBrowser({ url, kicker, words, score, live, trend }: {
   );
 }
 
+/** About — an interlocking A/M seal standing in for a portrait. The overlap is
+ *  the graphic moment: the two halves of the profile sharing the same ground. */
+export function Monogram() {
+  return (
+    <svg className="monogram" viewBox="0 0 268 200" role="img" aria-hidden="true">
+      <defs>
+        <clipPath id="mg-left"><circle cx="94" cy="100" r="72" /></clipPath>
+      </defs>
+      <circle cx="174" cy="100" r="72" fill="#161814" />
+      <circle cx="174" cy="100" r="72" fill="#d8f34a" clipPath="url(#mg-left)" />
+      <circle cx="94" cy="100" r="72" fill="none" stroke="rgba(22,24,20,.28)" />
+      <circle cx="94" cy="100" r="86" fill="none" stroke="rgba(22,24,20,.14)" strokeDasharray="3 7" />
+      <text x="58" y="128" fontFamily="var(--serif)" fontStyle="italic" fontSize="76" fill="#161814" textAnchor="middle">A</text>
+      <text x="212" y="128" fontFamily="var(--serif)" fontStyle="italic" fontSize="76" fill="#d8f34a" textAnchor="middle">M</text>
+    </svg>
+  );
+}
+
 /** Engineering profile — the layers a full-stack engagement actually covers. */
 export function EngineeringDiagram({ locale }: { locale: "fr" | "en" }) {
   const layers = locale === "fr"
@@ -539,27 +583,40 @@ export function EngineeringDiagram({ locale }: { locale: "fr" | "en" }) {
     : [["INTERFACE", "React · TypeScript · design system"], ["DOMAIN LOGIC", "APIs · permissions · validation"], ["DATA & JOBS", "MySQL · Redis · job queues"], ["DELIVERY", "Tests · Docker · CI/CD · monitoring"]];
 
   return (
-    <svg className="engineering-svg" viewBox="0 0 820 280" role="img" aria-hidden="true">
+    <svg className="engineering-svg" viewBox="0 0 820 300" role="img" aria-hidden="true">
       <defs>
-        <marker id="eg-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-          <path d="M0 0 L10 5 L0 10 z" fill={S.ink} />
-        </marker>
+        <filter id="eg-shadow" x="-20%" y="-20%" width="140%" height="150%">
+          <feDropShadow dx="0" dy="8" stdDeviation="10" floodColor="#161814" floodOpacity=".08" />
+        </filter>
       </defs>
 
-      {layers.map(([title, sub], i) => (
-        <g key={title} transform={`translate(${16 + i * 200} 40)`}>
-          <rect x="0" y="0" width="172" height="140" rx="12" fill={i === 0 ? S.lime : S.card} stroke={S.ink} strokeWidth="1.5" />
-          <text x="20" y="36" fontFamily="var(--serif)" fontSize="22" fill={S.ink}>0{i + 1}</text>
-          <text x="20" y="70" {...mono} fontSize="11" fill={S.ink}>{title}</text>
-          <foreignObject x="20" y="80" width="134" height="52">
-            <span style={{ fontFamily: "var(--sans)", fontSize: "11px", lineHeight: 1.45, color: S.soft, display: "block" }}>{sub}</span>
-          </foreignObject>
-          {i < 3 && <line x1="180" y1="70" x2="196" y2="70" stroke={S.ink} strokeWidth="1.5" markerEnd="url(#eg-arrow)" />}
-        </g>
-      ))}
-      <line x1="16" y1="212" x2="804" y2="212" stroke={S.ink} strokeOpacity=".2" />
-      <text x="16" y="236" {...mono} fontSize="10" fill={S.soft}>{locale === "fr" ? "UN SEUL INTERLOCUTEUR SUR LES QUATRE COUCHES" : "ONE POINT OF CONTACT ACROSS ALL FOUR LAYERS"}</text>
-      <text x="804" y="236" {...mono} fontSize="10" fill={S.soft} textAnchor="end">AM / FULL-STACK</text>
+      {/* the rail the layers sit on, visible only between the panels */}
+      <line x1="16" y1="116" x2="804" y2="116" stroke={S.line} />
+
+      {layers.map(([title, sub], i) => {
+        const x = 16 + i * 204;
+        const lime = i === 0;
+        return (
+          <g key={title}>
+            <g filter="url(#eg-shadow)">
+              <rect x={x} y="26" width="176" height="180" rx="18" fill={lime ? S.lime : S.card} stroke={lime ? "transparent" : S.line} />
+            </g>
+            <text x={x + 26} y="84" fontFamily="var(--serif)" fontSize="38" letterSpacing="-.02em" fill={S.ink} opacity={lime ? ".5" : ".32"}>0{i + 1}</text>
+            <line x1={x + 26} y1="98" x2={x + 50} y2="98" stroke={S.ink} strokeOpacity=".25" strokeWidth="1.5" strokeLinecap="round" />
+            <text x={x + 26} y="134" {...mono} fontSize="11.5" fill={S.ink}>{title}</text>
+            <foreignObject x={x + 26} y="144" width="128" height="58">
+              <span style={{ fontFamily: "var(--sans)", fontSize: "11px", lineHeight: 1.5, color: S.soft, display: "block" }}>{sub}</span>
+            </foreignObject>
+            {i < 3 && (
+              <path d={`M${x + 198} 110 l6 6 l-6 6`} fill="none" stroke={S.ink} strokeOpacity=".45" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+            )}
+          </g>
+        );
+      })}
+
+      <line x1="16" y1="246" x2="804" y2="246" stroke={S.line} />
+      <text x="16" y="272" {...mono} fontSize="10" fill={S.soft}>{locale === "fr" ? "UN SEUL INTERLOCUTEUR SUR LES QUATRE COUCHES" : "ONE POINT OF CONTACT ACROSS ALL FOUR LAYERS"}</text>
+      <text x="804" y="272" {...mono} fontSize="10" fill={S.soft} textAnchor="end">AM / FULL-STACK</text>
     </svg>
   );
 }

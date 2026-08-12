@@ -1,5 +1,6 @@
 import { CopyEmailButton } from "./CopyEmailButton";
 import { Icon, Spark } from "./Icon";
+import { CAREER_START_YEAR, experienceYears } from "./profile";
 import { ProjectBriefForm } from "./ProjectBriefForm";
 import {
   ArchitectureBlueprint,
@@ -7,6 +8,7 @@ import {
   ConsultingDashboard,
   HealthAppointment,
   HeroBrowser,
+  Monogram,
   PlanningVisual,
   PortfolioVisual,
 } from "./Visuals";
@@ -27,10 +29,10 @@ const content = {
     copyEmail: "Copier l’adresse",
     copiedEmail: "Adresse copiée",
     headerCta: "Faire analyser mon site",
-    eyebrow: "Développeur full-stack freelance · France & remote",
+    eyebrow: `Développeur full-stack freelance · ${experienceYears} ans d’expérience · France & remote`,
     heroTitle: "Votre entreprise a évolué.",
     heroEmphasis: "Votre site devrait le montrer.",
-    heroText: "Je conçois et développe des sites et des outils web qui inspirent confiance dès la première seconde — et qui tiennent la route pendant des années. Design, produit et technique par la même personne.",
+    heroText: `Développeur, chef de projet puis responsable d’équipe front-end : ${experienceYears} ans à construire des sites et des outils web qui inspirent confiance dès la première seconde — et qui tiennent la route pendant des années.`,
     startProject: "Obtenir un premier avis gratuit",
     seeWork: "Voir mes réalisations",
     available: "Disponible pour de nouveaux projets",
@@ -43,15 +45,15 @@ const content = {
     score: [["Design", "singulier"], ["Métier", "compris"], ["Code", "solide"]],
     noteTop: "Pensé produit",
     noteBottom: "Construit sur mesure",
-    proofLabel: "Ce que je réunis",
-    proof: ["Développement full-stack", "Produits métier", "Design sur mesure", "Français · English"],
+    proofLabel: "Le profil en bref",
+    proof: [`${experienceYears} ans d’expérience web`, "Front-end + back-end", "Ex-responsable d’équipe front", "FR · EN · RU"],
     workLabel: "01 — RÉALISATIONS",
     workTitle: "Des interfaces soignées.",
     workEmphasis: "Des systèmes sérieux derrière.",
     workText: "Trois projets qui montrent l’étendue du travail : comprendre un métier, structurer un produit et livrer une expérience claire.",
     workRole: "Rôle",
-    workFocus: "Enjeux travaillés",
     workStack: "Stack",
+    caseLabels: ["Le problème", "Ma contribution", "Le défi"],
     works: [
       {
         index: "01 / 03",
@@ -59,7 +61,11 @@ const content = {
         title: "Plateforme de planification opérationnelle",
         text: "Une application complexe pour gérer ressources, affectations, absences, plannings et contraintes opérationnelles — sans jamais exposer cette complexité à l’écran.",
         role: "Développement full-stack",
-        focus: "Planning interactif · Drag & Drop · règles métier · permissions · validations",
+        case: [
+          "Permettre de déplacer une affectation en quelques secondes tout en respectant automatiquement disponibilités, permissions, validations déjà accordées et contraintes métier.",
+          "Conception des interactions front-end, logique de transfert et de récurrence, validations côté serveur et traitement des différents états d’une affectation.",
+          "Garder un geste simple à l’écran alors que plusieurs règles doivent être vérifiées derrière chaque action — chevauchements compris, et sans perdre la traçabilité des décisions.",
+        ],
         stack: ["PHP", "JavaScript", "MySQL", "Docker"],
         visual: "planning",
         link: null,
@@ -71,7 +77,11 @@ const content = {
         title: "Transformer des documents en données utiles",
         text: "Un produit web qui orchestre l’analyse de PDF, la génération assistée par IA et la restitution de données structurées, vérifiables et exploitables.",
         role: "Architecture produit & développement",
-        focus: "Traitements asynchrones · génération IA · PDF vers données structurées",
+        case: [
+          "Transformer des PDF hétérogènes en données structurées fiables, sans laisser l’utilisateur attendre devant un écran figé.",
+          "Architecture du produit, orchestration des traitements asynchrones, intégration de la génération assistée par IA et restitution de données vérifiables.",
+          "Rendre lisible une chaîne de traitement longue et faillible : progression, reprise sur erreur et contrôle humain avant validation.",
+        ],
         stack: ["Laravel", "React", "Redis", "MySQL"],
         visual: "cardzap",
         link: null,
@@ -83,7 +93,11 @@ const content = {
         title: "Une vitrine de freelance sans template",
         text: "Une identité éditoriale bilingue, responsive et performante, conçue puis développée intégralement sur mesure. Le code est public : jugez sur pièce.",
         role: "Direction, design & développement",
-        focus: "Identité personnalisée · bilingue · responsive · déploiement automatisé",
+        case: [
+          "Démontrer un niveau de design et de code sans pouvoir s’appuyer sur le logo d’un client connu.",
+          "Direction artistique, système de composants, contenu bilingue, accessibilité et déploiement statique automatisé.",
+          "Tenir une identité forte tout en gardant des pages rapides, accessibles et bien référencées. Le code est public : la promesse est vérifiable.",
+        ],
         stack: ["React 19", "TypeScript", "Node.js", "CSS sur mesure"],
         visual: "portfolio",
         link: "https://github.com/amalabaev/portfolio-freelance",
@@ -121,11 +135,11 @@ const content = {
     whyLabel: "03 — POURQUOI MOI",
     whyTitle: "Le regard produit.",
     whyEmphasis: "La profondeur technique.",
-    whyText: "Vous n’avez pas à arbitrer entre une belle interface et un développement robuste.",
+    whyText: "Vous n’avez pas à arbitrer entre une belle interface, un développement robuste et quelqu’un qui comprend votre métier.",
     reasons: [
-      ["01", "Comprendre avant de construire", "Je pars de votre activité, de vos utilisateurs et de la décision que le produit doit faciliter."],
-      ["02", "Un seul interlocuteur", "La stratégie, l’interface et le développement restent cohérents du premier échange à la mise en ligne."],
-      ["03", "Prévoir la suite", "Je construis une base maintenable, documentée et capable d’évoluer avec votre activité."],
+      ["01", "Une culture produit, pas seulement technique", "Avant de me concentrer sur le développement, j’ai travaillé en gestion de projet : cadrage, échanges clients, coordination et livraison. Je construis en gardant les contraintes de votre entreprise en tête, pas seulement celles du code."],
+      ["02", "Habitué à parler produit, pas seulement code", "J’ai aussi dirigé une équipe front-end. Je peux échanger directement avec un dirigeant, un designer ou une équipe technique — sans que vous ayez à rédiger une spécification de 80 pages."],
+      ["03", "Une base que quelqu’un d’autre peut reprendre", "Revue de code, documentation et architecture lisible : des années à relire le travail des autres m’ont appris ce qui rend un projet reprenable."],
     ],
     engineeringCta: "Voir mon profil technique",
     linkedIn: "Voir mon LinkedIn",
@@ -153,19 +167,23 @@ const content = {
     promiseText: "Vous échangez directement avec la personne qui pense et développe votre produit.",
     promiseSide: ["VALIDATIONS", "PAR ÉTAPES"],
     aboutLabel: "06 — À PROPOS",
-    aboutIntro: "Je suis Aliaskar, développeur full-stack indépendant.",
+    aboutIntro: "Je suis Aliaskar Malabaev, développeur full-stack orienté produit.",
     aboutText: "J’aime rendre les sujets complexes",
     aboutEmphasis: "simples à utiliser et difficiles à oublier.",
-    aboutSmall: "Mon terrain de jeu va de l’identité d’une page publique aux règles métier d’une application complète. Cette double culture me permet de parler aussi bien de confiance, de conversion et de responsive que d’architecture, de données et de maintenabilité.",
-    aboutProof: ["Full-stack", "Orienté produit", "Bilingue FR / EN"],
+    aboutStory: [
+      `Depuis ${CAREER_START_YEAR}, j’ai travaillé comme développeur front-end, chef de projet, puis responsable d’une équipe front-end, sur des projets allant de sites publics à des applications métier complexes. Cette expérience me permet d’aborder un projet autant par son produit et ses utilisateurs que par son architecture et son code.`,
+      "Formé à Paris, j’ai travaillé avec des équipes et des clients en France comme à l’international, en français, en anglais et en russe.",
+      "Concrètement : je peux cadrer un besoin avec un dirigeant le matin, arbitrer une règle métier avec vos équipes l’après-midi, et écrire le code qui la fait tenir.",
+    ],
+    aboutProof: [`${experienceYears} ans d’expérience`, "Ex-Team Lead front-end", "Front + back", "FR · EN · RU"],
     contactLabel: "UN PROJET À FAIRE AVANCER ?",
     contactTitle: "Commençons par",
     contactEmphasis: "un premier avis concret.",
     contactText: "Décrivez brièvement votre activité, votre site ou votre idée. Je vous répondrai avec une première lecture, sans jargon et sans engagement.",
-    assurances: ["Une réponse personnelle sous 24 heures, jamais un message type.", "Un premier avis concret et gratuit, sans engagement.", "Vous parlez au développeur, pas à un commercial."],
+    assurances: ["Une réponse personnelle sous 24 heures, jamais un message type.", "Un premier avis concret et gratuit, sans engagement.", "Vous parlez directement à un développeur qui a aussi géré des projets et une équipe."],
     emailAlternative: "Ou écrivez directement à",
     footerBrand: "Design & systèmes web sur mesure",
-    footerRole: "Développeur full-stack freelance",
+    footerRole: "Développeur full-stack orienté produit",
   },
   en: {
     backToTop: "Back to top",
@@ -178,10 +196,10 @@ const content = {
     copyEmail: "Copy email address",
     copiedEmail: "Email copied",
     headerCta: "Get a website review",
-    eyebrow: "Freelance full-stack developer · France & remote",
+    eyebrow: `Freelance full-stack developer · ${experienceYears} years' experience · France & remote`,
     heroTitle: "Your business has evolved.",
     heroEmphasis: "Your website should show it.",
-    heroText: "I design and build websites and web tools that earn trust in the first second — and keep working for years. Design, product thinking and engineering from the same person.",
+    heroText: `Developer, project manager, then front-end team lead: ${experienceYears} years building websites and web tools that earn trust in the first second — and keep working for years.`,
     startProject: "Get a free first review",
     seeWork: "See selected work",
     available: "Available for new projects",
@@ -194,15 +212,15 @@ const content = {
     score: [["Distinct", "design"], ["Business", "understood"], ["Solid", "code"]],
     noteTop: "Product-minded",
     noteBottom: "Built from scratch",
-    proofLabel: "What I bring together",
-    proof: ["Full-stack development", "Business products", "Bespoke design", "Français · English"],
+    proofLabel: "The profile at a glance",
+    proof: [`${experienceYears} years of web experience`, "Front-end + back-end", "Former front-end team lead", "FR · EN · RU"],
     workLabel: "01 — SELECTED WORK",
     workTitle: "Considered interfaces.",
     workEmphasis: "Serious systems behind them.",
     workText: "Three projects showing the full scope of the work: understanding a business, shaping a product and delivering a clear experience.",
     workRole: "Role",
-    workFocus: "Problems addressed",
     workStack: "Stack",
+    caseLabels: ["The problem", "My contribution", "The hard part"],
     works: [
       {
         index: "01 / 03",
@@ -210,7 +228,11 @@ const content = {
         title: "Operational workforce planning platform",
         text: "A complex application for managing resources, assignments, absences, schedules and operational constraints — without ever exposing that complexity on screen.",
         role: "Full-stack development",
-        focus: "Interactive planning · Drag & Drop · business rules · permissions · validation",
+        case: [
+          "Let a planner move an assignment in seconds while availability, permissions, approvals already granted and business constraints are all respected automatically.",
+          "Design of the front-end interactions, transfer and recurrence logic, server-side validation and handling of an assignment's various states.",
+          "Keeping the gesture simple on screen while several rules are checked behind every action — overlaps included, and without losing the audit trail.",
+        ],
         stack: ["PHP", "JavaScript", "MySQL", "Docker"],
         visual: "planning",
         link: null,
@@ -222,7 +244,11 @@ const content = {
         title: "Turning documents into useful data",
         text: "A web product orchestrating PDF analysis, AI-assisted generation and the delivery of structured data that can be checked and actually used.",
         role: "Product architecture & development",
-        focus: "Background processing · AI generation · PDF to structured data",
+        case: [
+          "Turn inconsistent PDFs into dependable structured data without leaving the user staring at a frozen screen.",
+          "Product architecture, orchestration of background processing, integration of AI-assisted generation and delivery of checkable data.",
+          "Making a long, failure-prone pipeline legible: progress, recovery from errors, and human review before anything is accepted.",
+        ],
         stack: ["Laravel", "React", "Redis", "MySQL"],
         visual: "cardzap",
         link: null,
@@ -234,7 +260,11 @@ const content = {
         title: "A freelance portfolio without a template",
         text: "A bilingual, responsive and fast editorial identity, designed and developed entirely from scratch. The code is public — judge it for yourself.",
         role: "Direction, design & development",
-        focus: "Custom identity · bilingual · responsive · automated deployment",
+        case: [
+          "Demonstrate a level of design and engineering without a recognisable client logo to lean on.",
+          "Art direction, component system, bilingual content, accessibility and automated static deployment.",
+          "Holding a strong identity while keeping pages fast, accessible and search-ready. The code is public, so the claim can be checked.",
+        ],
         stack: ["React 19", "TypeScript", "Node.js", "Custom CSS"],
         visual: "portfolio",
         link: "https://github.com/amalabaev/portfolio-freelance",
@@ -272,11 +302,11 @@ const content = {
     whyLabel: "03 — WHY ME",
     whyTitle: "Product judgement.",
     whyEmphasis: "Technical depth.",
-    whyText: "You should not have to choose between a beautiful interface and robust engineering.",
+    whyText: "You should not have to choose between a beautiful interface, robust engineering and someone who understands your business.",
     reasons: [
-      ["01", "Understand before building", "I start with your business, your users and the decision the product needs to make easier."],
-      ["02", "One point of contact", "Strategy, interface and development remain coherent from the first conversation to launch."],
-      ["03", "Plan for what comes next", "I build a maintainable, documented foundation that can evolve with your business."],
+      ["01", "Product judgement, not just technical skill", "Before focusing on development I worked in project management: scoping, client conversations, coordination and delivery. I build with your business constraints in mind, not only the code's."],
+      ["02", "Used to talking product, not only code", "I have also led a front-end team. I can talk directly to a founder, a designer or an engineering team — without you having to write an 80-page specification."],
+      ["03", "A codebase someone else can pick up", "Code review, documentation and legible architecture: years of reading other people's work taught me what makes a project inheritable."],
     ],
     engineeringCta: "View my engineering profile",
     linkedIn: "View my LinkedIn",
@@ -304,19 +334,23 @@ const content = {
     promiseText: "You work directly with the person thinking through and developing your product.",
     promiseSide: ["VALIDATED", "IN STAGES"],
     aboutLabel: "06 — ABOUT",
-    aboutIntro: "I’m Aliaskar, an independent full-stack developer.",
+    aboutIntro: "I’m Aliaskar Malabaev, a product-minded full-stack developer.",
     aboutText: "I like making complex subjects",
     aboutEmphasis: "simple to use and hard to forget.",
-    aboutSmall: "My work spans from the identity of a public page to the business rules of a complete application. That dual perspective lets me discuss trust, conversion and responsive design just as comfortably as architecture, data and maintainability.",
-    aboutProof: ["Full-stack", "Product-minded", "Bilingual FR / EN"],
+    aboutStory: [
+      `Since ${CAREER_START_YEAR} I have worked as a front-end developer, a project manager, and then as a front-end team lead, on projects ranging from public websites to complex business applications. That experience lets me approach a project through its product and its users as much as through its architecture and its code.`,
+      "Trained in Paris, I have worked with teams and clients in France and internationally, in French, English and Russian.",
+      "In practice: I can scope a need with a founder in the morning, settle a business rule with your team in the afternoon, and write the code that holds it together.",
+    ],
+    aboutProof: [`${experienceYears} years' experience`, "Former front-end lead", "Front + back", "FR · EN · RU"],
     contactLabel: "A PROJECT TO MOVE FORWARD?",
     contactTitle: "Let’s start with",
     contactEmphasis: "a useful first opinion.",
     contactText: "Briefly describe your business, website or idea. I’ll reply with an initial assessment, without jargon or obligation.",
-    assurances: ["A personal reply within 24 hours, never a templated one.", "A concrete first opinion, free and with no obligation.", "You speak to the developer, not to a salesperson."],
+    assurances: ["A personal reply within 24 hours, never a templated one.", "A concrete first opinion, free and with no obligation.", "You speak directly to a developer who has also run projects and led a team."],
     emailAlternative: "Or email me directly at",
     footerBrand: "Bespoke web design & systems",
-    footerRole: "Freelance full-stack developer",
+    footerRole: "Product-minded full-stack developer",
   },
 } as const;
 
@@ -395,7 +429,14 @@ export function PortfolioPage({ locale }: { locale: Locale }) {
               {work.visual === "cardzap" && <CardzapVisual locale={locale} />}
               {work.visual === "portfolio" && <PortfolioVisual locale={locale} headline={copy.heroTitle} />}
             </div>
-            <div className="work-copy"><div className="work-kicker"><span>{work.index}</span><span>{work.kind}</span></div><h3>{work.title}</h3><p className="work-summary">{work.text}</p><dl><div><dt>{copy.workRole}</dt><dd>{work.role}</dd></div><div><dt>{copy.workFocus}</dt><dd>{work.focus}</dd></div><div><dt>{copy.workStack}</dt><dd className="tag-row">{work.stack.map((item) => <span key={item}>{item}</span>)}</dd></div></dl>{work.link && <a className="text-link" href={work.link} target="_blank" rel="noreferrer">{work.linkLabel} <Icon name="upRight" /></a>}</div>
+            <div className="work-copy">
+              <div className="work-kicker"><span>{work.index}</span><span>{work.kind}</span></div>
+              <h3>{work.title}</h3>
+              <p className="work-summary">{work.text}</p>
+              <div className="case-study">{work.case.map((item, i) => <div key={item}><h4>{copy.caseLabels[i]}</h4><p>{item}</p></div>)}</div>
+              <dl><div><dt>{copy.workRole}</dt><dd>{work.role}</dd></div><div><dt>{copy.workStack}</dt><dd className="tag-row">{work.stack.map((item) => <span key={item}>{item}</span>)}</dd></div></dl>
+              {work.link && <a className="text-link" href={work.link} target="_blank" rel="noreferrer">{work.linkLabel} <Icon name="upRight" /></a>}
+            </div>
           </article>)}
         </div>
       </section>
@@ -437,8 +478,8 @@ export function PortfolioPage({ locale }: { locale: Locale }) {
       </section>
 
       <section className="about section">
-        <div className="about-label"><p className="section-index">{copy.aboutLabel}</p><div className="portrait-type" aria-hidden="true"><span>A</span><i>+</i><span>M</span></div></div>
-        <div className="about-copy"><p className="about-intro">{copy.aboutIntro}</p><p className="about-large">{copy.aboutText} <em>{copy.aboutEmphasis}</em></p><p className="about-small">{copy.aboutSmall}</p><div className="about-proof">{copy.aboutProof.map((item) => <span key={item}>{item}</span>)}</div><div className="about-links"><a className="text-link" href={engineering}>{copy.engineeringCta} <Icon name="right" /></a><a className="text-link" href="https://fr.linkedin.com/in/aliaskar-malabaev-6850a0130" target="_blank" rel="noreferrer">{copy.linkedIn} <Icon name="upRight" /></a></div></div>
+        <div className="about-label"><p className="section-index">{copy.aboutLabel}</p><Monogram /></div>
+        <div className="about-copy"><p className="about-intro">{copy.aboutIntro}</p><p className="about-large">{copy.aboutText} <em>{copy.aboutEmphasis}</em></p><div className="about-story">{copy.aboutStory.map((para) => <p key={para}>{para}</p>)}</div><div className="about-proof">{copy.aboutProof.map((item) => <span key={item}>{item}</span>)}</div><div className="about-links"><a className="text-link" href={engineering}>{copy.engineeringCta} <Icon name="right" /></a><a className="text-link" href="https://fr.linkedin.com/in/aliaskar-malabaev-6850a0130" target="_blank" rel="noreferrer">{copy.linkedIn} <Icon name="upRight" /></a></div></div>
       </section>
 
       <section className="contact section" id="contact">
