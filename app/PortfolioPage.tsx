@@ -32,7 +32,7 @@ const content = {
     eyebrow: `Développeur full-stack freelance · ${experienceYears} ans d’expérience · France & remote`,
     heroTitle: "Votre entreprise a évolué.",
     heroEmphasis: "Votre site devrait le montrer.",
-    heroText: `Développeur, chef de projet puis responsable d’équipe front-end : ${experienceYears} ans à construire des sites et des outils web qui inspirent confiance dès la première seconde — et qui tiennent la route pendant des années.`,
+    heroText: `Développeur, chef de projet puis responsable d’équipe front-end : ${experienceYears} ans à concevoir des sites qui inspirent confiance et des outils web qui simplifient réellement le travail — du design aux systèmes qui les font fonctionner.`,
     startProject: "Obtenir un premier avis gratuit",
     seeWork: "Voir mes réalisations",
     available: "Disponible pour de nouveaux projets",
@@ -68,8 +68,8 @@ const content = {
         ],
         stack: ["PHP", "JavaScript", "MySQL", "Docker"],
         visual: "planning",
-        link: null,
-        linkLabel: null,
+        link: "/work/operational-planning",
+        linkLabel: "Voir l’étude de cas",
       },
       {
         index: "02 / 03",
@@ -180,7 +180,9 @@ const content = {
     contactTitle: "Commençons par",
     contactEmphasis: "un premier avis concret.",
     contactText: "Décrivez brièvement votre activité, votre site ou votre idée. Je vous répondrai avec une première lecture, sans jargon et sans engagement.",
-    assurances: ["Une réponse personnelle sous 24 heures, jamais un message type.", "Un premier avis concret et gratuit, sans engagement.", "Vous parlez directement à un développeur qui a aussi géré des projets et une équipe."],
+    contactPerson: "Votre demande arrive directement chez moi. Je vous réponds personnellement sous 24 heures.",
+    contactPortraitAlt: "Portrait d’Aliaskar Malabaev",
+    assurances: ["Une réponse écrite par moi, jamais un message type.", "Un premier avis concret et gratuit, sans engagement.", "Vous parlez à un développeur qui a aussi géré des projets et une équipe."],
     emailAlternative: "Ou écrivez directement à",
     footerBrand: "Design & systèmes web sur mesure",
     footerRole: "Développeur full-stack orienté produit",
@@ -199,7 +201,7 @@ const content = {
     eyebrow: `Freelance full-stack developer · ${experienceYears} years' experience · France & remote`,
     heroTitle: "Your business has evolved.",
     heroEmphasis: "Your website should show it.",
-    heroText: `Developer, project manager, then front-end team lead: ${experienceYears} years building websites and web tools that earn trust in the first second — and keep working for years.`,
+    heroText: `Developer, project manager, then front-end team lead: ${experienceYears} years designing websites that earn trust and web tools that genuinely simplify work — from the interface to the systems that make them run.`,
     startProject: "Get a free first review",
     seeWork: "See selected work",
     available: "Available for new projects",
@@ -235,8 +237,8 @@ const content = {
         ],
         stack: ["PHP", "JavaScript", "MySQL", "Docker"],
         visual: "planning",
-        link: null,
-        linkLabel: null,
+        link: "/en/work/operational-planning",
+        linkLabel: "Read the case study",
       },
       {
         index: "02 / 03",
@@ -347,7 +349,9 @@ const content = {
     contactTitle: "Let’s start with",
     contactEmphasis: "a useful first opinion.",
     contactText: "Briefly describe your business, website or idea. I’ll reply with an initial assessment, without jargon or obligation.",
-    assurances: ["A personal reply within 24 hours, never a templated one.", "A concrete first opinion, free and with no obligation.", "You speak directly to a developer who has also run projects and led a team."],
+    contactPerson: "Your request comes straight to me. I will reply personally within 24 hours.",
+    contactPortraitAlt: "Portrait of Aliaskar Malabaev",
+    assurances: ["A reply written by me, never a templated one.", "A concrete first opinion, free and with no obligation.", "You speak to a developer who has also run projects and led a team."],
     emailAlternative: "Or email me directly at",
     footerBrand: "Bespoke web design & systems",
     footerRole: "Product-minded full-stack developer",
@@ -423,21 +427,27 @@ export function PortfolioPage({ locale }: { locale: Locale }) {
       <section className="work section" id="work">
         <div className="section-heading"><p className="section-index">{copy.workLabel}</p><h2>{copy.workTitle}<br /><em>{copy.workEmphasis}</em></h2><p>{copy.workText}</p></div>
         <div className="work-list">
-          {copy.works.map((work) => <article className="work-card" key={work.index}>
-            <div className={`work-visual work-${work.visual}`}>
-              {work.visual === "planning" && <PlanningVisual locale={locale} />}
-              {work.visual === "cardzap" && <CardzapVisual locale={locale} />}
-              {work.visual === "portfolio" && <PortfolioVisual locale={locale} headline={copy.heroTitle} />}
-            </div>
-            <div className="work-copy">
-              <div className="work-kicker"><span>{work.index}</span><span>{work.kind}</span></div>
-              <h3>{work.title}</h3>
-              <p className="work-summary">{work.text}</p>
-              <div className="case-study">{work.case.map((item, i) => <div key={item}><h4>{copy.caseLabels[i]}</h4><p>{item}</p></div>)}</div>
-              <dl><div><dt>{copy.workRole}</dt><dd>{work.role}</dd></div><div><dt>{copy.workStack}</dt><dd className="tag-row">{work.stack.map((item) => <span key={item}>{item}</span>)}</dd></div></dl>
-              {work.link && <a className="text-link" href={work.link} target="_blank" rel="noreferrer">{work.linkLabel} <Icon name="upRight" /></a>}
-            </div>
-          </article>)}
+          {copy.works.map((work) => {
+            // Case-study routes are internal; the GitHub link is not.
+            const external = work.link?.startsWith("http") ?? false;
+            return (
+              <article className="work-card" key={work.index}>
+                <div className={`work-visual work-${work.visual}`}>
+                  {work.visual === "planning" && <PlanningVisual locale={locale} />}
+                  {work.visual === "cardzap" && <CardzapVisual locale={locale} />}
+                  {work.visual === "portfolio" && <PortfolioVisual locale={locale} headline={copy.heroTitle} />}
+                </div>
+                <div className="work-copy">
+                  <div className="work-kicker"><span>{work.index}</span><span>{work.kind}</span></div>
+                  <h3>{work.title}</h3>
+                  <p className="work-summary">{work.text}</p>
+                  <div className="case-study">{work.case.map((item, i) => <div key={item}><h4>{copy.caseLabels[i]}</h4><p>{item}</p></div>)}</div>
+                  <dl><div><dt>{copy.workRole}</dt><dd>{work.role}</dd></div><div><dt>{copy.workStack}</dt><dd className="tag-row">{work.stack.map((item) => <span key={item}>{item}</span>)}</dd></div></dl>
+                  {work.link && <a className="text-link" href={work.link} target={external ? "_blank" : undefined} rel={external ? "noreferrer" : undefined}>{work.linkLabel} <Icon name={external ? "upRight" : "right"} /></a>}
+                </div>
+              </article>
+            );
+          })}
         </div>
       </section>
 
@@ -487,6 +497,11 @@ export function PortfolioPage({ locale }: { locale: Locale }) {
           <p className="section-index">{copy.contactLabel}</p>
           <h2>{copy.contactTitle}<br /><em>{copy.contactEmphasis}</em></h2>
           <p>{copy.contactText}</p>
+          <div className="contact-person">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/aliaskar-malabaev.jpg" alt={copy.contactPortraitAlt} width="72" height="72" loading="lazy" />
+            <p><strong>Aliaskar Malabaev</strong><span>{copy.contactPerson}</span></p>
+          </div>
           <ul className="contact-assurances">{copy.assurances.map((item) => <li key={item}><i><Spark /></i>{item}</li>)}</ul>
         </div>
         <ProjectBriefForm locale={locale} />

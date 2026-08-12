@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 const origin = "https://amalabaev.com";
-const title = "Aliaskar Malabaev — Développeur web full-stack freelance";
-const description = "Aliaskar Malabaev, développeur full-stack freelance : refonte de sites, applications web sur mesure, React, Laravel, Node.js, API et automatisation.";
+const title = "Aliaskar Malabaev — Design & développement de produits web";
+const description = "Portfolio d’Aliaskar Malabaev : sites qui inspirent confiance, applications métier sur mesure et automatisations, du design aux systèmes full-stack.";
 const linkedIn = "https://fr.linkedin.com/in/aliaskar-malabaev-6850a0130";
 
 const structuredData = {
@@ -14,6 +14,7 @@ const structuredData = {
       "@id": `${origin}/#aliaskar-malabaev`,
       name: "Aliaskar Malabaev",
       url: origin,
+      image: `${origin}/aliaskar-malabaev.jpg`,
       email: "mailto:amalabaev@gmail.com",
       jobTitle: "Développeur web full-stack freelance",
       knowsLanguage: ["fr", "en"],
@@ -36,7 +37,7 @@ const structuredData = {
       "@type": "WebSite",
       "@id": `${origin}/#website`,
       url: origin,
-      name: "Aliaskar Malabaev — Développeur full-stack freelance",
+      name: "Aliaskar Malabaev — Design & développement de produits web",
       description,
       inLanguage: ["fr-FR", "en-US"],
       author: { "@id": `${origin}/#aliaskar-malabaev` },
@@ -53,6 +54,10 @@ export const metadata: Metadata = {
   creator: "Aliaskar Malabaev",
   publisher: "Aliaskar Malabaev",
   category: "technology",
+  icons: {
+    icon: [{ url: "/favicon.png", type: "image/png", sizes: "512x512" }],
+    apple: [{ url: "/favicon.png", sizes: "512x512", type: "image/png" }],
+  },
   robots: {
     index: true,
     follow: true,

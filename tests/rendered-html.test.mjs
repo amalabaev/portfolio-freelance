@@ -25,6 +25,8 @@ test("server-renders Aliaskar's freelance portfolio", async () => {
   assert.match(html, /Votre entreprise a évolué/);
   assert.match(html, /Développeur web full-stack freelance/);
   assert.match(html, /Plateforme de planification opérationnelle/);
+  assert.match(html, /href="\/work\/operational-planning"/);
+  assert.match(html, /\/aliaskar-malabaev\.jpg/);
   assert.match(html, /Automatisation &amp; intégrations|Automatisation & intégrations/);
   assert.match(html, /application\/ld\+json/i);
   assert.match(html, /ProfessionalService/);
@@ -43,8 +45,9 @@ test("server-renders the English portfolio at /en", async () => {
 
   const html = await response.text();
   assert.match(html, /Your business has evolved/);
-  assert.match(html, /Freelance full-stack web developer/);
+  assert.match(html, /Web product design &amp; development|Web product design & development/);
   assert.match(html, /Operational workforce planning platform/);
+  assert.match(html, /href="\/en\/work\/operational-planning"/);
   assert.match(html, /View my engineering profile/);
   assert.match(html, /Choose language/);
   assert.match(html, /document\.documentElement\.lang/);
@@ -94,6 +97,25 @@ test("server-renders the English engineering profile", async () => {
   assert.match(html, /document\.documentElement\.lang/);
 });
 
+test("server-renders the French planning case study", async () => {
+  const response = await render("/work/operational-planning");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /Rendre une planification complexe directe à utiliser/);
+  assert.match(html, /Interaction directe/);
+  assert.match(html, /application métier anonymisée/i);
+  assert.match(html, /href="\/en\/work\/operational-planning"/);
+});
+
+test("server-renders the English planning case study", async () => {
+  const response = await render("/en/work/operational-planning");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /Making complex workforce planning direct to use/);
+  assert.match(html, /Centralised validation/);
+  assert.match(html, /href="\/work\/operational-planning"/);
+});
+
 test("keeps the finished site free from starter preview assets", async () => {
   const [portfolio, visuals, layout, css, exporter, packageJson] = await Promise.all([
     readFile(new URL("../app/PortfolioPage.tsx", import.meta.url), "utf8"),
@@ -115,6 +137,8 @@ test("keeps the finished site free from starter preview assets", async () => {
   assert.match(layout, /export const metadata/);
   assert.match(layout, /summary_large_image/);
   assert.match(layout, /ProfessionalService/);
+  assert.match(layout, /favicon\.png/);
+  assert.match(layout, /aliaskar-malabaev\.jpg/);
   assert.match(css, /prefers-reduced-motion:\s*reduce/);
   assert.match(css, /focus-visible/);
   assert.match(css, /mobile-menu/);
@@ -130,6 +154,9 @@ test("keeps the finished site free from starter preview assets", async () => {
   assert.match(exporter, /developpeur-full-stack-freelance/);
   assert.match(exporter, /xmlns:xhtml/);
   assert.match(exporter, /lastmod/);
+  assert.match(exporter, /new Date\(\)\.toISOString\(\)\.slice\(0, 10\)/);
+  assert.doesNotMatch(exporter, /2026-08-09/);
+  assert.match(exporter, /work\/operational-planning/);
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
   assert.doesNotMatch(portfolio + layout, /SkeletonPreview|codex-preview|Starter Project/);
   await assert.rejects(access(new URL("../app/_sites-preview", import.meta.url)));

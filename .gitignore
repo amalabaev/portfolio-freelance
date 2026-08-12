@@ -44,3 +44,6 @@ yarn-error.log*
 /dev-server.log
 /dev-server-error.log
 /dev-server.pid
+
+# typescript incremental build info
+tsconfig.tsbuildinfo

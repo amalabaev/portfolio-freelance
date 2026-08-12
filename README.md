@@ -39,6 +39,7 @@ publie automatiquement cette version sur GitHub Pages à chaque push sur `main`.
 | `app/profile.ts` | **Parcours, dates, formation et chiffres.** À revalider avant chaque mise en ligne |
 | `app/PortfolioPage.tsx` | Textes, services, études de cas, concepts et étapes (FR + EN) |
 | `app/Visuals.tsx` | Les maquettes d’interface en SVG : tableau de bord, planning, pipeline, plan d’architecte |
+| `app/PlanningCaseStudy.tsx` | L’étude de cas détaillée (`/work/operational-planning`, FR + EN) |
 | `app/Icon.tsx` | Flèches et puces en SVG (les flèches Unicode tombaient sur la police emoji) |
 | `app/globals.css` | Tokens de design, typographie, composants et responsive |
 | `public/fonts/` | Les polices auto-hébergées |

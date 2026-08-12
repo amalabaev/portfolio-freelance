@@ -7,6 +7,7 @@ const outputDir = path.join(projectRoot, "pages-dist");
 const clientDir = path.join(projectRoot, "dist", "client");
 const workerPath = path.join(projectRoot, "dist", "server", "index.js");
 const productionOrigin = "https://amalabaev.com";
+const lastModified = new Date().toISOString().slice(0, 10);
 
 await rm(outputDir, { recursive: true, force: true });
 await mkdir(outputDir, { recursive: true });
@@ -23,6 +24,8 @@ const routes = [
   { pathname: "/en/engineering", destination: path.join(outputDir, "en", "engineering", "index.html"), locale: "en" },
   { pathname: "/developpeur-full-stack-freelance", destination: path.join(outputDir, "developpeur-full-stack-freelance", "index.html"), locale: "fr" },
   { pathname: "/en/freelance-full-stack-developer", destination: path.join(outputDir, "en", "freelance-full-stack-developer", "index.html"), locale: "en" },
+  { pathname: "/work/operational-planning", destination: path.join(outputDir, "work", "operational-planning", "index.html"), locale: "fr" },
+  { pathname: "/en/work/operational-planning", destination: path.join(outputDir, "en", "work", "operational-planning", "index.html"), locale: "en" },
 ];
 
 for (const route of routes) {
@@ -59,28 +62,36 @@ await Promise.all([
     `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://amalabaev.com/</loc><lastmod>2026-08-09</lastmod><changefreq>monthly</changefreq><priority>1.0</priority>
+    <loc>https://amalabaev.com/</loc><lastmod>${lastModified}</lastmod><changefreq>monthly</changefreq><priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="fr-FR" href="https://amalabaev.com/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://amalabaev.com/en/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://amalabaev.com/"/>
   </url>
   <url>
-    <loc>https://amalabaev.com/en/</loc><lastmod>2026-08-09</lastmod><changefreq>monthly</changefreq><priority>0.9</priority>
+    <loc>https://amalabaev.com/en/</loc><lastmod>${lastModified}</lastmod><changefreq>monthly</changefreq><priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="fr-FR" href="https://amalabaev.com/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://amalabaev.com/en/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://amalabaev.com/"/>
   </url>
   <url>
-    <loc>https://amalabaev.com/developpeur-full-stack-freelance/</loc><lastmod>2026-08-09</lastmod><changefreq>monthly</changefreq><priority>0.9</priority>
+    <loc>https://amalabaev.com/developpeur-full-stack-freelance/</loc><lastmod>${lastModified}</lastmod><changefreq>monthly</changefreq><priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="fr-FR" href="https://amalabaev.com/developpeur-full-stack-freelance/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://amalabaev.com/en/freelance-full-stack-developer/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://amalabaev.com/developpeur-full-stack-freelance/"/>
   </url>
   <url>
-    <loc>https://amalabaev.com/en/freelance-full-stack-developer/</loc><lastmod>2026-08-09</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+    <loc>https://amalabaev.com/en/freelance-full-stack-developer/</loc><lastmod>${lastModified}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="fr-FR" href="https://amalabaev.com/developpeur-full-stack-freelance/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://amalabaev.com/en/freelance-full-stack-developer/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://amalabaev.com/developpeur-full-stack-freelance/"/>
   </url>
   <url>
-    <loc>https://amalabaev.com/engineering/</loc><lastmod>2026-08-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority>
+    <loc>https://amalabaev.com/engineering/</loc><lastmod>${lastModified}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr-FR" href="https://amalabaev.com/engineering/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://amalabaev.com/en/engineering/"/>
   </url>
   <url>
-    <loc>https://amalabaev.com/en/engineering/</loc><lastmod>2026-08-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority>
+    <loc>https://amalabaev.com/en/engineering/</loc><lastmod>${lastModified}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="fr-FR" href="https://amalabaev.com/engineering/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://amalabaev.com/en/engineering/"/>
+  </url>
+  <url>
+    <loc>https://amalabaev.com/work/operational-planning/</loc><lastmod>${lastModified}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr-FR" href="https://amalabaev.com/work/operational-planning/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://amalabaev.com/en/work/operational-planning/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://amalabaev.com/work/operational-planning/"/>
+  </url>
+  <url>
+    <loc>https://amalabaev.com/en/work/operational-planning/</loc><lastmod>${lastModified}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="fr-FR" href="https://amalabaev.com/work/operational-planning/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://amalabaev.com/en/work/operational-planning/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://amalabaev.com/work/operational-planning/"/>
   </url>
 </urlset>
 `,
