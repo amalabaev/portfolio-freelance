@@ -57,8 +57,8 @@ const content = {
     ],
     ctaLabel: "VOTRE PROJET",
     ctaTitle: "Besoin d’un développeur full-stack freelance ?",
-    ctaText: "Présentez-moi votre site, votre produit ou le processus que vous voulez améliorer. Je vous répondrai avec un premier avis concret — et vous parlerez directement au développeur, pas à un intermédiaire.",
-    ctaButton: "Faire analyser mon besoin",
+    ctaText: "Présentez-moi votre site, votre produit ou le processus que vous voulez améliorer. Je vous répondrai avec une première estimation du périmètre et des prochaines étapes — directement, sans intermédiaire.",
+    ctaButton: "Demander une estimation",
     footer: "Aliaskar Malabaev · Développeur full-stack orienté produit",
   },
   en: {
@@ -114,8 +114,8 @@ const content = {
     ],
     ctaLabel: "YOUR PROJECT",
     ctaTitle: "Looking for a freelance full-stack developer?",
-    ctaText: "Tell me about your website, product or the process you want to improve. I’ll reply with a useful initial assessment — and you will be talking to the developer directly, not to an intermediary.",
-    ctaButton: "Get an initial review",
+    ctaText: "Tell me about your website, product or the process you want to improve. I’ll reply with an initial estimate of scope and next steps — directly, without an intermediary.",
+    ctaButton: "Request an estimate",
     footer: "Aliaskar Malabaev · Product-minded full-stack developer",
   },
 } as const;

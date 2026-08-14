@@ -37,8 +37,8 @@ const content = {
     confidentiality: "Par respect de la confidentialité, cette étude de cas décrit le problème, mon rôle et l’approche sans exposer de données, d’écrans ni de résultats propriétaires.",
     ctaLabel: "UN PRODUIT MÉTIER À SIMPLIFIER ?",
     ctaTitle: "Parlons du problème avant de parler de technologie.",
-    ctaText: "Décrivez-moi le processus, les règles ou les outils qui ralentissent votre équipe. Je vous répondrai avec une première lecture concrète.",
-    ctaButton: "Obtenir un premier avis",
+    ctaText: "Décrivez-moi le processus, les règles ou les outils qui ralentissent votre équipe. Je vous répondrai avec une première estimation du périmètre et des prochaines étapes.",
+    ctaButton: "Demander une estimation",
   },
   en: {
     back: "Back to portfolio",
@@ -73,8 +73,8 @@ const content = {
     confidentiality: "To respect confidentiality, this case study describes the problem, my role and the approach without exposing proprietary data, screens or business results.",
     ctaLabel: "A BUSINESS PRODUCT TO SIMPLIFY?",
     ctaTitle: "Let’s discuss the problem before the technology.",
-    ctaText: "Tell me about the process, rules or tools slowing your team down. I’ll reply with a concrete initial assessment.",
-    ctaButton: "Get an initial review",
+    ctaText: "Tell me about the process, rules or tools slowing your team down. I’ll reply with an initial estimate of scope and sensible next steps.",
+    ctaButton: "Request an estimate",
   },
 } as const;
 
