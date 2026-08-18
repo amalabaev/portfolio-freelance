@@ -8,14 +8,14 @@ export const metadata: Metadata = {
   title,
   description,
   alternates: {
-    canonical: "/en",
-    languages: { "fr-FR": "/", "en-US": "/en", "x-default": "/" },
+    canonical: "/en/",
+    languages: { "fr-FR": "/", "en-US": "/en/", "x-default": "/" },
   },
   openGraph: {
     title,
     description,
     locale: "en_US",
-    url: "/en",
+    url: "/en/",
     siteName: "Aliaskar Malabaev",
     images: [{ url: "/og-en-v3.png", width: 1200, height: 630, alt: "Aliaskar Malabaev — Full-stack, product and design" }],
   },

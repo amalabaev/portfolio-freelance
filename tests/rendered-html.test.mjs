@@ -25,7 +25,8 @@ test("server-renders Aliaskar's freelance portfolio", async () => {
   assert.match(html, /Votre entreprise a évolué/);
   assert.match(html, /Développeur web full-stack freelance/);
   assert.match(html, /Plateforme de planification opérationnelle/);
-  assert.match(html, /href="\/work\/operational-planning"/);
+  assert.match(html, /href="\/work\/operational-planning\/"/);
+  assert.match(html, /name="email"/);
   assert.match(html, /\/aliaskar-malabaev\.jpg/);
   assert.match(html, /Automatisation &amp; intégrations|Automatisation & intégrations/);
   assert.match(html, /application\/ld\+json/i);
@@ -47,7 +48,7 @@ test("server-renders the English portfolio at /en", async () => {
   assert.match(html, /Your business has evolved/);
   assert.match(html, /Web product design &amp; development|Web product design & development/);
   assert.match(html, /Operational workforce planning platform/);
-  assert.match(html, /href="\/en\/work\/operational-planning"/);
+  assert.match(html, /href="\/en\/work\/operational-planning\/"/);
   assert.match(html, /View my engineering profile/);
   assert.match(html, /Choose language/);
   assert.match(html, /document\.documentElement\.lang/);
@@ -65,6 +66,7 @@ test("server-renders the French freelance SEO landing page", async () => {
   assert.match(html, /BreadcrumbList/);
   assert.match(html, /Service/);
   assert.match(html, /canonical/i);
+  assert.match(html, /rel="canonical" href="https:\/\/amalabaev\.com\/developpeur-full-stack-freelance\/"/);
   assert.match(html, /freelance-full-stack-developer/);
 });
 
@@ -85,7 +87,8 @@ test("server-renders the French engineering profile", async () => {
   assert.match(html, /Le niveau technique derrière l/);
   assert.match(html, /Full-stack, au sens complet/);
   assert.match(html, /GitHub Actions/);
-  assert.match(html, /href="\/en\/engineering"/);
+  assert.match(html, /href="\/en\/engineering\/"/);
+  assert.match(html, /rel="canonical" href="https:\/\/amalabaev\.com\/engineering\/"/);
 });
 
 test("server-renders the English engineering profile", async () => {
@@ -104,7 +107,8 @@ test("server-renders the French planning case study", async () => {
   assert.match(html, /Rendre une planification complexe directe à utiliser/);
   assert.match(html, /Interaction directe/);
   assert.match(html, /application métier anonymisée/i);
-  assert.match(html, /href="\/en\/work\/operational-planning"/);
+  assert.match(html, /href="\/en\/work\/operational-planning\/"/);
+  assert.match(html, /rel="canonical" href="https:\/\/amalabaev\.com\/work\/operational-planning\/"/);
 });
 
 test("server-renders the English planning case study", async () => {
@@ -113,12 +117,15 @@ test("server-renders the English planning case study", async () => {
   const html = await response.text();
   assert.match(html, /Making complex workforce planning direct to use/);
   assert.match(html, /Centralised validation/);
-  assert.match(html, /href="\/work\/operational-planning"/);
+  assert.match(html, /href="\/work\/operational-planning\/"/);
 });
 
 test("keeps the finished site free from starter preview assets", async () => {
-  const [portfolio, visuals, layout, css, exporter, packageJson] = await Promise.all([
+  const [portfolio, form, engineering, freelanceSeo, visuals, layout, css, exporter, packageJson] = await Promise.all([
     readFile(new URL("../app/PortfolioPage.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/ProjectBriefForm.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/EngineeringPage.tsx", import.meta.url), "utf8"),
+    readFile(new URL("../app/FreelanceSeoPage.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/Visuals.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
     readFile(new URL("../app/globals.css", import.meta.url), "utf8"),
@@ -128,12 +135,14 @@ test("keeps the finished site free from starter preview assets", async () => {
 
   assert.match(portfolio, /CREATIVE LAB/);
   assert.match(portfolio, /RÉALISATIONS/);
-  assert.match(portfolio, /mail\.google\.com\/mail/);
+  assert.match(form, /formsubmit\.co\/ajax\//);
+  assert.match(form, /aria-live="polite"/);
+  assert.doesNotMatch(portfolio + form + engineering + freelanceSeo, /mail\.google\.com\/mail/);
   assert.match(portfolio, /href="#contact"/);
   assert.match(visuals, /architecture-blueprint/);
   assert.match(visuals, /health-appointment/);
   assert.match(visuals, /consulting-dashboard/);
-  assert.doesNotMatch(portfolio, /mailto:/);
+  assert.match(portfolio, /mailto:/);
   assert.match(layout, /export const metadata/);
   assert.match(layout, /summary_large_image/);
   assert.match(layout, /ProfessionalService/);

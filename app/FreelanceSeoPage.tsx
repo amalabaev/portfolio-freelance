@@ -122,9 +122,8 @@ const content = {
 
 export function FreelanceSeoPage({ locale }: { locale: Locale }) {
   const copy = content[locale];
-  const home = locale === "fr" ? "/" : "/en";
-  const current = locale === "fr" ? "/developpeur-full-stack-freelance" : "/en/freelance-full-stack-developer";
-  const gmail = `https://mail.google.com/mail/?view=cm&fs=1&to=amalabaev%40gmail.com&su=${encodeURIComponent(locale === "fr" ? "Projet full-stack freelance" : "Freelance full-stack project")}`;
+  const home = locale === "fr" ? "/" : "/en/";
+  const current = locale === "fr" ? "/developpeur-full-stack-freelance/" : "/en/freelance-full-stack-developer/";
   const schema = {
     "@context": "https://schema.org",
     "@graph": [
@@ -163,8 +162,8 @@ export function FreelanceSeoPage({ locale }: { locale: Locale }) {
         <div className="engineering-nav">
           <a href={home}><Icon name="left" size={14} /> {copy.home}</a>
           <div className="language-switch" aria-label={copy.language}>
-            <a className={locale === "fr" ? "active" : ""} href="/developpeur-full-stack-freelance" hrefLang="fr" aria-current={locale === "fr" ? "page" : undefined}>FR</a><span>/</span>
-            <a className={locale === "en" ? "active" : ""} href="/en/freelance-full-stack-developer" hrefLang="en" aria-current={locale === "en" ? "page" : undefined}>EN</a>
+            <a className={locale === "fr" ? "active" : ""} href="/developpeur-full-stack-freelance/" hrefLang="fr" aria-current={locale === "fr" ? "page" : undefined}>FR</a><span>/</span>
+            <a className={locale === "en" ? "active" : ""} href="/en/freelance-full-stack-developer/" hrefLang="en" aria-current={locale === "en" ? "page" : undefined}>EN</a>
           </div>
           <a className="header-cta" href="#seo-contact">{copy.contact} <Icon name="down" /></a>
         </div>
@@ -206,7 +205,7 @@ export function FreelanceSeoPage({ locale }: { locale: Locale }) {
         <div className="faq-list">{copy.faqs.map(([question, answer]) => <details key={question}><summary>{question}<span aria-hidden="true">+</span></summary><p>{answer}</p></details>)}</div>
       </section>
 
-      <section className="engineering-cta" id="seo-contact"><p className="section-index">{copy.ctaLabel}</p><h2>{copy.ctaTitle}</h2><p>{copy.ctaText}</p><div><a className="button button-acid" href={gmail} target="_blank" rel="noreferrer">{copy.ctaButton} <Icon name="upRight" /></a><a className="text-link engineering-github" href={home}><Icon name="left" size={14} /> {copy.home}</a></div></section>
+      <section className="engineering-cta" id="seo-contact"><p className="section-index">{copy.ctaLabel}</p><h2>{copy.ctaTitle}</h2><p>{copy.ctaText}</p><div><a className="button button-acid" href={`${home}#contact`}>{copy.ctaButton} <Icon name="upRight" /></a><a className="text-link engineering-github" href={home}><Icon name="left" size={14} /> {copy.home}</a></div></section>
 
       <footer className="engineering-footer"><a href={home}><Icon name="left" size={14} /> {copy.home}</a><span>{copy.footer}</span><a href="#top"><Icon name="up" size={14} /> TOP</a></footer>
     </main>

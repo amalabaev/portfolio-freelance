@@ -80,8 +80,8 @@ const content = {
 
 export function PlanningCaseStudy({ locale }: { locale: Locale }) {
   const copy = content[locale];
-  const home = locale === "fr" ? "/" : "/en";
-  const alternate = locale === "fr" ? "/en/work/operational-planning" : "/work/operational-planning";
+  const home = locale === "fr" ? "/" : "/en/";
+  const alternate = locale === "fr" ? "/en/work/operational-planning/" : "/work/operational-planning/";
 
   return (
     <main className="case-study-page">

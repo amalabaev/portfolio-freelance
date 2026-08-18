@@ -505,6 +505,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   background: rgba(255, 253, 246, .035);
   backdrop-filter: blur(4px);
 }
+.brief-honeypot { position: absolute !important; left: -10000px !important; width: 1px !important; height: 1px !important; overflow: hidden !important; }
 .brief-fields { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
 .brief-fields label { display: grid; gap: 8px; }
 .brief-fields label > span { color: #c6cabe; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .09em; }
@@ -544,6 +545,11 @@ button, a { -webkit-tap-highlight-color: transparent; }
 }
 .brief-submit { margin-top: 24px; display: grid; grid-template-columns: auto 1fr; gap: 22px; align-items: center; }
 .brief-submit p { margin: 0; color: #92968d; font-size: 12px; line-height: 1.55; }
+.brief-submit .button:disabled { cursor: wait; opacity: .72; transform: none; }
+.brief-status { min-height: 0; margin: 0; color: #c6cabe; font-size: 13px; line-height: 1.55; }
+.brief-status:not(:empty) { min-height: 21px; margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line-invert); }
+.brief-status-success { color: var(--acid); }
+.brief-status-error { color: #ff9c87; }
 .contact-alternative {
   grid-column: 2; position: relative; z-index: 2;
   display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; color: #a8aca2; font-size: 13.5px;

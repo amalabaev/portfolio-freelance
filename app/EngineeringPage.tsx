@@ -97,9 +97,7 @@ const content = {
 
 export function EngineeringPage({ locale }: { locale: Locale }) {
   const copy = content[locale];
-  const home = locale === "fr" ? "/" : "/en";
-  const subject = locale === "fr" ? "Projet technique ou produit" : "Technical or product project";
-  const gmail = `https://mail.google.com/mail/?view=cm&fs=1&to=amalabaev%40gmail.com&su=${encodeURIComponent(subject)}`;
+  const home = locale === "fr" ? "/" : "/en/";
 
   return (
     <main className="engineering-page">
@@ -107,7 +105,7 @@ export function EngineeringPage({ locale }: { locale: Locale }) {
         <a className="brand" href={home}><span className="brand-mark">AM</span><span className="brand-copy"><strong>Aliaskar Malabaev</strong>Full-stack engineering</span></a>
         <div className="engineering-nav">
           <a href={home}><Icon name="left" size={14} /> {copy.home}</a>
-          <div className="language-switch" aria-label={copy.language}><a className={locale === "fr" ? "active" : ""} href="/engineering" hrefLang="fr" aria-current={locale === "fr" ? "page" : undefined}>FR</a><span>/</span><a className={locale === "en" ? "active" : ""} href="/en/engineering" hrefLang="en" aria-current={locale === "en" ? "page" : undefined}>EN</a></div>
+          <div className="language-switch" aria-label={copy.language}><a className={locale === "fr" ? "active" : ""} href="/engineering/" hrefLang="fr" aria-current={locale === "fr" ? "page" : undefined}>FR</a><span>/</span><a className={locale === "en" ? "active" : ""} href="/en/engineering/" hrefLang="en" aria-current={locale === "en" ? "page" : undefined}>EN</a></div>
           <a className="header-cta" href="#engineering-contact">{copy.contact} <Icon name="down" /></a>
         </div>
       </header>
@@ -151,7 +149,7 @@ export function EngineeringPage({ locale }: { locale: Locale }) {
 
       <section className="stack-strip"><span>{copy.stackLabel}</span><div>{copy.stack.map((item) => <strong key={item}>{item}</strong>)}</div></section>
 
-      <section className="engineering-cta" id="engineering-contact"><p className="section-index">{copy.ctaLabel}</p><h2>{copy.ctaTitle}</h2><p>{copy.ctaText}</p><div><a className="button button-acid" href={gmail} target="_blank" rel="noreferrer">{copy.email} <Icon name="upRight" /></a><a className="text-link engineering-github" href="https://github.com/amalabaev" target="_blank" rel="noreferrer">{copy.github} <Icon name="upRight" /></a></div></section>
+      <section className="engineering-cta" id="engineering-contact"><p className="section-index">{copy.ctaLabel}</p><h2>{copy.ctaTitle}</h2><p>{copy.ctaText}</p><div><a className="button button-acid" href={`${home}#contact`}>{copy.email} <Icon name="upRight" /></a><a className="text-link engineering-github" href="https://github.com/amalabaev" target="_blank" rel="noreferrer">{copy.github} <Icon name="upRight" /></a></div></section>
 
       <footer className="engineering-footer"><a href={home}><Icon name="left" size={14} /> {copy.home}</a><span>© 2026 Aliaskar Malabaev</span><a href="#top"><Icon name="up" size={14} /> TOP</a></footer>
     </main>

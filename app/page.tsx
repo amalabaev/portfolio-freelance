@@ -4,7 +4,7 @@ import { PortfolioPage } from "./PortfolioPage";
 export const metadata: Metadata = {
   alternates: {
     canonical: "/",
-    languages: { "fr-FR": "/", "en-US": "/en", "x-default": "/" },
+    languages: { "fr-FR": "/", "en-US": "/en/", "x-default": "/" },
   },
 };
 

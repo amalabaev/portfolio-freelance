@@ -8,10 +8,10 @@ export const metadata: Metadata = {
   title,
   description,
   alternates: {
-    canonical: "/work/operational-planning",
-    languages: { "fr-FR": "/work/operational-planning", "en-US": "/en/work/operational-planning", "x-default": "/work/operational-planning" },
+    canonical: "/work/operational-planning/",
+    languages: { "fr-FR": "/work/operational-planning/", "en-US": "/en/work/operational-planning/", "x-default": "/work/operational-planning/" },
   },
-  openGraph: { title, description, type: "article", locale: "fr_FR", url: "/work/operational-planning", images: [{ url: "/og-v3.png", width: 1200, height: 630, alt: "Aliaskar Malabaev — étude de cas application métier" }] },
+  openGraph: { title, description, type: "article", locale: "fr_FR", url: "/work/operational-planning/", images: [{ url: "/og-v3.png", width: 1200, height: 630, alt: "Aliaskar Malabaev — étude de cas application métier" }] },
   twitter: { card: "summary_large_image", title, description, images: ["/og-v3.png"] },
 };
 

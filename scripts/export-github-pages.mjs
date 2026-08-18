@@ -79,11 +79,11 @@ await Promise.all([
   </url>
   <url>
     <loc>https://amalabaev.com/engineering/</loc><lastmod>${lastModified}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="fr-FR" href="https://amalabaev.com/engineering/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://amalabaev.com/en/engineering/"/>
+    <xhtml:link rel="alternate" hreflang="fr-FR" href="https://amalabaev.com/engineering/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://amalabaev.com/en/engineering/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://amalabaev.com/engineering/"/>
   </url>
   <url>
     <loc>https://amalabaev.com/en/engineering/</loc><lastmod>${lastModified}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="fr-FR" href="https://amalabaev.com/engineering/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://amalabaev.com/en/engineering/"/>
+    <xhtml:link rel="alternate" hreflang="fr-FR" href="https://amalabaev.com/engineering/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://amalabaev.com/en/engineering/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://amalabaev.com/engineering/"/>
   </url>
   <url>
     <loc>https://amalabaev.com/work/operational-planning/</loc><lastmod>${lastModified}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>

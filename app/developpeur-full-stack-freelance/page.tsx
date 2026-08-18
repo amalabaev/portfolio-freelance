@@ -8,10 +8,10 @@ export const metadata: Metadata = {
   title,
   description,
   alternates: {
-    canonical: "/developpeur-full-stack-freelance",
-    languages: { "fr-FR": "/developpeur-full-stack-freelance", "en-US": "/en/freelance-full-stack-developer", "x-default": "/developpeur-full-stack-freelance" },
+    canonical: "/developpeur-full-stack-freelance/",
+    languages: { "fr-FR": "/developpeur-full-stack-freelance/", "en-US": "/en/freelance-full-stack-developer/", "x-default": "/developpeur-full-stack-freelance/" },
   },
-  openGraph: { title, description, type: "website", locale: "fr_FR", url: "/developpeur-full-stack-freelance", images: [{ url: "/og-v3.png", width: 1200, height: 630, alt: "Aliaskar Malabaev — Développeur full-stack freelance" }] },
+  openGraph: { title, description, type: "website", locale: "fr_FR", url: "/developpeur-full-stack-freelance/", images: [{ url: "/og-v3.png", width: 1200, height: 630, alt: "Aliaskar Malabaev — Développeur full-stack freelance" }] },
   twitter: { card: "summary_large_image", title, description, images: ["/og-v3.png"] },
 };
 

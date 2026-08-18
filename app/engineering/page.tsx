@@ -8,10 +8,10 @@ export const metadata: Metadata = {
   title,
   description,
   alternates: {
-    canonical: "/engineering",
-    languages: { "fr-FR": "/engineering", "en-US": "/en/engineering", "x-default": "/engineering" },
+    canonical: "/engineering/",
+    languages: { "fr-FR": "/engineering/", "en-US": "/en/engineering/", "x-default": "/engineering/" },
   },
-  openGraph: { title, description, locale: "fr_FR", url: "/engineering", images: ["/og-v3.png"] },
+  openGraph: { title, description, locale: "fr_FR", url: "/engineering/", images: ["/og-v3.png"] },
   twitter: { title, description, images: ["/og-v3.png"] },
 };
 

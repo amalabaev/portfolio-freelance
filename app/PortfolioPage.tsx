@@ -68,7 +68,7 @@ const content = {
         ],
         stack: ["PHP", "JavaScript", "MySQL", "Docker"],
         visual: "planning",
-        link: "/work/operational-planning",
+        link: "/work/operational-planning/",
         linkLabel: "Voir l’étude de cas",
       },
       {
@@ -237,7 +237,7 @@ const content = {
         ],
         stack: ["PHP", "JavaScript", "MySQL", "Docker"],
         visual: "planning",
-        link: "/en/work/operational-planning",
+        link: "/en/work/operational-planning/",
         linkLabel: "Read the case study",
       },
       {
@@ -368,10 +368,10 @@ function ConceptVisual({ concept, locale }: { concept: Concept; locale: Locale }
 
 export function PortfolioPage({ locale }: { locale: Locale }) {
   const copy = content[locale];
-  const home = locale === "fr" ? "/" : "/en";
-  const engineering = locale === "fr" ? "/engineering" : "/en/engineering";
-  const freelanceProfile = locale === "fr" ? "/developpeur-full-stack-freelance" : "/en/freelance-full-stack-developer";
-  const directEmail = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}`;
+  const home = locale === "fr" ? "/" : "/en/";
+  const engineering = locale === "fr" ? "/engineering/" : "/en/engineering/";
+  const freelanceProfile = locale === "fr" ? "/developpeur-full-stack-freelance/" : "/en/freelance-full-stack-developer/";
+  const directEmail = `mailto:${email}`;
 
   const navLinks = [
     ["#work", copy.nav[0]],
@@ -392,7 +392,7 @@ export function PortfolioPage({ locale }: { locale: Locale }) {
             {/* Full document navigation switches between independently exported locales. */}
             {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
             <a className={locale === "fr" ? "active" : ""} href="/" hrefLang="fr" aria-current={locale === "fr" ? "page" : undefined}>FR</a><span>/</span>
-            <a className={locale === "en" ? "active" : ""} href="/en" hrefLang="en" aria-current={locale === "en" ? "page" : undefined}>EN</a>
+            <a className={locale === "en" ? "active" : ""} href="/en/" hrefLang="en" aria-current={locale === "en" ? "page" : undefined}>EN</a>
           </div>
           <a className="header-cta" href="#contact">{copy.headerCta} <Icon name="down" /></a>
           <details className="mobile-menu">
@@ -505,7 +505,7 @@ export function PortfolioPage({ locale }: { locale: Locale }) {
           <ul className="contact-assurances">{copy.assurances.map((item) => <li key={item}><i><Spark /></i>{item}</li>)}</ul>
         </div>
         <ProjectBriefForm locale={locale} />
-        <div className="contact-alternative"><span>{copy.emailAlternative}</span><a href={directEmail} target="_blank" rel="noreferrer">{email}</a><CopyEmailButton email={email} idleLabel={copy.copyEmail} copiedLabel={copy.copiedEmail} /></div>
+        <div className="contact-alternative"><span>{copy.emailAlternative}</span><a href={directEmail}>{email}</a><CopyEmailButton email={email} idleLabel={copy.copyEmail} copiedLabel={copy.copiedEmail} /></div>
       </section>
 
       <footer><a className="brand footer-brand" href={`${home}#top`}><span className="brand-mark">AM</span><span>{copy.footerBrand}<br />React · Node.js</span></a><p>© 2026 Aliaskar Malabaev<br />{copy.footerRole}</p><div><a href={freelanceProfile}>Services <Icon name="right" size={13} /></a><a href={engineering}>Engineering <Icon name="right" size={13} /></a><a href="https://fr.linkedin.com/in/aliaskar-malabaev-6850a0130" target="_blank" rel="noreferrer">LinkedIn <Icon name="upRight" size={13} /></a></div></footer>
