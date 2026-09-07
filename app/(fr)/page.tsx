@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { PortfolioPage } from "./PortfolioPage";
+import { PortfolioPage } from "../PortfolioPage";
 
 export const metadata: Metadata = {
   alternates: {

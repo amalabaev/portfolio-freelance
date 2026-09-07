@@ -1,14 +1,24 @@
+import { SiteHeader } from "./SiteHeader";
+import { SiteFooter } from "./SiteFooter";
 import { Icon } from "./Icon";
 import { education, experienceYears, facts, timeline } from "./profile";
-import { EngineeringDiagram } from "./Visuals";
 
 type Locale = "fr" | "en";
 
 const content = {
   fr: {
-    title: "Le niveau technique derrière l’interface.",
+    title: "Le niveau technique",
+    titleAccent: "derrière l’interface.",
     eyebrow: "ENGINEERING PROFILE · ALIASKAR MALABAEV",
     intro: `Je conçois des produits web de bout en bout : systèmes front-end, logique métier, données, intégrations et mise en production. ${experienceYears} ans d’expérience, dont plusieurs années à encadrer techniquement d’autres développeurs.`,
+    architectureLabel: "UNE VISION DE BOUT EN BOUT",
+    architectureTitle: "Quatre couches. Un produit cohérent.",
+    layers: [
+      ["Interface", "Composants, navigation et accessibilité. Une expérience claire pour l’utilisateur."],
+      ["Logique métier", "Règles, permissions et validations. Le bon comportement, dans chaque situation."],
+      ["Données", "Modèles, cohérence et traitements. Une information fiable et exploitable."],
+      ["Livraison", "Tests, déploiement et transmission. Un produit prêt à fonctionner et à évoluer."],
+    ],
     home: "Retour au portfolio",
     language: "Choisir la langue",
     contact: "Parler d’un projet",
@@ -50,9 +60,18 @@ const content = {
     github: "Voir GitHub",
   },
   en: {
-    title: "The engineering behind the interface.",
+    title: "The engineering",
+    titleAccent: "behind the interface.",
     eyebrow: "ENGINEERING PROFILE · ALIASKAR MALABAEV",
     intro: `I build web products end to end: front-end systems, domain logic, data, integrations and production delivery. ${experienceYears} years of experience, several of them leading other developers technically.`,
+    architectureLabel: "AN END-TO-END PERSPECTIVE",
+    architectureTitle: "Four layers. One coherent product.",
+    layers: [
+      ["Interface", "Components, navigation and accessibility. A clear experience for the user."],
+      ["Business logic", "Rules, permissions and validation. The right behaviour in every situation."],
+      ["Data", "Models, consistency and processing. Information you can trust and use."],
+      ["Delivery", "Testing, deployment and handover. A product ready to run and evolve."],
+    ],
     home: "Back to portfolio",
     language: "Choose language",
     contact: "Discuss a project",
@@ -95,26 +114,47 @@ const content = {
   },
 } as const;
 
+function ArchitectureIcon({ layer }: { layer: number }) {
+  return (
+    <svg className="architecture-icon" width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">
+      {layer === 0 && <><rect x="4" y="5" width="24" height="22" rx="3" /><path d="M4 12h24M12 12v15M8 8.5h1M17 17h6M17 21h4" /></>}
+      {layer === 1 && <><rect x="11" y="3" width="10" height="7" rx="2" /><rect x="3" y="22" width="10" height="7" rx="2" /><rect x="19" y="22" width="10" height="7" rx="2" /><path d="M16 10v6M8 22v-6h16v6" /><circle cx="16" cy="16" r="2" fill="var(--white)" /></>}
+      {layer === 2 && <><ellipse cx="16" cy="7" rx="11" ry="4" /><path d="M5 7v17c0 2.2 4.9 4 11 4s11-1.8 11-4V7M5 15c0 2.2 4.9 4 11 4s11-1.8 11-4" /></>}
+      {layer === 3 && <><path d="M18 5H7a3 3 0 0 0-3 3v17a3 3 0 0 0 3 3h18a3 3 0 0 0 3-3V14M4 12h12M21 6l3 3 5-6M11 20l3 3 6-6" /></>}
+    </svg>
+  );
+}
+
 export function EngineeringPage({ locale }: { locale: Locale }) {
   const copy = content[locale];
   const home = locale === "fr" ? "/" : "/en/";
 
   return (
-    <main className="engineering-page">
-      <header className="engineering-header">
-        <a className="brand" href={home}><span className="brand-mark">AM</span><span className="brand-copy"><strong>Aliaskar Malabaev</strong>Full-stack engineering</span></a>
-        <div className="engineering-nav">
-          <a href={home}><Icon name="left" size={14} /> {copy.home}</a>
-          <div className="language-switch" aria-label={copy.language}><a className={locale === "fr" ? "active" : ""} href="/engineering/" hrefLang="fr" aria-current={locale === "fr" ? "page" : undefined}>FR</a><span>/</span><a className={locale === "en" ? "active" : ""} href="/en/engineering/" hrefLang="en" aria-current={locale === "en" ? "page" : undefined}>EN</a></div>
-          <a className="header-cta" href="#engineering-contact">{copy.contact} <Icon name="down" /></a>
-        </div>
-      </header>
+    <><SiteHeader locale={locale} current={locale === "fr" ? "/engineering/" : "/en/engineering/"} alternate={locale === "fr" ? "/en/engineering/" : "/engineering/"} /><main className="engineering-page" id="main-content" tabIndex={-1}>
+
 
       <section className="engineering-hero">
         <p className="eyebrow"><span /> {copy.eyebrow}</p>
-        <h1>{copy.title}</h1>
-        <p>{copy.intro}</p>
-        <div className="engineering-diagram"><EngineeringDiagram locale={locale} /></div>
+        <div className="engineering-introduction">
+          <h1>{copy.title} <em>{copy.titleAccent}</em></h1>
+          <p>{copy.intro}</p>
+        </div>
+        <section className="engineering-architecture" aria-labelledby="architecture-title">
+          <div className="architecture-heading">
+            <p className="section-index">{copy.architectureLabel}</p>
+            <h2 id="architecture-title">{copy.architectureTitle}</h2>
+          </div>
+          <ol className="engineering-layers">
+            {copy.layers.map(([title, detail], index) => (
+              <li key={title}>
+                <div className="architecture-node"><ArchitectureIcon layer={index} /><span aria-hidden="true">0{index + 1}</span></div>
+                <h3>{title}</h3>
+                <p>{detail}</p>
+                {index < copy.layers.length - 1 && <span className="architecture-connector" aria-hidden="true"><Icon name="right" size={16} /></span>}
+              </li>
+            ))}
+          </ol>
+        </section>
         <div className="facts-strip">{facts[locale].map(([value, label]) => <div key={label}><strong>{value}</strong><span>{label}</span></div>)}</div>
       </section>
 
@@ -151,7 +191,7 @@ export function EngineeringPage({ locale }: { locale: Locale }) {
 
       <section className="engineering-cta" id="engineering-contact"><p className="section-index">{copy.ctaLabel}</p><h2>{copy.ctaTitle}</h2><p>{copy.ctaText}</p><div><a className="button button-acid" href={`${home}#contact`}>{copy.email} <Icon name="upRight" /></a><a className="text-link engineering-github" href="https://github.com/amalabaev" target="_blank" rel="noreferrer">{copy.github} <Icon name="upRight" /></a></div></section>
 
-      <footer className="engineering-footer"><a href={home}><Icon name="left" size={14} /> {copy.home}</a><span>© 2026 Aliaskar Malabaev</span><a href="#top"><Icon name="up" size={14} /> TOP</a></footer>
-    </main>
+
+    </main><SiteFooter locale={locale} /></>
   );
 }

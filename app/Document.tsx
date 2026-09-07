@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 const origin = "https://amalabaev.com";
-const title = "Aliaskar Malabaev — Design & développement de produits web";
+const title = "Développeur web freelance — sites & applications | Aliaskar Malabaev";
 const description = "Portfolio d’Aliaskar Malabaev : sites qui inspirent confiance, applications métier sur mesure et automatisations, du design aux systèmes full-stack.";
 const linkedIn = "https://fr.linkedin.com/in/aliaskar-malabaev-6850a0130";
 
@@ -45,7 +45,7 @@ const structuredData = {
   ],
 };
 
-export const metadata: Metadata = {
+export const siteMetadata: Metadata = {
   metadataBase: new URL(origin),
   title,
   description,
@@ -86,9 +86,9 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export function Document({ children, locale }: Readonly<{ children: React.ReactNode; locale: "fr" | "en" }>) {
   return (
-    <html lang="fr">
+    <html lang={locale}>
       <head>
         <link rel="preload" href="/fonts/instrument-serif-normal-latin.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
         <link rel="preload" href="/fonts/inter-normal-latin.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />

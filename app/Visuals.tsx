@@ -431,9 +431,9 @@ export function CardzapVisual({ locale }: { locale: "fr" | "en" }) {
   );
 }
 
-/** Portfolio — the site itself, with its measured delivery scores. */
+/** Portfolio — illustrative desktop and mobile layouts, without unverified scores. */
 export function PortfolioVisual({ locale, headline }: { locale: "fr" | "en"; headline: string }) {
-  const scores = [["100", "PERF."], ["100", "SEO"], ["100", "A11Y"]];
+  const features = [["FR", " / EN"], ["UI", "DESIGN"], ["</>", "CODE"]];
   const words = headline.split(" ");
 
   return (
@@ -468,7 +468,7 @@ export function PortfolioVisual({ locale, headline }: { locale: "fr" | "en"; hea
         <text x="58" y="254" fontFamily="var(--serif)" fontStyle="italic" fontSize="36" letterSpacing="-.03em" fill={S.ink} opacity=".45">{words.slice(3).join(" ")}</text>
         <line x1="58" y1="284" x2="330" y2="284" stroke={S.ink} strokeOpacity=".14" />
 
-        {scores.map(([value, label], i) => (
+        {features.map(([value, label], i) => (
           <g key={label} transform={`translate(${58 + i * 88} 0)`}>
             <circle cx="19" cy="330" r="19" fill="none" stroke="rgba(22,24,20,.1)" strokeWidth="2.5" />
             <circle cx="19" cy="330" r="19" fill="none" stroke={S.teal} strokeWidth="2.5" strokeLinecap="round" transform="rotate(-90 19 330)" />

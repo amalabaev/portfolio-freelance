@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { FreelanceSeoPage } from "../FreelanceSeoPage";
+import { FreelanceSeoPage } from "../../FreelanceSeoPage";
 
 const title = "Développeur full-stack freelance — Aliaskar Malabaev";
 const description = "Aliaskar Malabaev, développeur full-stack freelance : refonte de sites, applications métier, React, Laravel, Node.js, API, automatisation et IA.";

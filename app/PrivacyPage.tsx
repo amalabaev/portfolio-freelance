@@ -1,0 +1,24 @@
+import { SiteHeader } from "./SiteHeader";
+import { SiteFooter } from "./SiteFooter";
+
+export function PrivacyPage({ locale }: { locale: "fr" | "en" }) {
+  const fr = locale === "fr";
+  const sections = fr ? [
+    ["Qui reçoit votre demande ?", "Aliaskar Malabaev, développeur web freelance, reçoit les messages envoyés depuis ce portfolio. Pour toute question sur vos informations : amalabaev@gmail.com."],
+    ["Quelles informations sont demandées ?", "Votre nom, votre adresse email et la description de votre besoin servent à comprendre votre demande et à vous répondre. L’entreprise, le site actuel et la fourchette budgétaire sont facultatifs. Ne transmettez pas de mot de passe, de document confidentiel ou de donnée sensible dans ce formulaire."],
+    ["Comment le message est-il transmis ?", "Le formulaire utilise FormSubmit pour transmettre votre message à la messagerie d’Aliaskar. Les informations saisies sont envoyées à ce service uniquement lorsque vous soumettez le formulaire. Vous pouvez aussi écrire directement à l’adresse email indiquée sur le site."],
+    ["À quoi servent ces informations ?", "Elles servent à répondre à votre demande, préparer un premier échange et, si vous souhaitez poursuivre, préciser une éventuelle mission. Le formulaire ne vous inscrit à aucune liste de diffusion."],
+    ["Où sont conservés les échanges ?", "Les messages transmis sont reçus dans la messagerie d’Aliaskar. Leur conservation dépend du suivi de votre demande et, le cas échéant, de la mission et des obligations qui lui sont associées. Contactez Aliaskar pour connaître la situation de vos échanges ou demander leur suppression."],
+    ["Comment exercer vos droits ?", "Vous pouvez écrire à amalabaev@gmail.com pour demander l’accès à vos informations, leur rectification ou leur suppression et poser toute question sur leur utilisation. Précisez l’adresse email utilisée pour votre demande, sans joindre de document d’identité de votre propre initiative."],
+    ["Cookies et mesure d’audience", "Ce portfolio n’intègre actuellement aucun outil de mesure d’audience ni de publicité. Les démonstrations utilisent des données fictives et leur état reste dans la page ; elles ne transmettent pas vos interactions à un service d’analyse."],
+  ] : [
+    ["Who receives your request?", "Aliaskar Malabaev, a freelance web developer, receives messages sent from this portfolio. For questions about your information, email amalabaev@gmail.com."],
+    ["What information is requested?", "Your name, email address and project description help understand your request and reply. Company, current website and budget range are optional. Do not enter passwords, confidential documents or sensitive information in this form."],
+    ["How is your message sent?", "The form uses FormSubmit to deliver your message to Aliaskar’s mailbox. The information entered is sent to that service only when you submit the form. You can also email the address provided on this site directly."],
+    ["How is this information used?", "It is used to respond to your request, prepare an initial conversation and, if you wish to proceed, discuss a potential engagement. This form does not subscribe you to a mailing list."],
+    ["Where are conversations kept?", "Delivered messages are received in Aliaskar’s mailbox. Retention depends on following up your request and, where relevant, the engagement and associated obligations. Contact Aliaskar to ask about your conversations or request their deletion."],
+    ["How can you exercise your rights?", "Email amalabaev@gmail.com to request access to your information, correction or deletion, or ask about its use. Specify the email address used for your enquiry; do not send an identity document unless specifically requested."],
+    ["Cookies and audience measurement", "This portfolio currently includes no audience measurement or advertising tools. Demonstrations use fictional data and their state stays on the page; they do not send your interactions to an analytics service."],
+  ];
+  return <><SiteHeader locale={locale} current={fr ? "/confidentialite/" : "/en/privacy/"} alternate={fr ? "/en/privacy/" : "/confidentialite/"} /><main id="main-content" tabIndex={-1} className="privacy-page"><p className="section-index">{fr ? "VOS INFORMATIONS" : "YOUR INFORMATION"}</p><h1>{fr ? "Un contact direct, un usage expliqué." : "Direct contact. Clear use of your data."}</h1><p className="privacy-intro">{fr ? "Voici ce qui se passe lorsque vous utilisez le formulaire de ce portfolio." : "Here is what happens when you use this portfolio’s contact form."}</p>{sections.map(([title, body]) => <section key={title}><h2>{title}</h2><p>{body}</p></section>)}<p className="privacy-provider">{fr ? "Pour le fonctionnement du service de transmission : " : "For details of the message delivery service: "}<a href="https://formsubmit.co/" target="_blank" rel="noreferrer">FormSubmit</a>.</p></main><SiteFooter locale={locale} /></>;
+}

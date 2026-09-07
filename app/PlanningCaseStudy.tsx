@@ -1,5 +1,7 @@
+import { SiteHeader } from "./SiteHeader";
+import { SiteFooter } from "./SiteFooter";
 import { Icon, Spark } from "./Icon";
-import { PlanningVisual } from "./Visuals";
+import { PlanningDemo } from "./PlanningDemo";
 
 type Locale = "fr" | "en";
 
@@ -81,20 +83,10 @@ const content = {
 export function PlanningCaseStudy({ locale }: { locale: Locale }) {
   const copy = content[locale];
   const home = locale === "fr" ? "/" : "/en/";
-  const alternate = locale === "fr" ? "/en/work/operational-planning/" : "/work/operational-planning/";
 
   return (
-    <main className="case-study-page">
-      <header className="engineering-header">
-        <a className="brand" href={home} aria-label={copy.back}>
-          <span className="brand-mark">AM</span>
-          <span className="brand-copy"><strong>Aliaskar Malabaev</strong>{copy.back}</span>
-        </a>
-        <nav className="engineering-nav" aria-label="Case study navigation">
-          <a href={alternate}>{copy.language}</a>
-          <a className="header-cta" href={`${home}#contact`}>{copy.contact} <Icon name="upRight" /></a>
-        </nav>
-      </header>
+    <><SiteHeader locale={locale} current={locale === "fr" ? "/work/operational-planning/" : "/en/work/operational-planning/"} alternate={locale === "fr" ? "/en/work/operational-planning/" : "/work/operational-planning/"} /><main className="case-study-page" id="main-content" tabIndex={-1}>
+
 
       <section className="case-study-hero">
         <p className="eyebrow"><span /> {copy.eyebrow}</p>
@@ -106,7 +98,7 @@ export function PlanningCaseStudy({ locale }: { locale: Locale }) {
       </section>
 
       <section className="case-study-visual" aria-label={copy.contextTitle}>
-        <div><PlanningVisual locale={locale} /></div>
+        <PlanningDemo locale={locale} />
       </section>
 
       <section className="case-study-section case-study-context">
@@ -143,6 +135,6 @@ export function PlanningCaseStudy({ locale }: { locale: Locale }) {
         <p>{copy.ctaText}</p>
         <div><a className="button button-acid" href={`${home}#contact`}>{copy.ctaButton} <Icon name="upRight" /></a><a className="text-link engineering-github" href={`${home}#work`}><Icon name="left" size={14} /> {copy.back}</a></div>
       </section>
-    </main>
+    </main><SiteFooter locale={locale} /></>
   );
 }

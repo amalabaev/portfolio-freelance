@@ -17,20 +17,24 @@ const workerUrl = pathToFileURL(workerPath);
 workerUrl.searchParams.set("pages-export", `${Date.now()}`);
 const { default: worker } = await import(workerUrl.href);
 
-const routes = [
-  { pathname: "/", destination: path.join(outputDir, "index.html"), locale: "fr" },
-  { pathname: "/en", destination: path.join(outputDir, "en", "index.html"), locale: "en" },
-  { pathname: "/engineering", destination: path.join(outputDir, "engineering", "index.html"), locale: "fr" },
-  { pathname: "/en/engineering", destination: path.join(outputDir, "en", "engineering", "index.html"), locale: "en" },
-  { pathname: "/developpeur-full-stack-freelance", destination: path.join(outputDir, "developpeur-full-stack-freelance", "index.html"), locale: "fr" },
-  { pathname: "/en/freelance-full-stack-developer", destination: path.join(outputDir, "en", "freelance-full-stack-developer", "index.html"), locale: "en" },
-  { pathname: "/work/operational-planning", destination: path.join(outputDir, "work", "operational-planning", "index.html"), locale: "fr" },
-  { pathname: "/en/work/operational-planning", destination: path.join(outputDir, "en", "work", "operational-planning", "index.html"), locale: "en" },
+const routePairs = [
+  ["/", "/en/"],
+  ["/engineering/", "/en/engineering/"],
+  ["/developpeur-full-stack-freelance/", "/en/freelance-full-stack-developer/"],
+  ["/work/operational-planning/", "/en/work/operational-planning/"],
+  ["/work/cardzap/", "/en/work/cardzap/"],
+  ["/confidentialite/", "/en/privacy/"],
 ];
+const routes = routePairs.flatMap(([fr, en]) => [
+  { pathname: fr, destination: path.join(outputDir, fr, "index.html"), locale: "fr" },
+  { pathname: en, destination: path.join(outputDir, en, "index.html"), locale: "en" },
+]);
 
 for (const route of routes) {
+  // vinext serves extensionless routes; GitHub Pages serves directory indexes.
+  const renderPath = route.pathname === "/" ? "/" : route.pathname.replace(/\/$/, "");
   const response = await worker.fetch(
-    new Request(`${productionOrigin}${route.pathname}`, {
+    new Request(`${productionOrigin}${renderPath}`, {
       headers: { accept: "text/html", "x-forwarded-proto": "https" },
     }),
     { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } },
@@ -41,8 +45,7 @@ for (const route of routes) {
     throw new Error(`Static export failed for ${route.pathname}: ${response.status}`);
   }
 
-  let html = await response.text();
-  html = html.replace(/<html lang="[^"]+"/i, `<html lang="${route.locale}"`);
+  const html = await response.text();
   if (!new RegExp(`<html lang="${route.locale}"`, "i").test(html)) {
     throw new Error(`Static export has the wrong language for ${route.pathname}`);
   }
@@ -61,38 +64,12 @@ await Promise.all([
     path.join(outputDir, "sitemap.xml"),
     `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  <url>
-    <loc>https://amalabaev.com/</loc><lastmod>${lastModified}</lastmod><changefreq>monthly</changefreq><priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="fr-FR" href="https://amalabaev.com/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://amalabaev.com/en/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://amalabaev.com/"/>
-  </url>
-  <url>
-    <loc>https://amalabaev.com/en/</loc><lastmod>${lastModified}</lastmod><changefreq>monthly</changefreq><priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="fr-FR" href="https://amalabaev.com/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://amalabaev.com/en/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://amalabaev.com/"/>
-  </url>
-  <url>
-    <loc>https://amalabaev.com/developpeur-full-stack-freelance/</loc><lastmod>${lastModified}</lastmod><changefreq>monthly</changefreq><priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="fr-FR" href="https://amalabaev.com/developpeur-full-stack-freelance/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://amalabaev.com/en/freelance-full-stack-developer/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://amalabaev.com/developpeur-full-stack-freelance/"/>
-  </url>
-  <url>
-    <loc>https://amalabaev.com/en/freelance-full-stack-developer/</loc><lastmod>${lastModified}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="fr-FR" href="https://amalabaev.com/developpeur-full-stack-freelance/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://amalabaev.com/en/freelance-full-stack-developer/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://amalabaev.com/developpeur-full-stack-freelance/"/>
-  </url>
-  <url>
-    <loc>https://amalabaev.com/engineering/</loc><lastmod>${lastModified}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="fr-FR" href="https://amalabaev.com/engineering/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://amalabaev.com/en/engineering/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://amalabaev.com/engineering/"/>
-  </url>
-  <url>
-    <loc>https://amalabaev.com/en/engineering/</loc><lastmod>${lastModified}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="fr-FR" href="https://amalabaev.com/engineering/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://amalabaev.com/en/engineering/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://amalabaev.com/engineering/"/>
-  </url>
-  <url>
-    <loc>https://amalabaev.com/work/operational-planning/</loc><lastmod>${lastModified}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="fr-FR" href="https://amalabaev.com/work/operational-planning/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://amalabaev.com/en/work/operational-planning/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://amalabaev.com/work/operational-planning/"/>
-  </url>
-  <url>
-    <loc>https://amalabaev.com/en/work/operational-planning/</loc><lastmod>${lastModified}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="fr-FR" href="https://amalabaev.com/work/operational-planning/"/><xhtml:link rel="alternate" hreflang="en-US" href="https://amalabaev.com/en/work/operational-planning/"/><xhtml:link rel="alternate" hreflang="x-default" href="https://amalabaev.com/work/operational-planning/"/>
-  </url>
+${routePairs.flatMap(([fr, en]) => [fr, en].map(pathname => `  <url>
+    <loc>${productionOrigin}${pathname}</loc><lastmod>${lastModified}</lastmod>
+    <xhtml:link rel="alternate" hreflang="fr-FR" href="${productionOrigin}${fr}" />
+    <xhtml:link rel="alternate" hreflang="en-US" href="${productionOrigin}${en}" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="${productionOrigin}${fr}" />
+  </url>`)).join("\n")}
 </urlset>
 `,
     "utf8",

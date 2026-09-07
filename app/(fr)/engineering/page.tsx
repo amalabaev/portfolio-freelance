@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { EngineeringPage } from "../EngineeringPage";
+import { EngineeringPage } from "../../EngineeringPage";
 
 const title = "Profil technique — Aliaskar Malabaev";
 const description = "Compétences full-stack, architecture produit, React, Laravel, Node.js, données, tests, Docker et intégrations IA.";

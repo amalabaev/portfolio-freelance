@@ -2,13 +2,13 @@ import { CopyEmailButton } from "./CopyEmailButton";
 import { Icon, Spark } from "./Icon";
 import { CAREER_START_YEAR, experienceYears } from "./profile";
 import { ProjectBriefForm } from "./ProjectBriefForm";
+import { SiteHeader } from "./SiteHeader";
+import { SiteFooter } from "./SiteFooter";
 import {
   ArchitectureBlueprint,
   CardzapVisual,
   ConsultingDashboard,
   HealthAppointment,
-  HeroBrowser,
-  Monogram,
   PlanningVisual,
   PortfolioVisual,
 } from "./Visuals";
@@ -19,41 +19,17 @@ const email = "amalabaev@gmail.com";
 
 const content = {
   fr: {
-    backToTop: "Retour en haut",
-    brandName: "Aliaskar Malabaev",
-    brandRole: "Développeur full-stack indépendant",
-    navigation: "Navigation principale",
-    nav: ["Réalisations", "Services", "Méthode"],
-    menu: "Menu",
-    language: "Choisir la langue",
     copyEmail: "Copier l’adresse",
     copiedEmail: "Adresse copiée",
-    headerCta: "Estimer mon projet",
-    eyebrow: `Développeur full-stack freelance · ${experienceYears} ans d’expérience · France & remote`,
-    heroTitle: "Votre entreprise a évolué.",
-    heroEmphasis: "Votre site devrait le montrer.",
-    heroText: `Développeur, chef de projet puis responsable d’équipe front-end : ${experienceYears} ans à concevoir des sites qui inspirent confiance et des outils web qui simplifient réellement le travail — du design aux systèmes qui les font fonctionner.`,
-    startProject: "Obtenir une estimation gratuite",
+    heroTitle: "Un site qui convainc.",
+    heroEmphasis: "Des outils qui vous simplifient la vie.",
+    heroText: "J’aide les PME et les équipes produit à refondre leur site, créer des applications métier et automatiser leurs opérations. Un seul interlocuteur, du premier croquis à la mise en ligne.",
+    startProject: "Parlons de votre projet",
     seeWork: "Voir mes réalisations",
-    available: "Disponible pour de nouveaux projets",
-    reply: "Premier retour sous 24 heures",
-    browserUrl: "votre-projet.fr",
-    browserKicker: "Une présence web à votre niveau",
-    browserLive: "LIVE",
-    browserWords: ["Crédible.", "Utile.", "Évolutive."],
-    browserTrend: ["VISITEURS · 6 DERNIERS MOIS", "En progression"],
-    score: [["Design", "singulier"], ["Métier", "compris"], ["Code", "solide"]],
-    noteTop: "Pensé produit",
-    noteBottom: "Construit sur mesure",
     proofLabel: "Le profil en bref",
-    proof: [`${experienceYears} ans d’expérience web`, "Front-end + back-end", "Ex-responsable d’équipe front", "FR · EN · RU"],
-    workLabel: "01 — RÉALISATIONS",
-    workTitle: "Des interfaces soignées.",
-    workEmphasis: "Des systèmes sérieux derrière.",
-    workText: "Trois projets qui montrent l’étendue du travail : comprendre un métier, structurer un produit et livrer une expérience claire.",
+    workTitle: "Trois projets.",
+    workEmphasis: "Des problèmes concrets.",
     workRole: "Rôle",
-    workStack: "Stack",
-    caseLabels: ["Le problème", "Ma contribution", "Le défi"],
     works: [
       {
         index: "01 / 03",
@@ -61,11 +37,6 @@ const content = {
         title: "Plateforme de planification opérationnelle",
         text: "Une application complexe pour gérer ressources, affectations, absences, plannings et contraintes opérationnelles — sans jamais exposer cette complexité à l’écran.",
         role: "Développement full-stack",
-        case: [
-          "Permettre de déplacer une affectation en quelques secondes tout en respectant automatiquement disponibilités, permissions, validations déjà accordées et contraintes métier.",
-          "Conception des interactions front-end, logique de transfert et de récurrence, validations côté serveur et traitement des différents états d’une affectation.",
-          "Garder un geste simple à l’écran alors que plusieurs règles doivent être vérifiées derrière chaque action — chevauchements compris, et sans perdre la traçabilité des décisions.",
-        ],
         stack: ["PHP", "JavaScript", "MySQL", "Docker"],
         visual: "planning",
         link: "/work/operational-planning/",
@@ -77,15 +48,10 @@ const content = {
         title: "Transformer des documents en données utiles",
         text: "Un produit web qui orchestre l’analyse de PDF, la génération assistée par IA et la restitution de données structurées, vérifiables et exploitables.",
         role: "Architecture produit & développement",
-        case: [
-          "Transformer des PDF hétérogènes en données structurées fiables, sans laisser l’utilisateur attendre devant un écran figé.",
-          "Architecture du produit, orchestration des traitements asynchrones, intégration de la génération assistée par IA et restitution de données vérifiables.",
-          "Rendre lisible une chaîne de traitement longue et faillible : progression, reprise sur erreur et contrôle humain avant validation.",
-        ],
         stack: ["Laravel", "React", "Redis", "MySQL"],
         visual: "cardzap",
-        link: null,
-        linkLabel: null,
+        link: "/work/cardzap/",
+        linkLabel: "Explorer le projet",
       },
       {
         index: "03 / 03",
@@ -93,21 +59,12 @@ const content = {
         title: "Une vitrine de freelance sans template",
         text: "Une identité éditoriale bilingue, responsive et performante, conçue puis développée intégralement sur mesure. Le code est public : jugez sur pièce.",
         role: "Direction, design & développement",
-        case: [
-          "Démontrer un niveau de design et de code sans pouvoir s’appuyer sur le logo d’un client connu.",
-          "Direction artistique, système de composants, contenu bilingue, accessibilité et déploiement statique automatisé.",
-          "Tenir une identité forte tout en gardant des pages rapides, accessibles et bien référencées. Le code est public : la promesse est vérifiable.",
-        ],
         stack: ["React 19", "TypeScript", "Node.js", "CSS sur mesure"],
         visual: "portfolio",
         link: "https://github.com/amalabaev/portfolio-freelance",
         linkLabel: "Voir le code",
       },
     ],
-    servicesLabel: "02 — SERVICES",
-    servicesTitle: "Un partenaire technique.",
-    servicesEmphasis: "Trois façons d’avancer.",
-    servicesText: "Du premier diagnostic à un produit complet, la solution reste proportionnée à votre vrai besoin.",
     services: [
       {
         number: "01",
@@ -131,22 +88,7 @@ const content = {
         tags: ["API", "IA", "Workflows"],
       },
     ],
-    seoProfile: "Découvrir mon offre de développeur full-stack freelance",
-    whyLabel: "03 — POURQUOI MOI",
-    whyTitle: "Le regard produit.",
-    whyEmphasis: "La profondeur technique.",
-    whyText: "Vous n’avez pas à arbitrer entre une belle interface, un développement robuste et quelqu’un qui comprend votre métier.",
-    reasons: [
-      ["01", "Une culture produit, pas seulement technique", "Avant de me concentrer sur le développement, j’ai travaillé en gestion de projet : cadrage, échanges clients, coordination et livraison. Je construis en gardant les contraintes de votre entreprise en tête, pas seulement celles du code."],
-      ["02", "Habitué à parler produit, pas seulement code", "J’ai aussi dirigé une équipe front-end. Je peux échanger directement avec un dirigeant, un designer ou une équipe technique — sans que vous ayez à rédiger une spécification de 80 pages."],
-      ["03", "Une base que quelqu’un d’autre peut reprendre", "Revue de code, documentation et architecture lisible : des années à relire le travail des autres m’ont appris ce qui rend un projet reprenable."],
-    ],
     engineeringCta: "Voir mon profil technique",
-    linkedIn: "Voir mon LinkedIn",
-    labLabel: "04 — CREATIVE LAB",
-    labTitle: "Explorer une identité.",
-    labEmphasis: "Servir un objectif.",
-    labText: "Des directions libres pour montrer comment un langage visuel peut changer selon le métier sans perdre en clarté.",
     conceptStamp: "Piste créative",
     concepts: [
       { type: "Architecture", index: "A—01", title: "Faire ressentir les espaces avant la première visite.", note: "Portfolio éditorial · Projets administrables", visual: "architecture", visualLabels: ["MAISON 08", "FAÇADE SUD", "PLAN / 2026", "ÉCHELLE 1:100"] },
@@ -154,75 +96,29 @@ const content = {
       { type: "Conseil B2B", index: "C—03", title: "Rendre une expertise complexe immédiatement lisible.", note: "Offre structurée · Demandes qualifiées", visual: "consulting", visualLabels: ["TABLEAU DE BORD", "CROISSANCE", "LEADS QUALIFIÉS", "TRIMESTRE ACTUEL"] },
     ],
     labDisclaimer: "Directions exploratoires — elles démontrent une approche créative et ne sont pas attribuées à des clients. Les données affichées sont fictives.",
-    methodLabel: "05 — MÉTHODE",
-    methodTitle: "Simple à suivre.",
-    methodEmphasis: "Solide à l’arrivée.",
     steps: [
       ["01", "Cadrer", "Un échange ciblé pour comprendre le contexte, les priorités et les personnes que vous voulez convaincre."],
       ["02", "Concevoir", "Une direction visuelle et fonctionnelle pour valider l’idée avant d’investir dans sa construction."],
       ["03", "Développer", "Une réalisation par étapes, avec des démonstrations et des points de validation clairs."],
       ["04", "Lancer", "Mise en ligne, vérifications, transmission et suivi. Le produit est prêt à travailler."],
     ],
-    promiseTitle: "Pas de jargon. Pas d’agence entre nous.",
-    promiseText: "Vous échangez directement avec la personne qui pense et développe votre produit.",
-    promiseSide: ["VALIDATIONS", "PAR ÉTAPES"],
-    aboutLabel: "06 — À PROPOS",
-    aboutIntro: "Je suis Aliaskar Malabaev, développeur full-stack orienté produit.",
-    aboutText: "J’aime rendre les sujets complexes",
-    aboutEmphasis: "simples à utiliser et difficiles à oublier.",
-    aboutStory: [
-      `Depuis ${CAREER_START_YEAR}, j’ai travaillé comme développeur front-end, chef de projet, puis responsable d’une équipe front-end, sur des projets allant de sites publics à des applications métier complexes. Cette expérience me permet d’aborder un projet autant par son produit et ses utilisateurs que par son architecture et son code.`,
-      "Formé à Paris, j’ai travaillé avec des équipes et des clients en France comme à l’international, en français, en anglais et en russe.",
-      "Concrètement : je peux cadrer un besoin avec un dirigeant le matin, arbitrer une règle métier avec vos équipes l’après-midi, et écrire le code qui la fait tenir.",
-    ],
-    aboutProof: [`${experienceYears} ans d’expérience`, "Ex-Team Lead front-end", "Front + back", "FR · EN · RU"],
     contactLabel: "UN PROJET À FAIRE AVANCER ?",
-    contactTitle: "Commençons par",
-    contactEmphasis: "une première estimation claire.",
-    contactText: "Décrivez brièvement votre activité, votre site ou votre idée. Je vous répondrai avec une première estimation du périmètre, des priorités et des prochaines étapes — sans jargon ni engagement.",
     contactPerson: "Votre demande arrive directement chez moi. Je vous réponds personnellement sous 24 heures.",
     contactPortraitAlt: "Portrait d’Aliaskar Malabaev",
-    assurances: ["Une réponse écrite par moi, jamais un message type.", "Une estimation initiale du périmètre et des prochaines étapes, gratuite et sans engagement.", "Vous parlez à un développeur qui a aussi géré des projets et une équipe."],
     emailAlternative: "Ou écrivez directement à",
-    footerBrand: "Design & systèmes web sur mesure",
-    footerRole: "Développeur full-stack orienté produit",
   },
   en: {
-    backToTop: "Back to top",
-    brandName: "Aliaskar Malabaev",
-    brandRole: "Independent full-stack developer",
-    navigation: "Main navigation",
-    nav: ["Selected work", "Services", "Process"],
-    menu: "Menu",
-    language: "Choose language",
     copyEmail: "Copy email address",
     copiedEmail: "Email copied",
-    headerCta: "Estimate my project",
-    eyebrow: `Freelance full-stack developer · ${experienceYears} years' experience · France & remote`,
-    heroTitle: "Your business has evolved.",
-    heroEmphasis: "Your website should show it.",
-    heroText: `Developer, project manager, then front-end team lead: ${experienceYears} years designing websites that earn trust and web tools that genuinely simplify work — from the interface to the systems that make them run.`,
-    startProject: "Get a free project estimate",
+    heroTitle: "A website that convinces.",
+    heroEmphasis: "Tools that make work easier.",
+    heroText: "I help small businesses and product teams redesign websites, build business applications and automate their operations. One person, from the first sketch to launch.",
+    startProject: "Let’s discuss your project",
     seeWork: "See selected work",
-    available: "Available for new projects",
-    reply: "Initial reply within 24 hours",
-    browserUrl: "your-project.com",
-    browserKicker: "A web presence at your level",
-    browserLive: "LIVE",
-    browserWords: ["Credible.", "Useful.", "Built to last."],
-    browserTrend: ["VISITORS · LAST 6 MONTHS", "Trending up"],
-    score: [["Distinct", "design"], ["Business", "understood"], ["Solid", "code"]],
-    noteTop: "Product-minded",
-    noteBottom: "Built from scratch",
     proofLabel: "The profile at a glance",
-    proof: [`${experienceYears} years of web experience`, "Front-end + back-end", "Former front-end team lead", "FR · EN · RU"],
-    workLabel: "01 — SELECTED WORK",
-    workTitle: "Considered interfaces.",
-    workEmphasis: "Serious systems behind them.",
-    workText: "Three projects showing the full scope of the work: understanding a business, shaping a product and delivering a clear experience.",
+    workTitle: "Three projects.",
+    workEmphasis: "Real problems to solve.",
     workRole: "Role",
-    workStack: "Stack",
-    caseLabels: ["The problem", "My contribution", "The hard part"],
     works: [
       {
         index: "01 / 03",
@@ -230,11 +126,6 @@ const content = {
         title: "Operational workforce planning platform",
         text: "A complex application for managing resources, assignments, absences, schedules and operational constraints — without ever exposing that complexity on screen.",
         role: "Full-stack development",
-        case: [
-          "Let a planner move an assignment in seconds while availability, permissions, approvals already granted and business constraints are all respected automatically.",
-          "Design of the front-end interactions, transfer and recurrence logic, server-side validation and handling of an assignment's various states.",
-          "Keeping the gesture simple on screen while several rules are checked behind every action — overlaps included, and without losing the audit trail.",
-        ],
         stack: ["PHP", "JavaScript", "MySQL", "Docker"],
         visual: "planning",
         link: "/en/work/operational-planning/",
@@ -246,15 +137,10 @@ const content = {
         title: "Turning documents into useful data",
         text: "A web product orchestrating PDF analysis, AI-assisted generation and the delivery of structured data that can be checked and actually used.",
         role: "Product architecture & development",
-        case: [
-          "Turn inconsistent PDFs into dependable structured data without leaving the user staring at a frozen screen.",
-          "Product architecture, orchestration of background processing, integration of AI-assisted generation and delivery of checkable data.",
-          "Making a long, failure-prone pipeline legible: progress, recovery from errors, and human review before anything is accepted.",
-        ],
         stack: ["Laravel", "React", "Redis", "MySQL"],
         visual: "cardzap",
-        link: null,
-        linkLabel: null,
+        link: "/en/work/cardzap/",
+        linkLabel: "Explore the project",
       },
       {
         index: "03 / 03",
@@ -262,21 +148,12 @@ const content = {
         title: "A freelance portfolio without a template",
         text: "A bilingual, responsive and fast editorial identity, designed and developed entirely from scratch. The code is public — judge it for yourself.",
         role: "Direction, design & development",
-        case: [
-          "Demonstrate a level of design and engineering without a recognisable client logo to lean on.",
-          "Art direction, component system, bilingual content, accessibility and automated static deployment.",
-          "Holding a strong identity while keeping pages fast, accessible and search-ready. The code is public, so the claim can be checked.",
-        ],
         stack: ["React 19", "TypeScript", "Node.js", "Custom CSS"],
         visual: "portfolio",
         link: "https://github.com/amalabaev/portfolio-freelance",
         linkLabel: "View the code",
       },
     ],
-    servicesLabel: "02 — SERVICES",
-    servicesTitle: "One technical partner.",
-    servicesEmphasis: "Three ways forward.",
-    servicesText: "From an initial diagnosis to a complete product, the solution stays proportionate to the real need.",
     services: [
       {
         number: "01",
@@ -300,22 +177,7 @@ const content = {
         tags: ["APIs", "AI", "Workflows"],
       },
     ],
-    seoProfile: "Explore my freelance full-stack services",
-    whyLabel: "03 — WHY ME",
-    whyTitle: "Product judgement.",
-    whyEmphasis: "Technical depth.",
-    whyText: "You should not have to choose between a beautiful interface, robust engineering and someone who understands your business.",
-    reasons: [
-      ["01", "Product judgement, not just technical skill", "Before focusing on development I worked in project management: scoping, client conversations, coordination and delivery. I build with your business constraints in mind, not only the code's."],
-      ["02", "Used to talking product, not only code", "I have also led a front-end team. I can talk directly to a founder, a designer or an engineering team — without you having to write an 80-page specification."],
-      ["03", "A codebase someone else can pick up", "Code review, documentation and legible architecture: years of reading other people's work taught me what makes a project inheritable."],
-    ],
     engineeringCta: "View my engineering profile",
-    linkedIn: "View my LinkedIn",
-    labLabel: "04 — CREATIVE LAB",
-    labTitle: "Explore an identity.",
-    labEmphasis: "Serve an objective.",
-    labText: "Independent directions showing how a visual language can shift with the field while keeping the experience clear.",
     conceptStamp: "Creative direction",
     concepts: [
       { type: "Architecture", index: "A—01", title: "Make people feel the space before their first visit.", note: "Editorial portfolio · Editable projects", visual: "architecture", visualLabels: ["HOUSE 08", "SOUTH FACADE", "PLAN / 2026", "SCALE 1:100"] },
@@ -323,38 +185,16 @@ const content = {
       { type: "B2B Consulting", index: "C—03", title: "Make complex expertise immediately understandable.", note: "Structured services · Qualified enquiries", visual: "consulting", visualLabels: ["DASHBOARD", "GROWTH", "QUALIFIED LEADS", "CURRENT QUARTER"] },
     ],
     labDisclaimer: "Exploratory directions — they demonstrate a creative approach and are not attributed to clients. The figures shown are fictional.",
-    methodLabel: "05 — PROCESS",
-    methodTitle: "Simple to follow.",
-    methodEmphasis: "Solid when delivered.",
     steps: [
       ["01", "Define", "A focused conversation to understand the context, priorities and the people you need to convince."],
       ["02", "Design", "A visual and functional direction to validate the idea before investing in its construction."],
       ["03", "Build", "Development in clear stages, with demonstrations and visible review points along the way."],
       ["04", "Launch", "Publishing, final checks, handover and follow-up. The product is ready to work."],
     ],
-    promiseTitle: "No jargon. No agency in between.",
-    promiseText: "You work directly with the person thinking through and developing your product.",
-    promiseSide: ["VALIDATED", "IN STAGES"],
-    aboutLabel: "06 — ABOUT",
-    aboutIntro: "I’m Aliaskar Malabaev, a product-minded full-stack developer.",
-    aboutText: "I like making complex subjects",
-    aboutEmphasis: "simple to use and hard to forget.",
-    aboutStory: [
-      `Since ${CAREER_START_YEAR} I have worked as a front-end developer, a project manager, and then as a front-end team lead, on projects ranging from public websites to complex business applications. That experience lets me approach a project through its product and its users as much as through its architecture and its code.`,
-      "Trained in Paris, I have worked with teams and clients in France and internationally, in French, English and Russian.",
-      "In practice: I can scope a need with a founder in the morning, settle a business rule with your team in the afternoon, and write the code that holds it together.",
-    ],
-    aboutProof: [`${experienceYears} years' experience`, "Former front-end lead", "Front + back", "FR · EN · RU"],
     contactLabel: "A PROJECT TO MOVE FORWARD?",
-    contactTitle: "Let’s start with",
-    contactEmphasis: "a clear initial estimate.",
-    contactText: "Briefly describe your business, website or idea. I’ll reply with an initial estimate of scope, priorities and sensible next steps — plainly and with no obligation.",
     contactPerson: "Your request comes straight to me. I will reply personally within 24 hours.",
     contactPortraitAlt: "Portrait of Aliaskar Malabaev",
-    assurances: ["A reply written by me, never a templated one.", "An initial estimate of scope and next steps, free and with no obligation.", "You speak to a developer who has also run projects and led a team."],
     emailAlternative: "Or email me directly at",
-    footerBrand: "Bespoke web design & systems",
-    footerRole: "Product-minded full-stack developer",
   },
 } as const;
 
@@ -373,142 +213,116 @@ export function PortfolioPage({ locale }: { locale: Locale }) {
   const freelanceProfile = locale === "fr" ? "/developpeur-full-stack-freelance/" : "/en/freelance-full-stack-developer/";
   const directEmail = `mailto:${email}`;
 
-  const navLinks = [
-    ["#work", copy.nav[0]],
-    ["#services", copy.nav[1]],
-    ["#method", copy.nav[2]],
-  ] as const;
+  const fr = locale === "fr";
+  const planning = `${home}work/operational-planning/`;
+  const privacy = fr ? "/confidentialite/" : "/en/privacy/";
 
   return (
-    <main>
-      <header className="site-header">
-        <a className="brand" href={`${home}#top`} aria-label={copy.backToTop}>
-          <span className="brand-mark">AM</span>
-          <span className="brand-copy"><strong>{copy.brandName}</strong>{copy.brandRole}</span>
-        </a>
-        <nav aria-label={copy.navigation}>{navLinks.map(([href, label]) => <a href={href} key={href}>{label}</a>)}</nav>
-        <div className="header-actions">
-          <div className="language-switch" aria-label={copy.language}>
-            {/* Full document navigation switches between independently exported locales. */}
-            {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
-            <a className={locale === "fr" ? "active" : ""} href="/" hrefLang="fr" aria-current={locale === "fr" ? "page" : undefined}>FR</a><span>/</span>
-            <a className={locale === "en" ? "active" : ""} href="/en/" hrefLang="en" aria-current={locale === "en" ? "page" : undefined}>EN</a>
-          </div>
-          <a className="header-cta" href="#contact">{copy.headerCta} <Icon name="down" /></a>
-          <details className="mobile-menu">
-            <summary>{copy.menu}</summary>
-            <div>{navLinks.map(([href, label]) => <a href={href} key={href}>{label}</a>)}<a href={engineering}>{copy.engineeringCta}</a></div>
-          </details>
-        </div>
-      </header>
-
+    <>
+      <SiteHeader locale={locale} current={home} alternate={fr ? "/en/" : "/"} homePage />
+      <main id="main-content" tabIndex={-1} className="portfolio-page">
       <section className="hero" id="top">
         <div className="hero-copy">
-          <p className="eyebrow"><span /> {copy.eyebrow}</p>
+          <p className="eyebrow"><span /> {fr ? "ALIASKAR MALABAEV · DÉVELOPPEUR WEB FREELANCE" : "ALIASKAR MALABAEV · FREELANCE WEB DEVELOPER"}</p>
           <h1>{copy.heroTitle}<br /><em>{copy.heroEmphasis}</em></h1>
           <p className="hero-lede">{copy.heroText}</p>
           <div className="hero-actions">
-            <a className="button button-dark" href="#contact">{copy.startProject} <Icon name="down" /></a>
+            <a className="button button-dark" href="#contact">{copy.startProject} <Icon name="upRight" /></a>
             <a className="text-link" href="#work">{copy.seeWork} <Icon name="down" /></a>
           </div>
-          <div className="availability"><span className="status-dot" /><span><strong>{copy.available}</strong>{copy.reply}</span></div>
-        </div>
-        <div className="hero-stage">
-          <div className="hero-stage-inner">
-            <HeroBrowser url={copy.browserUrl} kicker={copy.browserKicker} words={copy.browserWords} score={copy.score} live={copy.browserLive} trend={copy.browserTrend} />
-            <div className="stage-note note-top">{copy.noteTop} <b><Spark /></b></div>
-            <div className="stage-note note-bottom"><b><Icon name="cornerDown" size={13} /></b> {copy.noteBottom}</div>
+          <div className="hero-person">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/aliaskar-malabaev.jpg" alt={copy.contactPortraitAlt} width="52" height="52" />
+            <p><strong>{fr ? `${experienceYears} ans d’expérience · ancien responsable d’équipe` : `${experienceYears} years’ experience · former team lead`}</strong><span><i aria-hidden="true" />{fr ? "Disponible · France & à distance" : "Available · France & remote"}</span></p>
           </div>
         </div>
+        <a className="hero-project" href={planning} aria-label={fr ? "Explorer l’étude de cas de planification opérationnelle" : "Explore the workforce planning case study"}>
+          <div className="hero-project-heading"><span>{fr ? "DANS LES COULISSES D’UN PROJET" : "INSIDE A PROJECT"}</span><Icon name="upRight" size={20} /></div>
+          <div className="hero-project-visual"><div className="planning-preview" aria-hidden="true"><div className="preview-toolbar"><strong>{fr ? "Planning des équipes" : "Team schedule"}</strong><span>{fr ? "LUNDI" : "MONDAY"}</span></div><div className="preview-hours"><span>08:00</span><span>12:00</span><span>16:00</span></div><div className="preview-row"><strong>{fr ? "Équipe A" : "Team A"}</strong><span className="preview-assignment">08:00 — 10:00</span></div><div className="preview-row"><strong>{fr ? "Équipe B" : "Team B"}</strong><span className="preview-busy">09:00 — 12:00</span></div><div className="preview-result"><Icon name="cornerDown" size={24} /><p><strong>{fr ? "Un conflit ? Une explication." : "A conflict? A clear explanation."}</strong>{fr ? "Les disponibilités sont vérifiées avant validation." : "Availability is checked before confirmation."}</p></div></div></div>
+          <div className="hero-project-copy"><span className="tag">{fr ? "Application métier" : "Business application"}</span><h2>{fr ? "Un geste simple. Les bonnes règles derrière." : "A simple move. The right rules behind it."}</h2><p>{fr ? "Déplacer une affectation, vérifier les disponibilités, expliquer un conflit." : "Move an assignment, check availability, explain a conflict."}</p></div>
+          <span className="reconstruction-label">{fr ? "Interface reconstituée · données fictives" : "Reconstructed interface · fictional data"}</span>
+        </a>
       </section>
-
-      <section className="proof-strip" aria-label={copy.proofLabel}><span>{copy.proofLabel}</span>{copy.proof.map((item) => <strong key={item}><i><Spark /></i>{item}</strong>)}</section>
+      <section className="proof-strip" aria-label={copy.proofLabel}><span>{fr ? "DU BESOIN À LA LIVRAISON" : "FROM BRIEF TO DELIVERY"}</span>{[fr ? "Design & développement" : "Design & development", fr ? "Sites & applications métier" : "Websites & business tools", fr ? "Un interlocuteur direct" : "One point of contact", "FR · EN · RU"].map(item => <strong key={item}><i><Spark /></i>{item}</strong>)}</section>
 
       <section className="work section" id="work">
-        <div className="section-heading"><p className="section-index">{copy.workLabel}</p><h2>{copy.workTitle}<br /><em>{copy.workEmphasis}</em></h2><p>{copy.workText}</p></div>
+        <div className="section-heading"><p className="section-index">01 — {fr ? "PROJETS" : "WORK"}</p><h2>{copy.workTitle}<br /><em>{copy.workEmphasis}</em></h2><p>{fr ? "Mon rôle, les choix de conception et le fonctionnement de chaque projet." : "My role, the design decisions and how each project works."}</p></div>
         <div className="work-list">
-          {copy.works.map((work) => {
-            // Case-study routes are internal; the GitHub link is not.
-            const external = work.link?.startsWith("http") ?? false;
-            return (
-              <article className="work-card" key={work.index}>
-                <div className={`work-visual work-${work.visual}`}>
-                  {work.visual === "planning" && <PlanningVisual locale={locale} />}
-                  {work.visual === "cardzap" && <CardzapVisual locale={locale} />}
-                  {work.visual === "portfolio" && <PortfolioVisual locale={locale} headline={copy.heroTitle} />}
-                </div>
-                <div className="work-copy">
-                  <div className="work-kicker"><span>{work.index}</span><span>{work.kind}</span></div>
-                  <h3>{work.title}</h3>
-                  <p className="work-summary">{work.text}</p>
-                  <div className="case-study">{work.case.map((item, i) => <div key={item}><h4>{copy.caseLabels[i]}</h4><p>{item}</p></div>)}</div>
-                  <dl><div><dt>{copy.workRole}</dt><dd>{work.role}</dd></div><div><dt>{copy.workStack}</dt><dd className="tag-row">{work.stack.map((item) => <span key={item}>{item}</span>)}</dd></div></dl>
-                  {work.link && <a className="text-link" href={work.link} target={external ? "_blank" : undefined} rel={external ? "noreferrer" : undefined}>{work.linkLabel} <Icon name={external ? "upRight" : "right"} /></a>}
-                </div>
-              </article>
-            );
+          {copy.works.map((work, index) => {
+            const external = work.link.startsWith("http");
+            return <article className={`work-card${index === 0 ? " work-featured" : " work-compact"}`} key={work.index}>
+              <div className={`work-visual work-${work.visual}`}>
+                {work.visual === "planning" && <PlanningVisual locale={locale} />}
+                {work.visual === "cardzap" && <CardzapVisual locale={locale} />}
+                {work.visual === "portfolio" && <PortfolioVisual locale={locale} headline={copy.heroTitle} />}
+                <span className="visual-caption">{fr ? "Illustration du fonctionnement" : "Illustration of the workflow"}</span>
+              </div>
+              <div className="work-copy">
+                <div className="work-kicker"><span>{work.index}</span><span>{work.kind}</span></div>
+                <h3>{work.title}</h3><p>{work.text}</p>
+                {index === 0 && <div className="work-outcome"><strong>{fr ? "LE POINT CLÉ" : "THE KEY DECISION"}</strong><p>{fr ? "Guider le déplacement dans l’interface et vérifier les contraintes côté serveur avant toute validation." : "Guide the move in the interface and check constraints on the server before confirming it."}</p></div>}
+                <p className="work-role"><strong>{copy.workRole}</strong> {work.role}</p>
+                <div className="work-stack">{work.stack.map(item => <span className="tag" key={item}>{item}</span>)}</div>
+                <a className="text-link" href={work.link} target={external ? "_blank" : undefined} rel={external ? "noreferrer" : undefined}>{work.linkLabel}<Icon name="upRight" /></a>
+              </div>
+            </article>;
           })}
         </div>
       </section>
 
       <section className="services section" id="services">
-        <div className="section-heading"><p className="section-index">{copy.servicesLabel}</p><h2>{copy.servicesTitle}<br /><em>{copy.servicesEmphasis}</em></h2><p>{copy.servicesText}</p></div>
+        <div className="section-heading"><p className="section-index">02 — SERVICES</p><h2>{fr ? "De quoi avez-vous besoin ?" : "What do you need?"}</h2><p>{fr ? "Une intervention adaptée à votre situation, avec un périmètre défini ensemble." : "An engagement shaped around your situation, with a scope we agree together."}</p></div>
         <div className="service-grid">{copy.services.map((service) => <article className="service-card" key={service.number}>
-          <div className="service-number">{service.number}</div>
-          <h3>{service.title}</h3>
-          <p>{service.text}</p>
-          <ul className="service-deliverables">{service.deliverables.map((item) => <li key={item}>{item}</li>)}</ul>
-          <ul className="service-tags">{service.tags.map((tag) => <li className="tag" key={tag}>{tag}</li>)}</ul>
+          <div className="service-number">{service.number}</div><h3>{service.title}</h3><p>{service.text}</p>
+          <ul className="service-deliverables">{service.deliverables.slice(0, 3).map(item => <li key={item}>{item}</li>)}</ul>
+          <a className="text-link" href="#contact">{fr ? "Parlons de ce besoin" : "Discuss this need"}<Icon name="upRight" /></a>
         </article>)}</div>
-        <a className="text-link services-profile-link" href={freelanceProfile}>{copy.seoProfile} <Icon name="right" /></a>
+        <a className="text-link services-profile-link" href={freelanceProfile}>{fr ? "Livrables, collaboration et questions pratiques" : "Deliverables, collaboration and practical questions"}<Icon name="right" /></a>
       </section>
 
-      <section className="why section">
-        <div className="section-heading section-heading-light"><p className="section-index">{copy.whyLabel}</p><h2>{copy.whyTitle}<br /><em>{copy.whyEmphasis}</em></h2><p>{copy.whyText}</p></div>
-        <div className="reason-grid">{copy.reasons.map(([number, title, text]) => <article key={number}><span>{number}</span><h3>{title}</h3><p>{text}</p></article>)}</div>
-        <a className="button button-acid engineering-button" href={engineering}>{copy.engineeringCta} <Icon name="upRight" /></a>
-      </section>
-
-      <section className="concept-section section" id="lab">
-        <div className="section-heading section-heading-light"><p className="section-index">{copy.labLabel}</p><h2>{copy.labTitle}<br /><em>{copy.labEmphasis}</em></h2><p>{copy.labText}</p></div>
-        <div className="concept-list">{copy.concepts.map((concept) => <article className="concept-card" key={concept.index}>
-          <div className={`concept-visual visual-${concept.visual}`}>
-            <span className="concept-stamp">{copy.conceptStamp}</span>
-            <ConceptVisual concept={concept} locale={locale} />
-          </div>
-          <div className="concept-meta"><div><span>{concept.index}</span><span>{concept.type}</span></div><h3>{concept.title}</h3><p>{concept.note}</p></div>
-        </article>)}</div>
-        <p className="concept-disclaimer">{copy.labDisclaimer}</p>
+      <section className="about section" id="about">
+        <div className="about-portrait">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/aliaskar-malabaev.jpg" alt={copy.contactPortraitAlt} width="400" height="480" loading="lazy" />
+          <span>{fr ? "ALIASKAR MALABAEV · VOTRE INTERLOCUTEUR" : "ALIASKAR MALABAEV · YOUR POINT OF CONTACT"}</span>
+        </div>
+        <div className="about-copy"><p className="section-index">03 — {fr ? "À PROPOS" : "ABOUT"}</p><h2>{fr ? "La personne qui vous répond est celle qui construit." : "The person you talk to is the person who builds."}</h2><p>{fr ? `Développeur depuis ${CAREER_START_YEAR}, j’ai aussi cadré des projets et dirigé une équipe front-end. Je relie les besoins de votre entreprise aux choix de design et de développement.` : `A developer since ${CAREER_START_YEAR}, I have also scoped projects and led a front-end team. I connect your business needs with design and engineering decisions.`}</p><p>{fr ? "Formé à Paris, je travaille en français, anglais et russe, avec des équipes en France et à l’international." : "Trained in Paris, I work in French, English and Russian with teams in France and internationally."}</p><div className="about-links"><a className="text-link" href={engineering}>{copy.engineeringCta}<Icon name="right" /></a><a className="text-link" href="https://fr.linkedin.com/in/aliaskar-malabaev-6850a0130" target="_blank" rel="noreferrer">LinkedIn<Icon name="upRight" /></a></div></div>
       </section>
 
       <section className="process section" id="method">
-        <div className="section-heading process-heading"><p className="section-index">{copy.methodLabel}</p><h2>{copy.methodTitle}<br /><em>{copy.methodEmphasis}</em></h2></div>
-        <div className="steps">{copy.steps.map(([number, title, text]) => <article className="step" key={number}><span>{number}</span><h3>{title}</h3><p>{text}</p><i><Icon name="downRight" size={18} /></i></article>)}</div>
-        <div className="promise-strip"><span className="promise-mark">AM</span><p><strong>{copy.promiseTitle}</strong><br />{copy.promiseText}</p><span className="promise-side">{copy.promiseSide[0]}<br />{copy.promiseSide[1]}</span></div>
+        <div className="section-heading"><p className="section-index">04 — {fr ? "MÉTHODE" : "PROCESS"}</p><h2>{fr ? "Vous savez où le projet en est." : "You know where the project stands."}</h2><p>{fr ? "Des étapes visibles, des décisions partagées et une transmission à la livraison." : "Visible milestones, shared decisions and a handover at launch."}</p></div>
+        <div className="steps">{copy.steps.map(([number, title, text]) => <article className="step" key={number}><span>{number}</span><h3>{title}</h3><p>{text}</p></article>)}</div>
       </section>
 
-      <section className="about section">
-        <div className="about-label"><p className="section-index">{copy.aboutLabel}</p><Monogram /></div>
-        <div className="about-copy"><p className="about-intro">{copy.aboutIntro}</p><p className="about-large">{copy.aboutText} <em>{copy.aboutEmphasis}</em></p><div className="about-story">{copy.aboutStory.map((para) => <p key={para}>{para}</p>)}</div><div className="about-proof">{copy.aboutProof.map((item) => <span key={item}>{item}</span>)}</div><div className="about-links"><a className="text-link" href={engineering}>{copy.engineeringCta} <Icon name="right" /></a><a className="text-link" href="https://fr.linkedin.com/in/aliaskar-malabaev-6850a0130" target="_blank" rel="noreferrer">{copy.linkedIn} <Icon name="upRight" /></a></div></div>
+      <section className="concept-section section" id="lab">
+        <div className="lab-heading"><div><p className="section-index">CREATIVE LAB</p><h2>{fr ? "Un autre métier, un autre langage." : "A different field. A different language."}</h2></div><p>{fr ? "Trois explorations visuelles personnelles, sans attribution à un client." : "Three personal visual explorations, not client commissions."}</p></div>
+        <div className="concept-list">{copy.concepts.map(concept => <article className="concept-card" key={concept.index}><div className={`concept-visual visual-${concept.visual}`}><span className="concept-stamp">{copy.conceptStamp}</span><ConceptVisual concept={concept} locale={locale} /></div><div className="concept-meta"><div><span>{concept.index}</span><span>{concept.type}</span></div><h3>{concept.title}</h3></div></article>)}</div>
+        <p className="concept-disclaimer">{copy.labDisclaimer}</p>
+      </section>
+
+      <section className="home-faq section">
+        <div><p className="section-index">{fr ? "AVANT DE COMMENCER" : "BEFORE WE START"}</p><h2>{fr ? "Quelques réponses utiles." : "A few useful answers."}</h2></div>
+        <div className="faq-list">{(fr ? [
+          ["Que contient la première estimation ?", "Un premier avis sur le périmètre, les priorités et les étapes. Une fourchette de budget et de délai est proposée lorsque le besoin est assez précis ; sinon, nous clarifions d’abord les points ouverts. Ce premier échange est gratuit."],
+          ["Pouvez-vous reprendre mon site ou mon application ?", "Oui. Nous commençons par examiner l’existant et les points qui bloquent, puis décidons de ce qu’il faut conserver, corriger ou faire évoluer."],
+          ["Que se passe-t-il après la mise en ligne ?", "La livraison comprend une transmission du projet. Les besoins de maintenance et d’évolution sont définis ensemble dans le périmètre de la mission."],
+        ] : [
+          ["What does the initial estimate include?", "An initial view of scope, priorities and stages. A budget and timeline range follows when the brief is clear enough; otherwise we first clarify the open questions. This initial conversation is free."],
+          ["Can you take over my website or application?", "Yes. We review the existing product and its blockers, then decide what to keep, fix or develop further."],
+          ["What happens after launch?", "Delivery includes a project handover. Maintenance and future development needs are agreed as part of the engagement’s scope."],
+        ]).map(([question, answer]) => <details key={question}><summary>{question}</summary><p>{answer}</p></details>)}</div>
       </section>
 
       <section className="contact section" id="contact">
-        <div className="contact-intro">
-          <p className="section-index">{copy.contactLabel}</p>
-          <h2>{copy.contactTitle}<br /><em>{copy.contactEmphasis}</em></h2>
-          <p>{copy.contactText}</p>
-          <div className="contact-person">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/aliaskar-malabaev.jpg" alt={copy.contactPortraitAlt} width="72" height="72" loading="lazy" />
-            <p><strong>Aliaskar Malabaev</strong><span>{copy.contactPerson}</span></p>
-          </div>
-          <ul className="contact-assurances">{copy.assurances.map((item) => <li key={item}><i><Spark /></i>{item}</li>)}</ul>
-        </div>
+        <div className="contact-intro"><p className="section-index">{copy.contactLabel}</p><h2>{fr ? "Et si on parlait" : "Let’s talk about"}<br /><em>{fr ? "de votre projet ?" : "your project."}</em></h2><p>{fr ? "Quelques lignes suffisent pour commencer : votre situation, ce qui bloque et ce que vous aimeriez améliorer." : "A few lines are enough to start: your situation, what gets in the way and what you would like to improve."}</p><div className="contact-person">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/aliaskar-malabaev.jpg" alt="" width="72" height="72" loading="lazy" /><p><strong>Aliaskar Malabaev</strong><span>{copy.contactPerson}</span></p></div><ul className="contact-assurances"><li><i><Spark /></i>{fr ? "Premier échange gratuit, sans engagement." : "A free first conversation, with no obligation."}</li><li><i><Spark /></i>{fr ? "Périmètre, prochaines étapes, puis budget et délai selon les informations disponibles." : "Scope and next steps, then budget and timing based on the information available."}</li></ul></div>
         <ProjectBriefForm locale={locale} />
-        <div className="contact-alternative"><span>{copy.emailAlternative}</span><a href={directEmail}>{email}</a><CopyEmailButton email={email} idleLabel={copy.copyEmail} copiedLabel={copy.copiedEmail} /></div>
+        <div className="contact-alternative"><span>{copy.emailAlternative}</span><a href={directEmail}>{email}</a><CopyEmailButton email={email} idleLabel={copy.copyEmail} copiedLabel={copy.copiedEmail} errorLabel={fr ? "Sélectionnez l’adresse pour la copier" : "Select the address to copy it"} /></div>
+        <p className="contact-privacy"><a href={privacy}>{fr ? "Comment vos informations sont utilisées" : "How your information is used"}</a></p>
       </section>
-
-      <footer><a className="brand footer-brand" href={`${home}#top`}><span className="brand-mark">AM</span><span>{copy.footerBrand}<br />React · Node.js</span></a><p>© 2026 Aliaskar Malabaev<br />{copy.footerRole}</p><div><a href={freelanceProfile}>Services <Icon name="right" size={13} /></a><a href={engineering}>Engineering <Icon name="right" size={13} /></a><a href="https://fr.linkedin.com/in/aliaskar-malabaev-6850a0130" target="_blank" rel="noreferrer">LinkedIn <Icon name="upRight" size={13} /></a></div></footer>
-    </main>
+      </main>
+      <SiteFooter locale={locale} />
+    </>
   );
 }

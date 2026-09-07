@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { PlanningCaseStudy } from "../../PlanningCaseStudy";
+import { PlanningCaseStudy } from "../../../PlanningCaseStudy";
 
 const title = "Étude de cas : plateforme de planification opérationnelle — Aliaskar Malabaev";
 const description = "Conception et développement full-stack d’une application métier de planification : drag & drop, règles métier, permissions et validations.";

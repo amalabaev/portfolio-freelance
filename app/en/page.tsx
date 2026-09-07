@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { PortfolioPage } from "../PortfolioPage";
 
-const title = "Aliaskar Malabaev — Web product design & development";
+const title = "Freelance web developer — websites & applications | Aliaskar Malabaev";
 const description = "Aliaskar Malabaev’s portfolio: websites that earn trust, bespoke business applications and automation, from interface design to full-stack systems.";
 
 export const metadata: Metadata = {
