@@ -1,6 +1,6 @@
 import { CopyEmailButton } from "./CopyEmailButton";
 import { Icon, Spark } from "./Icon";
-import { CAREER_START_YEAR, experienceYears } from "./profile";
+import { CAREER_START_YEAR } from "./profile";
 import { ProjectBriefForm } from "./ProjectBriefForm";
 import { SiteHeader } from "./SiteHeader";
 import { SiteFooter } from "./SiteFooter";
@@ -10,8 +10,8 @@ import {
   ConsultingDashboard,
   HealthAppointment,
   PlanningVisual,
-  PortfolioVisual,
 } from "./Visuals";
+import "./portfolio-preview.css";
 
 type Locale = "fr" | "en";
 
@@ -21,71 +21,74 @@ const content = {
   fr: {
     copyEmail: "Copier l’adresse",
     copiedEmail: "Adresse copiée",
-    heroTitle: "Un site qui convainc.",
-    heroEmphasis: "Des outils qui vous simplifient la vie.",
-    heroText: "J’aide les PME et les équipes produit à refondre leur site, créer des applications métier et automatiser leurs opérations. Un seul interlocuteur, du premier croquis à la mise en ligne.",
+    heroTitle: "Web, mobile",
+    heroEmphasis: "et intégration d’IA.",
+    heroText: "Je développe votre site, vos outils métier et les applications que vous proposez à vos utilisateurs. J’intègre aussi l’IA à vos outils et à vos produits, par exemple pour extraire des champs à vérifier ou créer des cartes de révision.",
     startProject: "Parlons de votre projet",
-    seeWork: "Voir mes réalisations",
-    proofLabel: "Le profil en bref",
-    workTitle: "Trois projets.",
-    workEmphasis: "Des problèmes concrets.",
+    seeMasq: "Voir mon jeu mobile",
+    proofLabel: "Mes domaines",
+    workTitle: "Trois projets",
+    workEmphasis: "à explorer.",
     workRole: "Rôle",
     works: [
       {
         index: "01 / 03",
-        kind: "APPLICATION MÉTIER · PROJET ANONYMISÉ",
-        title: "Plateforme de planification opérationnelle",
-        text: "Une application complexe pour gérer ressources, affectations, absences, plannings et contraintes opérationnelles — sans jamais exposer cette complexité à l’écran.",
+        kind: "MASQ · PRODUIT PERSONNEL",
+        title: "Un jeu multijoueur pour les soirées entre amis.",
+        text: "J’ai créé MASQ, un jeu mobile de déduction sociale en français et en anglais. Découvrez ce que chaque joueur voit sur son téléphone et comment le groupe progresse jusqu’au vote.",
+        role: "Conception du jeu et développement",
+        stack: ["Jeu mobile", "Multijoueur", "FR / EN"],
+        visual: "masq",
+        link: "/work/masq/",
+        linkLabel: "Découvrir MASQ en images",
+      },
+      {
+        index: "02 / 03",
+        kind: "PLANNING · PROJET MÉTIER ANONYMISÉ",
+        title: "Réaffecter une intervention.",
+        text: "Essayez deux horaires dans une démo interactive. L’un crée un conflit avec le planning de l’équipe, l’autre permet de confirmer le déplacement.",
         role: "Développement full-stack",
         stack: ["PHP", "JavaScript", "MySQL", "Docker"],
         visual: "planning",
         link: "/work/operational-planning/",
-        linkLabel: "Voir l’étude de cas",
+        linkLabel: "Essayer le planning",
       },
       {
-        index: "02 / 03",
+        index: "03 / 03",
         kind: "PRODUIT IA · CARDZAP",
-        title: "Transformer des documents en données utiles",
-        text: "Un produit web qui orchestre l’analyse de PDF, la génération assistée par IA et la restitution de données structurées, vérifiables et exploitables.",
+        title: "Du document aux cartes de révision.",
+        text: "Cardzap génère des cartes de révision à partir de documents. Sa fiche publique explique le traitement à l’aide d’un compte rendu fictif et montre comment signaler une date qui reste à confirmer.",
         role: "Architecture produit & développement",
         stack: ["Laravel", "React", "Redis", "MySQL"],
         visual: "cardzap",
         link: "/work/cardzap/",
-        linkLabel: "Explorer le projet",
-      },
-      {
-        index: "03 / 03",
-        kind: "IDENTITÉ & DÉVELOPPEMENT · AMALABAEV.COM",
-        title: "Une vitrine de freelance sans template",
-        text: "Une identité éditoriale bilingue, responsive et performante, conçue puis développée intégralement sur mesure. Le code est public : jugez sur pièce.",
-        role: "Direction, design & développement",
-        stack: ["React 19", "TypeScript", "Node.js", "CSS sur mesure"],
-        visual: "portfolio",
-        link: "https://github.com/amalabaev/portfolio-freelance",
-        linkLabel: "Voir le code",
+        linkLabel: "Voir l’exemple documentaire",
       },
     ],
     services: [
       {
         number: "01",
-        title: "Refonte de site web",
-        text: "Pour transformer un site daté ou peu crédible en une présence claire, rapide et convaincante.",
-        deliverables: ["Message et positionnement retravaillés", "Maquette validée avant la première ligne de code", "Site rapide, responsive, prêt pour Google", "Prise en main et autonomie côté client"],
-        tags: ["Positionnement", "UX / UI", "SEO"],
+        need: "web",
+        title: "Sites et applications web",
+        text: "Un site à créer ou à refondre, un portail client ou un outil interne. Nous partons de ce que votre visiteur ou votre équipe doit pouvoir faire.",
+        deliverables: ["Parcours et maquette à valider ensemble", "Interface adaptée au téléphone et à l’ordinateur", "Prise en main par votre équipe"],
+        action: "Décrire mon projet web",
       },
       {
         number: "02",
-        title: "Application web sur mesure",
-        text: "Pour digitaliser un processus métier qu’un thème ou un CMS générique ne peut pas correctement résoudre.",
-        deliverables: ["Cadrage précis du processus existant", "Prototype cliquable avant développement", "Application testée, documentée, déployée", "Évolutions livrées par étapes visibles"],
-        tags: ["React", "Back-end", "Données"],
+        need: "mobile",
+        title: "Applications mobiles",
+        text: "Un outil à utiliser sur le terrain, un jeu à partager entre amis… Nous testons le geste principal sur un téléphone avant de définir la première version.",
+        deliverables: ["Un parcours prioritaire à prototyper", "Essais sur les téléphones visés", "Périmètre de la première version"],
+        action: "Décrire mon projet mobile",
       },
       {
         number: "03",
-        title: "Automatisation & intégrations",
-        text: "Pour connecter vos outils, supprimer les tâches répétitives et intégrer des API ou de l’IA avec discernement.",
-        deliverables: ["Repérage des tâches qui coûtent le plus", "Connexion de vos outils via leurs API", "IA intégrée uniquement là où elle sert", "Suivi lisible et reprise en main simple"],
-        tags: ["API", "IA", "Workflows"],
+        need: "ai",
+        title: "Automatisation et intégration d’IA",
+        text: "Je peux relier deux outils pour éviter une double saisie, proposer des champs à vérifier avant export ou ajouter une fonction IA à votre produit.",
+        deliverables: ["Un flux ou une fonctionnalité à tester", "Un essai sur des exemples représentatifs", "Des critères pour décider de la suite"],
+        action: "Décrire mon besoin d’intégration",
       },
     ],
     engineeringCta: "Voir mon profil technique",
@@ -103,78 +106,81 @@ const content = {
       ["04", "Lancer", "Mise en ligne, vérifications, transmission et suivi. Le produit est prêt à travailler."],
     ],
     contactLabel: "UN PROJET À FAIRE AVANCER ?",
-    contactPerson: "Votre demande arrive directement chez moi. Je vous réponds personnellement sous 24 heures.",
+    contactPerson: "Votre demande m’arrive directement. Nous pouvons échanger en français, en anglais ou en russe.",
     contactPortraitAlt: "Portrait d’Aliaskar Malabaev",
     emailAlternative: "Ou écrivez directement à",
   },
   en: {
     copyEmail: "Copy email address",
     copiedEmail: "Email copied",
-    heroTitle: "A website that convinces.",
-    heroEmphasis: "Tools that make work easier.",
-    heroText: "I help small businesses and product teams redesign websites, build business applications and automate their operations. One person, from the first sketch to launch.",
+    heroTitle: "Web, mobile",
+    heroEmphasis: "and AI integration.",
+    heroText: "I build websites, internal tools and apps for your customers. I also integrate AI into the tools your team uses and the products you offer, whether that means extracting document fields for review or generating study flashcards.",
     startProject: "Let’s discuss your project",
-    seeWork: "See selected work",
-    proofLabel: "The profile at a glance",
-    workTitle: "Three projects.",
-    workEmphasis: "Real problems to solve.",
+    seeMasq: "Explore my mobile game",
+    proofLabel: "What I build",
+    workTitle: "Three projects",
+    workEmphasis: "to explore.",
     workRole: "Role",
     works: [
       {
         index: "01 / 03",
-        kind: "BUSINESS APPLICATION · ANONYMISED PROJECT",
-        title: "Operational workforce planning platform",
-        text: "A complex application for managing resources, assignments, absences, schedules and operational constraints — without ever exposing that complexity on screen.",
+        kind: "MASQ · PERSONAL PRODUCT",
+        title: "A multiplayer game for a night with friends.",
+        text: "I created MASQ, a mobile social deduction game in French and English. See what each player sees on their phone and how the group gets from the opening round to the vote.",
+        role: "Game design and development",
+        stack: ["Mobile game", "Multiplayer", "FR / EN"],
+        visual: "masq",
+        link: "/en/work/masq/",
+        linkLabel: "See MASQ in action",
+      },
+      {
+        index: "02 / 03",
+        kind: "PLANNING · ANONYMISED BUSINESS PROJECT",
+        title: "Move an assignment to another team.",
+        text: "Try two time slots in the interactive demo. One clashes with the team’s schedule. The other lets you confirm the move.",
         role: "Full-stack development",
         stack: ["PHP", "JavaScript", "MySQL", "Docker"],
         visual: "planning",
         link: "/en/work/operational-planning/",
-        linkLabel: "Read the case study",
+        linkLabel: "Try the planning demo",
       },
       {
-        index: "02 / 03",
+        index: "03 / 03",
         kind: "AI PRODUCT · CARDZAP",
-        title: "Turning documents into useful data",
-        text: "A web product orchestrating PDF analysis, AI-assisted generation and the delivery of structured data that can be checked and actually used.",
+        title: "From documents to study flashcards.",
+        text: "Cardzap generates flashcards from documents. The public case study uses fictional meeting notes to explain the workflow and show how a missing date can be flagged for review.",
         role: "Product architecture & development",
         stack: ["Laravel", "React", "Redis", "MySQL"],
         visual: "cardzap",
         link: "/en/work/cardzap/",
-        linkLabel: "Explore the project",
-      },
-      {
-        index: "03 / 03",
-        kind: "IDENTITY & DEVELOPMENT · AMALABAEV.COM",
-        title: "A freelance portfolio without a template",
-        text: "A bilingual, responsive and fast editorial identity, designed and developed entirely from scratch. The code is public — judge it for yourself.",
-        role: "Direction, design & development",
-        stack: ["React 19", "TypeScript", "Node.js", "Custom CSS"],
-        visual: "portfolio",
-        link: "https://github.com/amalabaev/portfolio-freelance",
-        linkLabel: "View the code",
+        linkLabel: "See the document example",
       },
     ],
     services: [
       {
         number: "01",
-        title: "Website redesign",
-        text: "Turn a dated or unconvincing website into a clear, fast and credible presence.",
-        deliverables: ["Message and positioning reworked", "Design signed off before the first line of code", "Fast, responsive, search-ready site", "Handover so your team stays autonomous"],
-        tags: ["Positioning", "UX / UI", "SEO"],
+        need: "web",
+        title: "Websites and web apps",
+        text: "A new website, a redesign, a customer portal or an internal tool. We start with what your visitors or your team need to do.",
+        deliverables: ["User flows and designs to review together", "An interface for phones and computers", "A handover for your team"],
+        action: "Describe my web project",
       },
       {
         number: "02",
-        title: "Bespoke web application",
-        text: "Digitise a business process that a generic theme or CMS cannot properly support.",
-        deliverables: ["A precise read of your current process", "Clickable prototype before development", "Application tested, documented, deployed", "Improvements shipped in visible stages"],
-        tags: ["React", "Back-end", "Data"],
+        need: "mobile",
+        title: "Mobile apps",
+        text: "Does your team work in the field, or does your game bring people together on their phones? We can try the main interaction on a device before defining the first release.",
+        deliverables: ["A prototype of the main user journey", "Tests on the phones you want to support", "An agreed scope for the first release"],
+        action: "Describe my mobile project",
       },
       {
         number: "03",
-        title: "Automation & integrations",
-        text: "Connect tools, remove repetitive work and integrate APIs or AI where they genuinely help.",
-        deliverables: ["The costliest manual tasks identified", "Your tools connected through their APIs", "AI used only where it earns its place", "Readable monitoring and easy handover"],
-        tags: ["APIs", "AI", "Workflows"],
+        need: "ai",
+        title: "Automation and AI integration",
+        text: "I can connect tools to avoid duplicate data entry, flag document fields for review before export, or add an AI feature to your product.",
+        deliverables: ["One workflow or feature to test", "A trial with representative examples", "Criteria for deciding whether to proceed"],
+        action: "Describe my integration project",
       },
     ],
     engineeringCta: "View my engineering profile",
@@ -192,7 +198,7 @@ const content = {
       ["04", "Launch", "Publishing, final checks, handover and follow-up. The product is ready to work."],
     ],
     contactLabel: "A PROJECT TO MOVE FORWARD?",
-    contactPerson: "Your request comes straight to me. I will reply personally within 24 hours.",
+    contactPerson: "Your message comes straight to me. We can discuss your project in English, French or Russian.",
     contactPortraitAlt: "Portrait of Aliaskar Malabaev",
     emailAlternative: "Or email me directly at",
   },
@@ -223,59 +229,64 @@ export function PortfolioPage({ locale }: { locale: Locale }) {
       <main id="main-content" tabIndex={-1} className="portfolio-page">
       <section className="hero" id="top">
         <div className="hero-copy">
-          <p className="eyebrow"><span /> {fr ? "ALIASKAR MALABAEV · DÉVELOPPEUR WEB FREELANCE" : "ALIASKAR MALABAEV · FREELANCE WEB DEVELOPER"}</p>
+          <p className="eyebrow"><span /> {fr ? "ALIASKAR MALABAEV · DÉVELOPPEUR FULL-STACK FREELANCE" : "ALIASKAR MALABAEV · FREELANCE FULL-STACK DEVELOPER"}</p>
           <h1>{copy.heroTitle}<br /><em>{copy.heroEmphasis}</em></h1>
           <p className="hero-lede">{copy.heroText}</p>
           <div className="hero-actions">
             <a className="button button-dark" href="#contact">{copy.startProject} <Icon name="upRight" /></a>
-            <a className="text-link" href="#work">{copy.seeWork} <Icon name="down" /></a>
+            <a className="text-link" href={`${home}work/masq/`}>{copy.seeMasq} <Icon name="right" /></a>
           </div>
           <div className="hero-person">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/aliaskar-malabaev.jpg" alt={copy.contactPortraitAlt} width="52" height="52" />
-            <p><strong>{fr ? `${experienceYears} ans d’expérience · ancien responsable d’équipe` : `${experienceYears} years’ experience · former team lead`}</strong><span><i aria-hidden="true" />{fr ? "Disponible · France & à distance" : "Available · France & remote"}</span></p>
+            <p><strong>{fr ? "Basé à Bichkek, formé à Paris" : "Based in Bishkek, trained in Paris"}</strong><span><i aria-hidden="true" />{fr ? "À distance · français, anglais et russe" : "Available remotely · English, French and Russian"}</span></p>
           </div>
         </div>
-        <a className="hero-project" href={planning} aria-label={fr ? "Explorer l’étude de cas de planification opérationnelle" : "Explore the workforce planning case study"}>
-          <div className="hero-project-heading"><span>{fr ? "DANS LES COULISSES D’UN PROJET" : "INSIDE A PROJECT"}</span><Icon name="upRight" size={20} /></div>
+        <a className="hero-project" href={planning} aria-label={fr ? "Essayer la démo de planning" : "Try the planning demo"}>
+          <div className="hero-project-heading"><span>{fr ? "ESSAYER LA DÉMO DE PLANNING" : "TRY THE PLANNING DEMO"}</span><Icon name="upRight" size={20} /></div>
           <div className="hero-project-visual"><div className="planning-preview" aria-hidden="true"><div className="preview-toolbar"><strong>{fr ? "Planning des équipes" : "Team schedule"}</strong><span>{fr ? "LUNDI" : "MONDAY"}</span></div><div className="preview-hours"><span>08:00</span><span>12:00</span><span>16:00</span></div><div className="preview-row"><strong>{fr ? "Équipe A" : "Team A"}</strong><span className="preview-assignment">08:00 — 10:00</span></div><div className="preview-row"><strong>{fr ? "Équipe B" : "Team B"}</strong><span className="preview-busy">09:00 — 12:00</span></div><div className="preview-result"><Icon name="cornerDown" size={24} /><p><strong>{fr ? "Un conflit ? Une explication." : "A conflict? A clear explanation."}</strong>{fr ? "Les disponibilités sont vérifiées avant validation." : "Availability is checked before confirmation."}</p></div></div></div>
-          <div className="hero-project-copy"><span className="tag">{fr ? "Application métier" : "Business application"}</span><h2>{fr ? "Un geste simple. Les bonnes règles derrière." : "A simple move. The right rules behind it."}</h2><p>{fr ? "Déplacer une affectation, vérifier les disponibilités, expliquer un conflit." : "Move an assignment, check availability, explain a conflict."}</p></div>
+          <div className="hero-project-copy"><span className="tag">{fr ? "Application métier" : "Business application"}</span><h2>{fr ? "Peut-on déplacer cette intervention ?" : "Can this team take the assignment?"}</h2><p>{fr ? "Essayez 9 h, puis 14 h, et voyez quand le planning autorise le changement." : "Try 9 am, then 2 pm, and see when the schedule allows the move."}</p></div>
           <span className="reconstruction-label">{fr ? "Interface reconstituée · données fictives" : "Reconstructed interface · fictional data"}</span>
         </a>
       </section>
-      <section className="proof-strip" aria-label={copy.proofLabel}><span>{fr ? "DU BESOIN À LA LIVRAISON" : "FROM BRIEF TO DELIVERY"}</span>{[fr ? "Design & développement" : "Design & development", fr ? "Sites & applications métier" : "Websites & business tools", fr ? "Un interlocuteur direct" : "One point of contact", "FR · EN · RU"].map(item => <strong key={item}><i><Spark /></i>{item}</strong>)}</section>
+      <section className="proof-strip" aria-label={copy.proofLabel}><span>{fr ? "MES DOMAINES" : "WHAT I BUILD"}</span>{[fr ? "Sites web" : "Websites", fr ? "Applications métier" : "Business apps", fr ? "Applications mobiles" : "Mobile apps", fr ? "Intégrations d’IA" : "AI integrations"].map(item => <strong key={item}><i><Spark /></i>{item}</strong>)}</section>
 
       <section className="work section" id="work">
         <div className="section-heading"><p className="section-index">01 — {fr ? "PROJETS" : "WORK"}</p><h2>{copy.workTitle}<br /><em>{copy.workEmphasis}</em></h2><p>{fr ? "Mon rôle, les choix de conception et le fonctionnement de chaque projet." : "My role, the design decisions and how each project works."}</p></div>
         <div className="work-list">
-          {copy.works.map((work, index) => {
-            const external = work.link.startsWith("http");
-            return <article className={`work-card${index === 0 ? " work-featured" : " work-compact"}`} key={work.index}>
+          {copy.works.map((work) => (
+            <article className={`work-card ${work.visual === "masq" ? "work-featured" : "work-compact"}`} key={work.index}>
               <div className={`work-visual work-${work.visual}`}>
                 {work.visual === "planning" && <PlanningVisual locale={locale} />}
                 {work.visual === "cardzap" && <CardzapVisual locale={locale} />}
-                {work.visual === "portfolio" && <PortfolioVisual locale={locale} headline={copy.heroTitle} />}
-                <span className="visual-caption">{fr ? "Illustration du fonctionnement" : "Illustration of the workflow"}</span>
+                {work.visual === "masq" && (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img className="masq-home-screen" src="/masq/mot-secret.webp" width={1080} height={1920} loading="lazy" alt={fr ? "Dans MASQ, Nova découvre son mot secret, Truman Burbank." : "In MASQ, Nova sees their secret word, Truman Burbank."} />
+                )}
+                <span className="visual-caption">{work.visual === "masq"
+                  ? (fr ? "Capture du jeu · partie locale" : "Game screenshot · local session")
+                  : (fr ? "Illustration du fonctionnement" : "Workflow illustration")}</span>
               </div>
               <div className="work-copy">
                 <div className="work-kicker"><span>{work.index}</span><span>{work.kind}</span></div>
                 <h3>{work.title}</h3><p>{work.text}</p>
-                {index === 0 && <div className="work-outcome"><strong>{fr ? "LE POINT CLÉ" : "THE KEY DECISION"}</strong><p>{fr ? "Guider le déplacement dans l’interface et vérifier les contraintes côté serveur avant toute validation." : "Guide the move in the interface and check constraints on the server before confirming it."}</p></div>}
+                {work.visual === "masq" && <div className="work-outcome"><strong>{fr ? "LA PARTIE" : "HOW IT PLAYS"}</strong><p>{fr ? "Un joueur reçoit un mot différent des autres. Après deux tours d’indices, chacun vote pour démasquer l’intrus." : "One player gets a different word. After two rounds of clues, everyone votes to uncover the impostor."}</p></div>}
                 <p className="work-role"><strong>{copy.workRole}</strong> {work.role}</p>
                 <div className="work-stack">{work.stack.map(item => <span className="tag" key={item}>{item}</span>)}</div>
-                <a className="text-link" href={work.link} target={external ? "_blank" : undefined} rel={external ? "noreferrer" : undefined}>{work.linkLabel}<Icon name="upRight" /></a>
+                <a className="text-link" href={work.link}>{work.linkLabel}<Icon name="upRight" /></a>
               </div>
-            </article>;
-          })}
+            </article>
+          ))}
         </div>
+        <a className="text-link services-profile-link" href="https://github.com/amalabaev/portfolio-freelance" target="_blank" rel="noreferrer">{fr ? "Voir le code de ce site bilingue" : "View the source for this bilingual website"}<Icon name="upRight" /></a>
       </section>
 
       <section className="services section" id="services">
         <div className="section-heading"><p className="section-index">02 — SERVICES</p><h2>{fr ? "De quoi avez-vous besoin ?" : "What do you need?"}</h2><p>{fr ? "Une intervention adaptée à votre situation, avec un périmètre défini ensemble." : "An engagement shaped around your situation, with a scope we agree together."}</p></div>
         <div className="service-grid">{copy.services.map((service) => <article className="service-card" key={service.number}>
           <div className="service-number">{service.number}</div><h3>{service.title}</h3><p>{service.text}</p>
-          <ul className="service-deliverables">{service.deliverables.slice(0, 3).map(item => <li key={item}>{item}</li>)}</ul>
-          <a className="text-link" href="#contact">{fr ? "Parlons de ce besoin" : "Discuss this need"}<Icon name="upRight" /></a>
+          <ul className="service-deliverables">{service.deliverables.map(item => <li key={item}>{item}</li>)}</ul>
+          <a className="text-link" href={`${home}?need=${service.need}#contact`}>{service.action}<Icon name="upRight" /></a>
         </article>)}</div>
         <a className="text-link services-profile-link" href={freelanceProfile}>{fr ? "Livrables, collaboration et questions pratiques" : "Deliverables, collaboration and practical questions"}<Icon name="right" /></a>
       </section>

@@ -11,8 +11,8 @@ async function render(pathname) {
 }
 
 const routes = [
-  ['/', 'fr', 'Un site qui convainc'],
-  ['/en/', 'en', 'A website that convinces'],
+  ['/', 'fr', 'Web, mobile'],
+  ['/en/', 'en', 'Web, mobile'],
   ['/engineering/', 'fr', 'Le niveau technique'],
   ['/en/engineering/', 'en', 'The engineering behind'],
   ['/developpeur-full-stack-freelance/', 'fr', 'Développeur full-stack freelance'],
@@ -21,6 +21,8 @@ const routes = [
   ['/en/work/operational-planning/', 'en', 'Making complex workforce planning'],
   ['/work/cardzap/', 'fr', 'Du document'],
   ['/en/work/cardzap/', 'en', 'From a document'],
+  ['/work/masq/', 'fr', 'À chacun son mot'],
+  ['/en/work/masq/', 'en', 'Everyone gets a word'],
   ['/confidentialite/', 'fr', 'Un contact direct'],
   ['/en/privacy/', 'en', 'Direct contact'],
 ];
@@ -48,10 +50,11 @@ for (const [pathname, locale, heading] of routes) {
   });
 }
 
-test('home includes both case studies and form fields with explicit optional labels', async () => {
+test('home includes the three case studies and form fields with explicit optional labels', async () => {
   const html = await (await render('/')).text();
   assert.ok(html.includes('href="/work/cardzap/"'));
   assert.ok(html.includes('href="/work/operational-planning/"'));
+  assert.ok(html.includes('href="/work/masq/"'));
   assert.ok(html.includes('facultatif'));
   const emailInput = html.match(/<input[^>]*name="email"[^>]*>/)?.[0];
   assert.ok(emailInput?.includes('required=""'), 'Email is required');

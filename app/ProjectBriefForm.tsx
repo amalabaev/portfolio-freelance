@@ -1,14 +1,20 @@
 "use client";
 
-import { FormEvent, useRef, useState } from "react";
+import { FormEvent, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { createBriefSender, normalizeWebsite } from "./lib/brief";
 
 import { Icon } from "./Icon";
 
 type Locale = "fr" | "en";
 
+const subscribeToLocation = () => () => {};
+const isLocalPreview = () => ["127.0.0.1", "localhost", "[::1]"].includes(window.location.hostname);
+const serverPreview = () => false;
+
 const copy = {
   fr: {
+    topic: "Type de projet",
+    topics: { web: "Site ou application web", mobile: "Application mobile", ai: "Intégration IA ou automatisation" },
     name: "Nom",
     email: "Email",
     company: "Entreprise",
@@ -19,7 +25,7 @@ const copy = {
     emailPlaceholder: "vous@entreprise.fr",
     companyPlaceholder: "Nom de votre entreprise",
     websitePlaceholder: "https://votre-site.fr",
-    needPlaceholder: "Une refonte, un outil métier, une automatisation…",
+    needPlaceholder: "Comment faites-vous aujourd’hui ? Que devrait pouvoir faire votre équipe ou votre client ?",
     chooseBudget: "Choisir une fourchette",
     budgets: ["Moins de 3 000 €", "3 000–8 000 €", "8 000–20 000 €", "Plus de 20 000 €", "À définir ensemble"],
     submit: "Demander une estimation",
@@ -27,9 +33,11 @@ const copy = {
     note: "Premier échange gratuit : périmètre et prochaines étapes, puis budget et délai lorsque le besoin est précisé.",
     success: "Merci, votre demande a bien été envoyée. Je vous répondrai personnellement sous 24 heures.",
     error: "L’envoi n’a pas abouti. Réessayez dans un instant ou utilisez l’adresse email indiquée ci-dessous.",
-    subject: "Demande d’estimation — projet web",
+    subject: "Demande d’estimation — projet freelance",
   },
   en: {
+    topic: "Project type",
+    topics: { web: "Website or web application", mobile: "Mobile app", ai: "AI integration or automation" },
     name: "Name",
     email: "Email",
     company: "Company",
@@ -40,7 +48,7 @@ const copy = {
     emailPlaceholder: "you@company.com",
     companyPlaceholder: "Your company name",
     websitePlaceholder: "https://your-website.com",
-    needPlaceholder: "A redesign, a business tool, an automation…",
+    needPlaceholder: "How do you do this today? What should your team or customer be able to do?",
     chooseBudget: "Choose a range",
     budgets: ["Under €3,000", "€3,000–8,000", "€8,000–20,000", "Over €20,000", "To be defined together"],
     submit: "Request an estimate",
@@ -48,13 +56,21 @@ const copy = {
     note: "Free initial conversation: scope and next steps, then budget and timing once the brief is clear.",
     success: "Thank you, your request has been sent. I’ll reply personally within 24 hours.",
     error: "The request could not be sent. Please try again shortly or use the email address below.",
-    subject: "Project estimate request — web project",
+    subject: "Project estimate request",
   },
 } as const;
 
 export function ProjectBriefForm({ locale }: { locale: Locale }) {
   const text = copy[locale];
-  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error" | "preview">("idle");
+  const topicField = useRef<HTMLSelectElement>(null);
+  const localPreview = useSyncExternalStore(subscribeToLocation, isLocalPreview, serverPreview);
+  useEffect(() => {
+    const topic = new URLSearchParams(window.location.search).get("need");
+    if (topicField.current && topic && Object.hasOwn(text.topics, topic)) {
+      topicField.current.value = topic;
+    }
+  }, [text]);
   const sender = useRef<ReturnType<typeof createBriefSender> | null>(null);
   const busy = useRef(false);
   const [timedOut, setTimedOut] = useState(false);
@@ -81,6 +97,10 @@ export function ProjectBriefForm({ locale }: { locale: Locale }) {
     if (!form.reportValidity()) return;
     // A hidden field filled by a bot never triggers a request.
     if (String(data.get("_honey") ?? "")) return;
+    if (isLocalPreview()) {
+      setStatus("preview");
+      return;
+    }
     busy.current = true;
     setTimedOut(false);
     setStatus("submitting");
@@ -93,6 +113,7 @@ export function ProjectBriefForm({ locale }: { locale: Locale }) {
           company: String(data.get("company") ?? "").trim() || "—",
           website: website || "—",
           need: String(data.get("need") ?? "").trim(),
+          ...(data.get("topic") ? { topic: text.topics[String(data.get("topic")) as keyof typeof text.topics] } : {}),
           budget: String(data.get("budget") ?? "").trim() || "—",
           _subject: text.subject,
           _template: "table",
@@ -137,6 +158,13 @@ export function ProjectBriefForm({ locale }: { locale: Locale }) {
           <input name="website" type="text" inputMode="url" autoComplete="url" placeholder={fr ? "votre-site.fr" : "your-website.com"} maxLength={2048} />
         </label>
         <label className="brief-wide">
+          <span>{text.topic} <em>{optional}</em></span>
+          <select name="topic" ref={topicField} defaultValue="">
+            <option value="">{fr ? "À préciser" : "To be decided"}</option>
+            {Object.entries(text.topics).map(([value, label]) => <option key={value} value={value}>{label}</option>)}
+          </select>
+        </label>
+        <label className="brief-wide">
           <span>{text.need}</span>
           <textarea name="need" rows={4} placeholder={text.needPlaceholder} maxLength={6000} required />
         </label>
@@ -151,14 +179,15 @@ export function ProjectBriefForm({ locale }: { locale: Locale }) {
       </fieldset>
       <div className="brief-submit">
         <button className="button button-acid" type="submit" disabled={status === "submitting"}>
-          {status === "submitting" ? text.submitting : text.submit} {status !== "submitting" && <Icon name="upRight" />}
+          {localPreview ? (fr ? "Tester le formulaire" : "Try the form") : status === "submitting" ? text.submitting : text.submit} {status !== "submitting" && <Icon name="upRight" />}
         </button>
         <p>{text.note}</p>
       </div>
       <p className={`brief-status${status === "success" ? " brief-status-success" : status === "error" ? " brief-status-error" : ""}`} aria-live="polite">
+        {status === "preview" && (fr ? "Essai réussi. Les informations sont restées dans votre navigateur." : "Preview complete. Your details stayed in your browser.")}
         {status === "success" ? text.success : status === "error" ? (timedOut ? (fr ? "La confirmation tarde à arriver. Votre demande a peut-être été reçue ; contactez-moi par email avant de la renvoyer." : "Confirmation is taking longer than expected. Your request may have arrived; please email me before sending it again.") : text.error) : ""}
       </p>
-      <p className="brief-required-note">{fr ? "Envoi via FormSubmit à Aliaskar Malabaev pour répondre à votre demande. " : "Sent through FormSubmit to Aliaskar Malabaev to respond to your request. "}<a href={fr ? "/confidentialite/" : "/en/privacy/"}>{fr ? "Utilisation des données" : "Use of your data"}</a></p>
+      <p className="brief-required-note">{localPreview ? (fr ? "Aperçu privé. Les essais du formulaire restent dans votre navigateur. " : "Private preview. Form entries stay in your browser. ") : (fr ? "Envoi via FormSubmit à Aliaskar Malabaev pour répondre à votre demande. " : "Sent through FormSubmit to Aliaskar Malabaev to respond to your request. ")}<a href={fr ? "/confidentialite/" : "/en/privacy/"}>{fr ? "Utilisation des données" : "Use of your data"}</a></p>
     </form>
   );
 }

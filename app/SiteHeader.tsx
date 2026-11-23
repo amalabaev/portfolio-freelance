@@ -41,7 +41,7 @@ export function SiteHeader({ locale, current, alternate, homePage = false }: {
     <header className="site-header">
       <a className="brand" href={home} aria-label={fr ? "Aliaskar Malabaev — accueil" : "Aliaskar Malabaev — home"}>
         <span className="brand-mark">AM</span>
-        <span className="brand-copy"><strong>Aliaskar Malabaev</strong>{fr ? "Développeur web indépendant" : "Independent web developer"}</span>
+        <span className="brand-copy"><strong>Aliaskar Malabaev</strong>{fr ? "Développeur full-stack freelance" : "Freelance full-stack developer"}</span>
       </a>
       <nav aria-label={fr ? "Navigation principale" : "Main navigation"}>{links.map(([href, label]) => <a key={href} href={href}>{label}</a>)}</nav>
       <div className="header-actions">

@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 const origin = "https://amalabaev.com";
-const title = "Développeur web freelance — sites & applications | Aliaskar Malabaev";
-const description = "Portfolio d’Aliaskar Malabaev : sites qui inspirent confiance, applications métier sur mesure et automatisations, du design aux systèmes full-stack.";
+const title = "Développeur freelance web, mobile et intégration IA | Aliaskar Malabaev";
+const description = "Depuis Bichkek, Aliaskar Malabaev crée des sites et des applications web et mobiles, et intègre l’IA aux outils internes et aux produits de ses clients.";
 const linkedIn = "https://fr.linkedin.com/in/aliaskar-malabaev-6850a0130";
 
 const structuredData = {
@@ -16,28 +16,28 @@ const structuredData = {
       url: origin,
       image: `${origin}/aliaskar-malabaev.jpg`,
       email: "mailto:amalabaev@gmail.com",
-      jobTitle: "Développeur web full-stack freelance",
-      knowsLanguage: ["fr", "en"],
+      jobTitle: "Développeur full-stack freelance",
+      knowsLanguage: ["fr", "en", "ru"],
       sameAs: ["https://github.com/amalabaev", linkedIn],
-      knowsAbout: ["Full-stack web development", "React", "TypeScript", "Laravel", "Node.js", "Business applications", "Web design", "Automation"],
+      knowsAbout: ["Full-stack web development", "Mobile applications", "AI integration", "React", "TypeScript", "Laravel", "Node.js", "Business applications", "Web design", "Automation"],
     },
     {
       "@type": "ProfessionalService",
       "@id": `${origin}/#service`,
-      name: "Aliaskar Malabaev — Full-stack web development",
+      name: "Aliaskar Malabaev — Web, mobile & AI development",
       url: origin,
       email: "amalabaev@gmail.com",
       founder: { "@id": `${origin}/#aliaskar-malabaev` },
       description,
       areaServed: "France",
-      availableLanguage: ["French", "English"],
-      serviceType: ["Website redesign", "Bespoke web application development", "Automation and API integrations"],
+      availableLanguage: ["French", "English", "Russian"],
+      serviceType: ["Website redesign", "Bespoke web applications", "Mobile app development", "AI integration and automation"],
     },
     {
       "@type": "WebSite",
       "@id": `${origin}/#website`,
       url: origin,
-      name: "Aliaskar Malabaev — Design & développement de produits web",
+      name: "Aliaskar Malabaev — Web, mobile et intégration IA",
       description,
       inLanguage: ["fr-FR", "en-US"],
       author: { "@id": `${origin}/#aliaskar-malabaev` },
