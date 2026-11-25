@@ -23,6 +23,7 @@ const routePairs = [
   ["/developpeur-full-stack-freelance/", "/en/freelance-full-stack-developer/"],
   ["/work/operational-planning/", "/en/work/operational-planning/"],
   ["/work/cardzap/", "/en/work/cardzap/"],
+  ["/work/garmentledger/", "/en/work/garmentledger/"],
   ["/work/masq/", "/en/work/masq/"],
   ["/confidentialite/", "/en/privacy/"],
 ];

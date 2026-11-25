@@ -21,6 +21,8 @@ const routes = [
   ['/en/work/operational-planning/', 'en', 'Making complex workforce planning'],
   ['/work/cardzap/', 'fr', 'Du document'],
   ['/en/work/cardzap/', 'en', 'From a document'],
+  ['/work/garmentledger/', 'fr', 'Du tarif prévu au contrat'],
+  ['/en/work/garmentledger/', 'en', 'From the agreed rate'],
   ['/work/masq/', 'fr', 'À chacun son mot'],
   ['/en/work/masq/', 'en', 'Everyone gets a word'],
   ['/confidentialite/', 'fr', 'Un contact direct'],
@@ -50,9 +52,10 @@ for (const [pathname, locale, heading] of routes) {
   });
 }
 
-test('home includes the three case studies and form fields with explicit optional labels', async () => {
+test('home links to the featured case studies, the planning demo and the project brief', async () => {
   const html = await (await render('/')).text();
   assert.ok(html.includes('href="/work/cardzap/"'));
+  assert.ok(html.includes('href="/work/garmentledger/"'));
   assert.ok(html.includes('href="/work/operational-planning/"'));
   assert.ok(html.includes('href="/work/masq/"'));
   assert.ok(html.includes('facultatif'));

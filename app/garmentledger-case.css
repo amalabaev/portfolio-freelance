@@ -1,0 +1,102 @@
+.ledger-case {
+  --ledger-green: #214f3d;
+  --ledger-rule: #b9c3b3;
+  background: var(--paper);
+}
+.ledger-shell { width: var(--shell); margin-inline: auto; }
+.ledger-hero, .ledger-step { display: grid; align-items: center; }
+.ledger-hero {
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr);
+  gap: clamp(32px, 6vw, 100px);
+  padding-block: clamp(44px, 6.5vw, 104px);
+}
+.ledger-kicker {
+  margin: 0 0 24px;
+  color: var(--ledger-green);
+  font-size: .77rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  line-height: 1.55;
+  text-transform: uppercase;
+}
+.ledger-hero h1, .ledger-explanation h2, .ledger-calculation-title {
+  font-family: var(--serif);
+  font-weight: 400;
+  letter-spacing: -.035em;
+  text-wrap: balance;
+}
+.ledger-hero h1 { margin: 0; max-width: 18ch; font-size: clamp(3.65rem, 6.2vw, 6.7rem); line-height: .96; }
+.ledger-hero h1 em { display: block; color: var(--ledger-green); }
+.ledger-intro { max-width: 52ch; margin: 26px 0 0; font-size: clamp(1.02rem, 1.4vw, 1.23rem); line-height: 1.65; }
+.ledger-status { margin: 24px 0 8px; color: var(--ink-soft); font-size: .9rem; line-height: 1.5; }
+.ledger-link, .ledger-screen-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: .9rem;
+  font-weight: 650;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.ledger-calculation {
+  margin: 0;
+  padding: clamp(22px, 3.3vw, 48px);
+  color: #f6f5ec;
+  background: var(--ledger-green);
+  border-radius: var(--radius);
+}
+.ledger-calculation figcaption { font-size: .82rem; color: #e1e9d8; }
+.ledger-calculation-title { margin: 12px 0 30px; font-size: clamp(2rem, 3vw, 3rem); line-height: 1.05; }
+.ledger-calculation dl, .ledger-calculation dd, .ledger-stages dd { margin: 0; }
+.ledger-calculation dl > div, .ledger-stages > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-block: 15px;
+  border-top: 1px solid rgba(246, 245, 236, .34);
+}
+.ledger-calculation dt { max-width: 19ch; font-weight: 600; line-height: 1.35; }
+.ledger-calculation dt span { display: block; margin-top: 4px; font-size: .85rem; font-weight: 450; color: #e1e9d8; }
+.ledger-calculation dd, .ledger-stages dd { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.ledger-calculation dd { font-size: 1.15rem; }
+.ledger-calculation .ledger-difference { align-items: end; padding-top: 22px; padding-bottom: 0; }
+.ledger-difference dt { font-size: .86rem; max-width: 15ch; }
+.ledger-difference dd { color: var(--acid); font: 400 clamp(2.6rem, 4.1vw, 4.5rem)/.96 var(--serif); letter-spacing: -.025em; }
+.ledger-step {
+  grid-template-columns: minmax(0, .72fr) minmax(0, 1.28fr);
+  gap: clamp(30px, 4.7vw, 76px);
+  border-top: 1px solid var(--line);
+  padding-block: clamp(48px, 6vw, 90px);
+}
+.ledger-explanation h2 { margin: 0; max-width: 18ch; font-size: clamp(2.6rem, 4vw, 4.3rem); line-height: 1.02; }
+.ledger-explanation p { margin: 20px 0 0; color: var(--ink-soft); line-height: 1.67; max-width: 58ch; }
+.ledger-screen { margin: 0; min-width: 0; }
+.ledger-step > .ledger-screen { width: 100%; max-width: 670px; justify-self: center; }
+.ledger-settlement .ledger-screen { max-width: 1024px; }
+.ledger-screen a { display: block; cursor: zoom-in; }
+.ledger-screen img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--ledger-rule);
+  border-radius: 8px;
+  background: #fff;
+}
+.ledger-screen-action { display: inline-flex; margin-top: 9px; color: var(--ledger-green); font-size: .83rem; }
+.ledger-screen figcaption { margin-top: 6px; color: var(--ink-soft); font-size: .84rem; line-height: 1.5; }
+.ledger-settlement { background: #e5e9db; }
+.ledger-settlement .ledger-step { border-top: 0; }
+.ledger-stages { margin: 24px 0 0; }
+.ledger-stages > div { padding-block: 10px; border-color: var(--ledger-rule); }
+.ledger-stages dt { font-size: .92rem; }
+.ledger-stages dd { font-weight: 650; }
+.ledger-explanation .ledger-outstanding { font-size: .92rem; }
+.ledger-case .ledger-cta h2 { margin: 0 auto 22px; }
+@media (max-width: 850px) {
+  .ledger-hero, .ledger-step { grid-template-columns: minmax(0, 1fr); gap: 30px; }
+  .ledger-hero h1 { font-size: clamp(3.35rem, 8.6vw, 5rem); }
+  .ledger-calculation { max-width: 640px; }
+  .ledger-explanation h2 { max-width: 23ch; }
+  .ledger-stages { max-width: 52ch; }
+}

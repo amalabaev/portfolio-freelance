@@ -9,7 +9,6 @@ import {
   CardzapVisual,
   ConsultingDashboard,
   HealthAppointment,
-  PlanningVisual,
 } from "./Visuals";
 import "./portfolio-preview.css";
 
@@ -44,14 +43,14 @@ const content = {
       },
       {
         index: "02 / 03",
-        kind: "PLANNING · PROJET MÉTIER ANONYMISÉ",
-        title: "Réaffecter une intervention.",
-        text: "Essayez deux horaires dans une démo interactive. L’un crée un conflit avec le planning de l’équipe, l’autre permet de confirmer le déplacement.",
-        role: "Développement full-stack",
-        stack: ["PHP", "JavaScript", "MySQL", "Docker"],
-        visual: "planning",
-        link: "/work/operational-planning/",
-        linkLabel: "Essayer le planning",
+        kind: "GARMENTLEDGER · APPLICATION MÉTIER",
+        title: "Le tarif facturé correspond-il au contrat ?",
+        text: "GarmentLedger aide les équipes finance à contrôler leurs factures de location de vêtements de travail. À partir d’une ligne à vérifier, elles peuvent retrouver la règle du contrat, examiner l’écart et suivre l’avoir fournisseur.",
+        role: "Conception produit et développement",
+        stack: ["Application web B2B", "Pilote sur invitation"],
+        visual: "garmentledger",
+        link: "/work/garmentledger/",
+        linkLabel: "Suivre un écart de facturation",
       },
       {
         index: "03 / 03",
@@ -136,14 +135,14 @@ const content = {
       },
       {
         index: "02 / 03",
-        kind: "PLANNING · ANONYMISED BUSINESS PROJECT",
-        title: "Move an assignment to another team.",
-        text: "Try two time slots in the interactive demo. One clashes with the team’s schedule. The other lets you confirm the move.",
-        role: "Full-stack development",
-        stack: ["PHP", "JavaScript", "MySQL", "Docker"],
-        visual: "planning",
-        link: "/en/work/operational-planning/",
-        linkLabel: "Try the planning demo",
+        kind: "GARMENTLEDGER · BUSINESS SOFTWARE",
+        title: "Does the invoiced rate match the contract?",
+        text: "GarmentLedger helps finance teams check workwear rental invoices. They can trace a flagged line to the relevant contract rule, review the difference and follow the supplier credit through to its application.",
+        role: "Product design and development",
+        stack: ["B2B web app", "Invitation-only pilot"],
+        visual: "garmentledger",
+        link: "/en/work/garmentledger/",
+        linkLabel: "Follow an invoice discrepancy",
       },
       {
         index: "03 / 03",
@@ -257,15 +256,26 @@ export function PortfolioPage({ locale }: { locale: Locale }) {
           {copy.works.map((work) => (
             <article className={`work-card ${work.visual === "masq" ? "work-featured" : "work-compact"}`} key={work.index}>
               <div className={`work-visual work-${work.visual}`}>
-                {work.visual === "planning" && <PlanningVisual locale={locale} />}
+                {work.visual === "garmentledger" && (
+                  <figure className="ledger-home-figure">
+                    <a className="ledger-home-crop" href="/garmentledger/controle.webp" aria-label={fr ? "Agrandir la capture du contrôle de tarif" : "Enlarge the rate check screenshot"}>
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src="/garmentledger/controle.webp" width={670} height={692} loading="lazy" alt={fr ? "L’application signale un écart potentiel de 20 dollars hors taxes sur une ligne à examiner." : "The application flags a potential pre-tax difference of 20 dollars on an invoice line for review."} />
+                      <span className="ledger-home-expand" aria-hidden="true"><Icon name="upRight" size={16} /></span>
+                    </a>
+                    <figcaption>
+                      <strong>{fr ? "40 × (3,00 − 2,50) = 20 USD" : "40 × ($3.00 − $2.50) = $20.00"}</strong>
+                      <span>{fr ? "Écart hors taxes à examiner · données fictives" : "Pre-tax difference to review · fictional data"}</span>
+                    </figcaption>
+                  </figure>
+                )}
                 {work.visual === "cardzap" && <CardzapVisual locale={locale} />}
                 {work.visual === "masq" && (
                   // eslint-disable-next-line @next/next/no-img-element
                   <img className="masq-home-screen" src="/masq/mot-secret.webp" width={1080} height={1920} loading="lazy" alt={fr ? "Dans MASQ, Nova découvre son mot secret, Truman Burbank." : "In MASQ, Nova sees their secret word, Truman Burbank."} />
                 )}
-                <span className="visual-caption">{work.visual === "masq"
-                  ? (fr ? "Capture du jeu · partie locale" : "Game screenshot · local session")
-                  : (fr ? "Illustration du fonctionnement" : "Workflow illustration")}</span>
+                {work.visual === "masq" && <span className="visual-caption">{fr ? "Capture du jeu · partie locale" : "Game screenshot · local session"}</span>}
+                {work.visual === "cardzap" && <span className="visual-caption">{fr ? "Illustration du fonctionnement" : "Workflow illustration"}</span>}
               </div>
               <div className="work-copy">
                 <div className="work-kicker"><span>{work.index}</span><span>{work.kind}</span></div>

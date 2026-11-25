@@ -23,3 +23,70 @@
 .work-masq .visual-caption {
   margin: 0;
 }
+
+.work-compact .work-garmentledger {
+  align-content: center;
+  min-height: 280px;
+  padding: 20px clamp(16px, 2vw, 28px);
+  color: #f4f6ed;
+  background: #214940;
+}
+
+.ledger-home-figure {
+  width: min(100%, 455px);
+  margin: 0;
+}
+
+.ledger-home-crop {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  aspect-ratio: 670 / 285;
+  border: 1px solid #c6d3c8;
+  border-radius: 6px;
+  background: white;
+  cursor: zoom-in;
+}
+
+.ledger-home-crop:focus-visible {
+  outline: 3px solid var(--acid);
+  outline-offset: 3px;
+}
+
+.ledger-home-crop img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.ledger-home-expand {
+  position: absolute;
+  right: 7px;
+  bottom: 7px;
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  color: #183c34;
+  background: #fff;
+  border: 1px solid #ccd6ca;
+  border-radius: 50%;
+}
+
+.ledger-home-figure figcaption {
+  display: grid;
+  gap: 4px;
+  margin-top: 14px;
+}
+
+.ledger-home-figure figcaption strong {
+  font-size: clamp(16px, 1.4vw, 20px);
+  font-variant-numeric: tabular-nums;
+  font-weight: 550;
+}
+
+.ledger-home-figure figcaption span {
+  color: #d3e2d9;
+  font-size: 12px;
+  line-height: 1.5;
+}
