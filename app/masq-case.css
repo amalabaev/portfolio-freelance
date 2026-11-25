@@ -8,8 +8,7 @@
   text-wrap: balance;
 }
 .masq-hero, .masq-play, .masq-making {
-  max-width: 1540px;
-  margin-inline: auto;
+  /* The shared gutter centers the content inside these full-width sections. */
   padding-inline: max(5vw, var(--gutter));
 }
 .masq-hero {
