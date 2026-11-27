@@ -1,3 +1,4 @@
+import { GarmentLedgerComparison } from "./GarmentLedgerComparison";
 import { CopyEmailButton } from "./CopyEmailButton";
 import { Icon, Spark } from "./Icon";
 import { CAREER_START_YEAR } from "./profile";
@@ -257,17 +258,12 @@ export function PortfolioPage({ locale }: { locale: Locale }) {
             <article className={`work-card ${work.visual === "masq" ? "work-featured" : "work-compact"}`} key={work.index}>
               <div className={`work-visual work-${work.visual}`}>
                 {work.visual === "garmentledger" && (
-                  <figure className="ledger-home-figure">
-                    <a className="ledger-home-crop" href="/garmentledger/controle.webp" aria-label={fr ? "Agrandir la capture du contrôle de tarif" : "Enlarge the rate check screenshot"}>
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src="/garmentledger/controle.webp" width={670} height={692} loading="lazy" alt={fr ? "L’application signale un écart potentiel de 20 dollars hors taxes sur une ligne à examiner." : "The application flags a potential pre-tax difference of 20 dollars on an invoice line for review."} />
-                      <span className="ledger-home-expand" aria-hidden="true"><Icon name="upRight" size={16} /></span>
+                  <div className="ledger-home-preview">
+                    <GarmentLedgerComparison locale={locale} />
+                    <a className="ledger-home-evidence" href="/garmentledger/controle.webp">
+                      {fr ? "Voir la capture du contrôle" : "View the audit screenshot"}<Icon name="upRight" size={14} />
                     </a>
-                    <figcaption>
-                      <strong>{fr ? "40 × (3,00 − 2,50) = 20 USD" : "40 × ($3.00 − $2.50) = $20.00"}</strong>
-                      <span>{fr ? "Écart hors taxes à examiner · données fictives" : "Pre-tax difference to review · fictional data"}</span>
-                    </figcaption>
-                  </figure>
+                  </div>
                 )}
                 {work.visual === "cardzap" && <CardzapVisual locale={locale} />}
                 {work.visual === "masq" && (

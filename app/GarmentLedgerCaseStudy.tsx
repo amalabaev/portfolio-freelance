@@ -1,3 +1,4 @@
+import { GarmentLedgerComparison } from "./GarmentLedgerComparison";
 import { Icon } from "./Icon";
 import { SiteFooter } from "./SiteFooter";
 import { SiteHeader } from "./SiteHeader";
@@ -10,17 +11,8 @@ const copy = {
     titleEnd: "jusqu’à l’avoir reçu",
     intro: "J’ai développé GarmentLedger pour les équipes qui contrôlent les factures de location de vêtements de travail. Le logiciel repère les lignes à vérifier et permet de suivre la réponse du fournisseur jusqu’à l’imputation d’un avoir.",
     status: "Produit en ligne en français et en anglais. Pilote privé sur invitation.",
+    demo: "Contrôler une facture",
     product: "Voir le site du produit",
-    example: "Une ligne de facture fictive",
-    comparison: "Location de 40 articles pour une semaine",
-    contract: "Montant contractuel",
-    contractCalc: "40 × 2,50 USD",
-    contractAmount: "100 USD",
-    invoice: "Montant facturé",
-    invoiceCalc: "40 × 3,00 USD",
-    invoiceAmount: "120 USD",
-    difference: "Écart à vérifier, hors taxes",
-    amount: "20 USD",
     reviewTitle: "Vérifier l’écart avant de le confirmer",
     reviewBody: "Le contrôle compare le tarif de la ligne avec la règle approuvée pour l’article et la période. Dans cet exemple, chaque article est facturé 0,50 USD de plus que prévu. La personne chargée de la revue relit le calcul et la référence du contrat, puis consigne sa décision.",
     reviewCaption: "Écran d’audit en anglais. L’écart de 20 USD attend encore une décision.",
@@ -45,17 +37,8 @@ const copy = {
     titleEnd: "to the supplier’s credit note",
     intro: "I built GarmentLedger for teams that check workwear rental invoices. It flags lines that need review and helps the team track the supplier’s response until a credit is applied.",
     status: "Live in English and French. Private pilot by invitation.",
+    demo: "Check an invoice",
     product: "Visit the product site",
-    example: "A fictional invoice line",
-    comparison: "One week’s rental of 40 items",
-    contract: "Contract amount",
-    contractCalc: "40 × USD 2.50",
-    contractAmount: "USD 100",
-    invoice: "Invoiced amount",
-    invoiceCalc: "40 × USD 3.00",
-    invoiceAmount: "USD 120",
-    difference: "Pre-tax difference to review",
-    amount: "USD 20",
     reviewTitle: "Check the discrepancy before confirming it",
     reviewBody: "The software compares the invoice line with the approved rate for the item and billing period. Here, each item costs USD 0.50 more than agreed. The reviewer checks the calculation against the contract reference and records a decision.",
     reviewCaption: "The audit screen shows a USD 20 difference awaiting human review.",
@@ -113,17 +96,12 @@ export function GarmentLedgerCaseStudy({ locale }: { locale: keyof typeof copy }
           <h1>{c.title} <em>{c.titleEnd}</em></h1>
           <p className="ledger-intro">{c.intro}</p>
           <p className="ledger-status">{c.status}</p>
-          <a className="ledger-link" href="https://garmentledger.com/product">{c.product}<Icon name="upRight" size={15} /></a>
+          <div className="hero-actions">
+            <a className="button button-dark" href={`/garmentledger/demo/?lang=${locale}`}>{c.demo}<Icon name="right" /></a>
+            <a className="ledger-link" href="https://garmentledger.com/product">{c.product}<Icon name="upRight" size={15} /></a>
+          </div>
         </div>
-        <figure className="ledger-calculation">
-          <figcaption>{c.example}</figcaption>
-          <p className="ledger-calculation-title">{c.comparison}</p>
-          <dl>
-            <div><dt>{c.contract}<span>{c.contractCalc}</span></dt><dd>{c.contractAmount}</dd></div>
-            <div><dt>{c.invoice}<span>{c.invoiceCalc}</span></dt><dd>{c.invoiceAmount}</dd></div>
-            <div className="ledger-difference"><dt>{c.difference}</dt><dd>{c.amount}</dd></div>
-          </dl>
-        </figure>
+        <GarmentLedgerComparison locale={locale} />
       </section>
       <section className="ledger-shell ledger-step" aria-labelledby="ledger-review">
         <div className="ledger-explanation">

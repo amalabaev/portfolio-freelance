@@ -32,61 +32,22 @@
   background: #214940;
 }
 
-.ledger-home-figure {
+.ledger-home-preview {
   width: min(100%, 455px);
-  margin: 0;
 }
-
-.ledger-home-crop {
-  position: relative;
-  display: block;
-  overflow: hidden;
-  aspect-ratio: 670 / 285;
-  border: 1px solid #c6d3c8;
-  border-radius: 6px;
-  background: white;
-  cursor: zoom-in;
+.ledger-home-preview .ledger-comparison {
+  padding: clamp(18px, 2.4vw, 32px);
+  border: 1px solid #77917d;
 }
-
-.ledger-home-crop:focus-visible {
-  outline: 3px solid var(--acid);
-  outline-offset: 3px;
+.ledger-home-preview .ledger-comparison figcaption strong { font-size: clamp(1.6rem, 2.3vw, 2.3rem); }
+.ledger-home-evidence {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 10px;
+  color: #f1f4e8;
+  font-size: .83rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
-
-.ledger-home-crop img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-.ledger-home-expand {
-  position: absolute;
-  right: 7px;
-  bottom: 7px;
-  display: grid;
-  place-items: center;
-  width: 26px;
-  height: 26px;
-  color: #183c34;
-  background: #fff;
-  border: 1px solid #ccd6ca;
-  border-radius: 50%;
-}
-
-.ledger-home-figure figcaption {
-  display: grid;
-  gap: 4px;
-  margin-top: 14px;
-}
-
-.ledger-home-figure figcaption strong {
-  font-size: clamp(16px, 1.4vw, 20px);
-  font-variant-numeric: tabular-nums;
-  font-weight: 550;
-}
-
-.ledger-home-figure figcaption span {
-  color: #d3e2d9;
-  font-size: 12px;
-  line-height: 1.5;
-}
+.ledger-home-evidence:focus-visible { outline: 2px solid var(--acid); outline-offset: 3px; }
