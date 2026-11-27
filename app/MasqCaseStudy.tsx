@@ -14,6 +14,7 @@ const copy = {
     project: "Projet personnel",
     status: "Bêta fermée Android annoncée en septembre 2026",
     languages: "Français et anglais",
+    play: "Jouer une manche",
     see: "Suivre une partie",
     secretTitle: "Un mot pour soi",
     secretAlt: "Dans l’interface de jeu, la carte de Nova révèle le nom Truman Burbank.",
@@ -48,6 +49,7 @@ const copy = {
     project: "Personal project",
     status: "Android closed beta announced in September 2026",
     languages: "French and English",
+    play: "Play a round",
     see: "Follow a round",
     secretTitle: "A word of your own",
     secretAlt: "Nova’s card reveals the name Truman Burbank in the French game interface.",
@@ -94,7 +96,10 @@ export function MasqCaseStudy({ locale }: { locale: keyof typeof copy }) {
           <h1>{c.title} <em>{c.titleEnd}</em></h1>
           <p className="masq-intro">{c.intro}</p>
           <p className="masq-meta">{c.project} · {c.languages}<br />{c.status}</p>
-          <a className="masq-jump" href="#masq-gameplay">{c.see}<Icon name="down" size={16} /></a>
+          <div className="hero-actions">
+            <a className="button button-dark" href={`/masq/manche/?lang=${locale}`}>{c.play}<Icon name="right" /></a>
+            <a className="masq-jump" href="#masq-gameplay">{c.see}<Icon name="down" size={16} /></a>
+          </div>
         </div>
         <figure className="masq-feature">
           <a className="masq-feature-image" href="/masq/mot-secret.webp" aria-label={`${c.zoom} — ${c.secretTitle}`}>

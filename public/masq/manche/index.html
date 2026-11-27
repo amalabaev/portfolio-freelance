@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f5ed">
+  <meta name="robots" content="noindex">
+  <title>MASQ — Une manche de bluff</title>
+  <link rel="icon" href="/favicon.png">
+  <link rel="stylesheet" href="manche.css">
+  <script defer src="rounds.js"></script>
+  <script defer src="table.js"></script>
+  <script defer src="portrait.js"></script>
+  <script defer src="audio.js"></script>
+  <script defer src="manche.js"></script>
+</head>
+<body>
+  <header class="mast">
+    <div class="mast-inner">
+      <a class="brand" id="back" href="/work/masq/" aria-label="MASQ — retour au projet"><span class="mask-mark" aria-hidden="true"><i></i><i></i></span><b>MASQ</b></a>
+      <span class="product">Undercover Pop</span>
+      <div class="settings">
+        <button id="sound" type="button" aria-pressed="false"><span id="sound-icon" aria-hidden="true"></span><span id="sound-text">Son coupé</span></button>
+        <div class="languages" aria-label="Langue / Language"><button data-lang="fr" type="button" aria-pressed="true">FR</button><span>/</span><button data-lang="en" type="button" aria-pressed="false">EN</button></div>
+      </div>
+    </div>
+  </header>
+  <main class="shell">
+    <div class="spread">
+      <div class="copy">
+        <p class="eyebrow"><i aria-hidden="true"></i><span id="mode"></span></p>
+        <h1 id="heading" tabindex="-1"></h1>
+        <p id="lead" class="lead"></p>
+        <div id="phase-ui" class="phase-ui"></div>
+        <div class="actions" id="actions"></div>
+      </div>
+      <div class="visual-column">
+        <div class="stage" id="stage" role="img">
+          <canvas id="table" aria-hidden="true"></canvas>
+          <div id="portrait" data-open="false" aria-hidden="true"></div>
+          <div class="stage-label" aria-hidden="true"><span class="live-dot"></span><span id="stage-label"></span></div>
+          <div id="bubble" class="bubble" aria-hidden="true" hidden><small></small><b></b></div>
+          <span class="stage-cross" aria-hidden="true">+</span>
+        </div>
+        <div class="roster" id="roster"></div>
+      </div>
+    </div>
+    <footer class="timeline">
+      <div class="timeline-head"><span id="chapter-count"></span><span id="round-id"></span></div>
+      <ol id="steps"></ol>
+    </footer>
+    <span class="sr" aria-live="polite" aria-atomic="true" id="announce"></span>
+  </main>
+  <noscript>Activez JavaScript pour jouer. / Enable JavaScript to play.</noscript>
+</body>
+</html>
